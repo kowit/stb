@@ -1,16 +1,32 @@
+<%= render "layouts/navbar" %>
 <section class="section">
-  <div class="columns">
-    <div class="column is-2">
-      <p>laksndlkasndlkasnd</p>
+  <div class"container is-fluid">
+    <div class="columns">
+      <div class="column is-4 is-mobile">
+        <h3 class="title">Cart Items:</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+        </p>
+        <button class="button order-btn is-primary">
+          Order
+        </button>
+      </div>
+      <div class="columns is-multiline is-mobile is-centered">
+        <%= render "layouts/card" %>
+        <%= render "layouts/card" %>
+        <%= render "layouts/card" %>
+        <%= render "layouts/card" %>
+        <%= render "layouts/card" %>
+        <%= render "layouts/card" %>
+        <%= render "layouts/card" %>
+        <%= render "layouts/card" %>
+        <%= render "layouts/card" %>
+        <%= render "layouts/card" %>
+      </div>
     </div>
-    <div class="columns is-multiline">
-      <%= render "layouts/card" %>
-      <%= render "layouts/card" %>
-      <%= render "layouts/card" %>
-      <%= render "layouts/card" %>
-      <%= render "layouts/card" %>
-      <%= render "layouts/card" %>
-    </div>
-
   </div>
 </section>
