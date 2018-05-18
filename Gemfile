@@ -18,7 +18,6 @@ gem 'bulma-rails', '~> 0.7.1'
 gem 'pry-rails', '~> 0.3.6'
 gem 'pgcli-rails', '~> 0.3.0'
 
-
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'database_cleaner', '~> 1.7'
