@@ -17,6 +17,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'bulma-rails', '~> 0.7.1'
 gem 'pry-rails', '~> 0.3.6'
 gem 'pgcli-rails', '~> 0.3.0'
+gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
