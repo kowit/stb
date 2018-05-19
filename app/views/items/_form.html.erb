@@ -1,4 +1,4 @@
-<%= form_for item do |form| %>
+<%= simple_form_for item do |form| %>
   <div>
     <%= form.label :name %>
     <%= form.text_field :name, class: "input" %>
@@ -12,6 +12,10 @@
   <div>
     <%= form.label :description %>
     <%= form.text_area :description, class: "textarea" %>
+  </div>
+
+  <div>
+    (WIP) Image entry box will be here 
   </div>
 
   <div>

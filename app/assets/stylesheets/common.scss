@@ -36,6 +36,10 @@ body {
 
 /* Components */
 
+.navbar {
+  border-bottom: 1px solid #eee;
+}
+
 .card {
   &:hover {
     cursor: pointer;

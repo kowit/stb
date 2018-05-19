@@ -1,12 +1,11 @@
 <div class="container">
-  <%= link_to "Menu", items_path %><br />
+  <%= render "layouts/navbar" %>
 
   <%= @item.name %><br />
   <%= @item.price %><br />
   <%= @item.description %><br />
 
   <% if signed_in? %>
-    <%= render "layouts/nav" %><br />
     <%= link_to "Edit", edit_item_path %><br />
     <%= link_to "Destroy", "#" %><br />
   <% else %>
