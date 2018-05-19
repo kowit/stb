@@ -13,7 +13,7 @@ Item.destroy_all
     {
       name: Faker::Coffee.blend_name,
       item_type: "Hot",
-      price: "3.24",
+      price: Faker::Number.decimal(2),
       description: Faker::Coffee.notes
     }
   ])
