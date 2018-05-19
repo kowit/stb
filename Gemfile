@@ -22,6 +22,7 @@ gem 'simple_form', '~> 4.0', '>= 4.0.1'
 gem 'record_tag_helper', '~> 1.0'
 gem 'pry-rails', '~> 0.3.6'
 gem 'pgcli-rails', '~> 0.3.0'
+gem 'mini_magick', '~> 4.8'
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 
 group :development, :test do

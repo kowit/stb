@@ -1,6 +1,11 @@
 <div class="container">
   <%= render "layouts/navbar" %>
 
+  <figure class="image is-128x128">
+    <%#= image_tag("https://bulma.io/images/placeholders/640x480.png") %>
+    <%= image_tag(@item.image.url, alt: "Image") if @item.image? %>
+  </figure>
+
   <%= @item.name %><br />
   <%= @item.price %><br />
   <%= @item.description %><br />
