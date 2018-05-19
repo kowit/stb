@@ -7,7 +7,7 @@
 
   <% if signed_in? %>
     <%= render "layouts/nav" %><br />
-    <%= link_to "Edit", "#" %><br />
+    <%= link_to "Edit", edit_item_path %><br />
     <%= link_to "Destroy", "#" %><br />
   <% else %>
     <%= link_to "Add Item", "#" %><br />
