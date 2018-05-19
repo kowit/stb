@@ -7,12 +7,10 @@
     <div class="navbar-item">
       <div class="field is-grouped">
         <% if signed_in? %>
-
           <p class="control">
-            <a class="button is-primary" href="#">
-              <span>
-                <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-              </span>
+            <span>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            </span>
             </a>
           </p>
         <% else %>
