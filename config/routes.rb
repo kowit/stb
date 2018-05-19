@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   resource :dashboard, only: [:show]
 
-  resources :items, only: [:index]
+  resources :items, only: [:index, :show]
 end

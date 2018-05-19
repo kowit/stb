@@ -1,0 +1,6 @@
+<% if signed_in? %>
+  <%= render "layouts/nav" %><br />
+  <%= link_to "Edit", "#" %><br />
+  <%= link_to "Destroy", "#" %><br />
+<% end %>
+<p><%= params.inspect %></p>

@@ -7,7 +7,7 @@
         <div class="card">
           <div class="card-image">
             <figure class="image is-4by3">
-              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+              <%= link_to image_tag("https://bulma.io/images/placeholders/1280x960.png"), item_path(item) %>
             </figure>
           </div>
 
@@ -25,11 +25,6 @@
               <p class="subtitle is-4">
                 <%= item.description %>
               </p>
-              <% if signed_in? %>
-                <%= link_to "Show", "#" %><br />
-                <%= link_to "Edit", "#" %><br />
-                <%= link_to "Destroy", "#" %><br />
-              <% end %>
             </div>
           </div>
         </div>
