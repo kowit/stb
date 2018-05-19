@@ -9,6 +9,11 @@
         <% if signed_in? %>
           <p class="control">
             <span>
+              Signed in as: <%= current_user.email %>
+            </span>
+          </p>
+          <p class="control">
+            <span>
               <%= link_to "New item", new_item_path %>
             </span>
           </p>
