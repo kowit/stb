@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: stb_production
-  username: stb
+  username: root
   password: <%= ENV['STB_DATABASE_PASSWORD'] %>
