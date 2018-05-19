@@ -1,4 +1,5 @@
 <%= render "layouts/navbar" %>
+
 <div class="container some-responsive-thing">
   <div class="columns is-multiline">
     <% @items.each do |item| %>
@@ -11,19 +12,24 @@
           </div>
 
           <div class="card-content">
-            <div class="media-content">
+            <div class="media-content card-media-content">
               <p class="title is-4">
                 Name: <%= item.name %>
               </p>
-              <p class="subtitle is-6">
+              <p class="subtitle is-4">
                 Item Type: <%= item.item_type %>
               </p>
-              <p class="subtitle is-6">
+              <p class="subtitle is-4">
                 Price: <%= item.price %>
               </p>
-              <p class="subtitle is-6">
+              <p class="subtitle is-4">
                 <%= item.description %>
               </p>
+              <% if signed_in? %>
+                <%= link_to "Show", "#" %><br />
+                <%= link_to "Edit", "#" %><br />
+                <%= link_to "Destroy", "#" %><br />
+              <% end %>
             </div>
           </div>
         </div>
