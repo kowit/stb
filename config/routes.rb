@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root to: "welcomes#show", via: :get
 
+  resource :dashboard, only: [:show]
+
   resources :items, only: [:index]
 end

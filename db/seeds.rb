@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Item.destroy_all
+
+10.times do
+  items = Item.create([
+    {
+      name: Faker::Coffee.blend_name,
+      item_type: "Hot",
+      price: "3.24",
+      description: Faker::Coffee.notes
+    }
+  ])
+end
