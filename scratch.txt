@@ -11,7 +11,7 @@ Items
   item_type:index (wip)
 
 Order
-  user:references
+  belongs_to :user
   total:decimal
   payment_option:string
 
