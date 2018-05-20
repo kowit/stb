@@ -1,3 +1,17 @@
+Useful Commands:
+
+pg_ctl -D /usr/local/var/postgres
+
+REPL within project - rails console
+  TO repl inside project
+  Rails console -> IRB or PRY with RAILS DATA
+
+
+REPL outside project
+  IRB
+  PRY
+  
+
 Models
 -------
 Items
@@ -16,6 +30,7 @@ OrderStatus
 Order
   order_status:references
   user:references
+  has_many :order_items
 
   subtotal:decimal
   tax:decimal
