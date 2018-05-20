@@ -1,0 +1,18 @@
+Models
+-------
+Items
+  name:string
+  item_type:string
+  price:decimal
+  description:text
+  image:string
+
+  name:index
+  item_type:index (wip)
+
+Order
+  user:references
+  total:decimal
+  payment_option:string
+
+Charge
