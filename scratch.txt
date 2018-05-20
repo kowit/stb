@@ -10,9 +10,19 @@ Items
   name:index
   item_type:index (wip)
 
-Order
-  belongs_to :user
-  total:decimal
-  payment_option:string
+OrderStatus
+  name:string
 
-Charge
+Order
+  order_status:references
+  user:references
+
+  subtotal:decimal
+  tax:decimal
+  total:decimal
+
+
+OrderItem
+  item:references
+  order:references
+  quantity:integer

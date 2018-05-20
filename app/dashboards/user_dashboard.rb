@@ -9,6 +9,8 @@ class UserDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    first_name: Field::String,
+    last_name: Field::String,
     email: Field::String,
     encrypted_password: Field::String,
     reset_password_token: Field::String,
@@ -21,6 +23,8 @@ class UserDashboard < Administrate::BaseDashboard
     last_sign_in_ip: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    first_name: Field::String,
+    last_name: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -30,6 +34,8 @@ class UserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
+    :first_name,
+    :last_name,
     :email,
     :encrypted_password,
     :reset_password_token,
@@ -39,6 +45,8 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
+    :first_name,
+    :last_name,
     :email,
     :encrypted_password,
     :reset_password_token,
@@ -51,6 +59,8 @@ class UserDashboard < Administrate::BaseDashboard
     :last_sign_in_ip,
     :created_at,
     :updated_at,
+    :first_name,
+    :last_name,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -67,6 +77,8 @@ class UserDashboard < Administrate::BaseDashboard
     :last_sign_in_at,
     :current_sign_in_ip,
     :last_sign_in_ip,
+    :first_name,
+    :last_name,
   ].freeze
 
   # Overwrite this method to customize how users are displayed

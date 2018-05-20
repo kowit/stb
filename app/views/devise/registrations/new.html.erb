@@ -1,9 +1,29 @@
+<%= render "layouts/navbar" %>
+
 <section class="section">
   <div class="container center-container">
-    <h2>Sign up</h2>
+    <h2 class="title">Sign up</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
+
+      <div class="field">
+        <%= f.text_field :first_name, 
+          autofocus: true, 
+          autocomplete: "first_name",
+          placeholder: "First Name",
+          class: "input"
+        %>
+      </div>
+
+      <div class="field">
+        <%= f.text_field :last_name, 
+          autofocus: true, 
+          autocomplete: "last_name",
+          placeholder: "Last Name",
+          class: "input"
+        %>
+      </div>
 
       <div class="field">
         <%= f.email_field :email, 
