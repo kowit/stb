@@ -1,17 +1,12 @@
 <%= render "layouts/navbar" %>
 
-<div class="container">
-  <div class="menu-index">
-    <div class="columns is-mobile is-multiline is-centered">
+<div class="global-wrapper">
+  <div class="responsive-container">
+    <div class="grid">
       <% @items.each do |item| %>
-        <div class="column is-two-fifths">
-          <div>
-            <%= link_to image_tag(item.image.url, alt: "Image", class: "is-round"), item %>
-          </div>
-          <%#= link_to image_tag("https://bulma.io/images/placeholders/1280x960.png", class: "is-round"), item %>
-          <%= item.name %><br />
-          <%#= render "item_row", item: item, order_item: @order_item %>
-          <%#= link_to "Add Item", "#", class: "button is-primary is-large" %>
+        <div class="cell">
+          <%= link_to image_tag(item.image.url, alt: "Image"), item %><br />
+          <%= item.name %>
         </div>
       <% end %>
     </div>

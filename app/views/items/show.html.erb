@@ -1,32 +1,34 @@
 <%= render "layouts/navbar" %>
 
-<div class="items-show">
-  <div class="container">
-    <div class="item-show is-centered">
-      <% if !signed_in? %>
-        <strong>Sign in to add item to order</strong>
-        <br />
-      <% end %>
-      <div>
-        <%#= image_tag("https://bulma.io/images/placeholders/640x480.png", class: "is-round") %>
-        <%= image_tag(@item.image.url, alt: "Image") if @item.image? %>
+<div class="global-wrapper">
+  <section class="section">
+    <% if !signed_in? %>
+      <div id="notice">Sign in to add item to order</div>
+      <hr />
+    <% end %>
+
+    <div class="columns">
+      <div class="column is-one-quarter">
+        <div class="item-image">
+          <%= image_tag(@item.image.url, alt: "Image", class: "is-round") if @item.image? %>
+        </div>
       </div>
 
-      <div>
-        <%= @item.name %><br />
-        <%= @item.price %><br />
+      <div class="column is-two-thirds">
+        <div class="item-name">
+          <%= @item.name %>
+        </div>
+        <div class="item-price">
+          <%= @item.price %>
+        </div>
+        <% if signed_in? %>
+          <%= button_to "Add to cart", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
+          <%#= link_to "Add Item", "#", class: "button is-primary is-large" %><br /><br />
+          <%#= link_to "Edit", edit_item_path, class: "button is-medium" %>
+          <%#= link_to "Destroy", "#", class: "button is-medium" %>
+        <% end %>
         <%= @item.description %><br />
       </div>
-
-      <% if signed_in? %>
-        <br />
-        <%= button_to "Add to cart", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
-
-        <%#= link_to "Add Item", "#", class: "button is-primary is-large" %><br /><br />
-        <%#= link_to "Edit", edit_item_path, class: "button is-medium" %>
-        <%#= link_to "Destroy", "#", class: "button is-medium" %>
-      <% end %>
-
     </div>
-  </div>
+  </section>
 </div>
