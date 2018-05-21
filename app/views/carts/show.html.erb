@@ -3,15 +3,18 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
   <div class="keep-shopping pv1 mt4 has-text-right">
-    <%= link_to 'Keep Shopping', items_path, class: 'button is-warning' %>
+    <%= link_to "Order", "#", class: "button is-primary is-large" %>
+    <%= link_to "Keep Shopping", items_path, class: 'button is-warning is-large' %>
   </div>
+
   <hr />
 
   <section class="section">
     <%= render(@cart.line_items)%>
     <div class="columns">
       <div class="column">
-        <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-danger" %>
+        <br />
+        <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-danger is-large" %>
       </div>
       <div class="column total has-text-right">
         <h4 class="title is-4">
@@ -20,8 +23,6 @@
       </div>
     </div>
   </section>
-
-
 
   <%#= link_to 'Edit', edit_cart_path(@cart) %>
   <%#= link_to 'Back', carts_path %>

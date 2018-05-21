@@ -1,7 +1,7 @@
 module ApplicationHelper
   def cart_count_over_one
     if @cart.line_items.count > 0
-      return "<span class='tag is-dark'>#{@cart.line_items.count}</span>".html_safe
+      return "<span class='tag is-dark is-large'>#{@cart.line_items.count}</span>".html_safe
     end
   end
 
