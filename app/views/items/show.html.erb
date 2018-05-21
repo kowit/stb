@@ -3,6 +3,10 @@
 <div class="items-show">
   <div class="container">
     <div class="item-show is-centered">
+      <% if !signed_in? %>
+        <strong>Sign in to add item to order</strong>
+        <br />
+      <% end %>
       <div>
         <%#= image_tag("https://bulma.io/images/placeholders/640x480.png", class: "is-round") %>
         <%= image_tag(@item.image.url, alt: "Image") if @item.image? %>
