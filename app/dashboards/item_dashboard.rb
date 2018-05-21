@@ -11,6 +11,7 @@ class ItemDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     item_type: Field::String,
+    active: Field::String,
     price: Field::String.with_options(searchable: false),
     description: Field::Text,
     image: Field::String,
@@ -26,6 +27,8 @@ class ItemDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :name,
+    :active,
+    :description,
     :item_type,
     :price,
   ].freeze
@@ -36,6 +39,7 @@ class ItemDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :item_type,
+    :active,
     :price,
     :description,
     :image,
@@ -49,6 +53,7 @@ class ItemDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :item_type,
+    :active,
     :price,
     :description,
     :image,

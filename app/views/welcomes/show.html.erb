@@ -1,11 +1,26 @@
-<section class="hero is-medium">
+<%= render "layouts/navbar" %>
+
+<section class="hero is-fullheight">
   <div class="hero-body">
-    <div class="container">
+    <div class="container center-container">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      <h1 class="title">
-        Spilling the Beans
-      </h1>
-      <%= render "layouts/nav" %>
+
+      <div class="welcome-message">
+        <h1 class="title">Spill the Beans</h1>
+        <h2 class="sub-title">Sign up to order</h2>
+      </div>
+
+      <br />
+    <% if signed_in? %>
+       Signed in as: <%= current_user.email %>
+      <%= link_to "Dashboard", dashboard_path %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "View Menu", items_path, class: "button is-primary is-large" %><br /><br />
+      <%= link_to "Sign in", new_user_session_path, class: "button is-primary is-large" %>
+      <%= link_to "Sign up", new_user_registration_path, class: "button is-primary is-large" %> 
+    <% end %>
     </div>
+  </div>
 </section>

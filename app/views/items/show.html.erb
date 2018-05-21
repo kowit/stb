@@ -1,20 +1,25 @@
-<div class="container">
-  <%= render "layouts/navbar" %>
+<%= render "layouts/navbar" %>
 
-  <figure class="image is-128x128">
-    <%#= image_tag("https://bulma.io/images/placeholders/640x480.png") %>
-    <%= image_tag(@item.image.url, alt: "Image") if @item.image? %>
-  </figure>
+<div class="items-show">
+  <div class="container">
+    <div class="item-show is-centered">
+      <div>
+        <%= image_tag("https://bulma.io/images/placeholders/640x480.png") %>
+        <%= image_tag(@item.image.url, alt: "Image") if @item.image? %>
+      </div>
 
-  <%= @item.name %><br />
-  <%= @item.price %><br />
-  <%= @item.description %><br />
+      <div>
+        <%= @item.name %><br />
+        <%= @item.price %><br />
+        <%= @item.description %><br />
+      </div>
 
-  <% if signed_in? %>
-    <%= link_to "Edit", edit_item_path %><br />
-    <%= link_to "Destroy", "#" %><br />
-  <% else %>
-    <%= link_to "Add Item", "#" %><br />
-  <% end %>
+      <% if signed_in? %>
+        <%= link_to "Add Item", "#", class: "button is-primary is-large" %><br /><br />
+        <%= link_to "Edit", edit_item_path, class: "button is-medium" %>
+        <%= link_to "Destroy", "#", class: "button is-medium" %><br />
+      <% end %>
 
+    </div>
+  </div>
 </div>

@@ -1,35 +1,17 @@
 <%= render "layouts/navbar" %>
 
-<div class="container some-responsive-thing">
-  <div class="columns is-multiline">
-    <% @items.each do |item| %>
-      <div class="column is-6">
-        <div class="card">
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <%#= image_tag(item.image.url, alt: "Image") %>
-              <%= link_to image_tag("https://bulma.io/images/placeholders/1280x960.png"), item %>
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="media-content card-media-content">
-              <p class="title is-4">
-                Name: <%= item.name %>
-              </p>
-              <p class="subtitle is-4">
-                Item Type: <%= item.item_type %>
-              </p>
-              <p class="subtitle is-4">
-                Price: <%= item.price %>
-              </p>
-              <p class="subtitle is-4">
-                <%= item.description %>
-              </p>
-            </div>
-          </div>
+<div class="container">
+  <div class="menu-index">
+    <div class="columns is-mobile is-multiline is-centered">
+      <% @items.each do |item| %>
+        <%#= image_tag(item.image.url, alt: "Image") %>
+        <div class="column is-two-fifths">
+          <%= link_to image_tag("https://bulma.io/images/placeholders/1280x960.png"), item %>
+          <%= item.name %><br />
+          <%#= render "item_row", item: item, order_item: @order_item %>
+          <%#= link_to "Add Item", "#", class: "button is-primary is-large" %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
-
