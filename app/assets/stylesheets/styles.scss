@@ -21,5 +21,24 @@
   .navbar-brand {
     font-family: "Circular Std", sans-serif;
     font-weight: bold;
+    font-size: 36px;
   }
+}
+
+.user-notice {
+  color: #fff;
+}
+
+.navbar {
+  .right-nav {
+    text-align: right;
+  }
+}
+
+.is-white {
+  color: #fff;
+}
+
+.item-image {
+  border-radius: 25px;
 }
