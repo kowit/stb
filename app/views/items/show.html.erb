@@ -4,7 +4,7 @@
   <div class="container">
     <div class="item-show is-centered">
       <div>
-        <%= image_tag("https://bulma.io/images/placeholders/640x480.png") %>
+        <%= image_tag("https://bulma.io/images/placeholders/640x480.png", class: "is-round") %>
         <%= image_tag(@item.image.url, alt: "Image") if @item.image? %>
       </div>
 
@@ -16,8 +16,8 @@
 
       <% if signed_in? %>
         <%= link_to "Add Item", "#", class: "button is-primary is-large" %><br /><br />
-        <%= link_to "Edit", edit_item_path, class: "button is-medium" %>
-        <%= link_to "Destroy", "#", class: "button is-medium" %><br />
+        <%#= link_to "Edit", edit_item_path, class: "button is-medium" %>
+        <%#= link_to "Destroy", "#", class: "button is-medium" %>
       <% end %>
 
     </div>

@@ -6,7 +6,7 @@
       <% @items.each do |item| %>
         <%#= image_tag(item.image.url, alt: "Image") %>
         <div class="column is-two-fifths">
-          <%= link_to image_tag("https://bulma.io/images/placeholders/1280x960.png", class: "item-image"), item %>
+          <%= link_to image_tag("https://bulma.io/images/placeholders/1280x960.png", class: "is-round"), item %>
           <%= item.name %><br />
           <%#= render "item_row", item: item, order_item: @order_item %>
           <%#= link_to "Add Item", "#", class: "button is-primary is-large" %>
