@@ -14,7 +14,13 @@ class ItemDashboard < Administrate::BaseDashboard
     active: Field::String,
     price: Field::String.with_options(searchable: false),
     description: Field::Text,
-    image: Field::String,
+    image: Field::Carrierwave.with_options(
+      image: :standard,
+      image_on_index: true,
+      remove: false,
+      remote_url: false
+    ),
+    # image: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

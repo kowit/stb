@@ -8,26 +8,55 @@
 
 Item.destroy_all
 
-10.times do
-  items = Item.create([
-    {
-      name: Faker::Coffee.blend_name,
-      item_type: "Hot",
-      price: Faker::Number.decimal(2),
-      description: Faker::Coffee.notes
-    }
-  ])
-end
+user = User.new(
+  id: 3,
+  first_name: "Hitagi",
+  last_name: "Matsmumoto",
+  email: "mats@mail.com",
+  password: "password",
+  password_confirmation: "password"
+)
+user.save!
 
-
-
-# Item.delete_all
-# Item.create! id: 1, name: "Banana", price: 0.49, active: true
-# Item.create! id: 2, name: "Apple", price: 0.29, active: true
-# Item.create! id: 3, name: "Carton of Strawberries", price: 1.99, active: true
-# 
-# OrderStatus.delete_all
-# OrderStatus.create! id: 1, name: "In Progress"
-# OrderStatus.create! id: 2, name: "Placed"
-# OrderStatus.create! id: 3, name: "Shipped"
-# OrderStatus.create! id: 4, name: "Cancelled"
+Item.create!([
+  {
+    name: "Iced Coffee",
+    item_type: "Iced",
+    price: "3.14",
+    description: "Our custom blend of beans, from Colombia’s Nariño region and from East
+  Africa, are grown to steep long and cold for a super-smooth flavor. Nariño
+  70 Cold Brew is handcrafted in small batches daily, slow-steeped in cool
+  water for 20 hours, without touching heat.",
+  image: Rails.root.join("/app/assets/images/icedcoffee.jpg").open
+  },
+  {
+    name: "Iced Coffee",
+    item_type: "Iced",
+    price: "3.14",
+    description: "Our custom blend of beans, from Colombia’s Nariño region and from East
+  Africa, are grown to steep long and cold for a super-smooth flavor. Nariño
+  70 Cold Brew is handcrafted in small batches daily, slow-steeped in cool
+  water for 20 hours, without touching heat.",
+  image: Rails.root.join("/app/assets/image/icedcoffee.jpg").open
+  },
+  {
+    name: "Iced Coffee",
+    item_type: "Iced",
+    price: "3.14",
+    description: "Our custom blend of beans, from Colombia’s Nariño region and from East
+  Africa, are grown to steep long and cold for a super-smooth flavor. Nariño
+  70 Cold Brew is handcrafted in small batches daily, slow-steeped in cool
+  water for 20 hours, without touching heat.",
+  image: Rails.root.join("/app/assets/image/icedcoffee.jpg").open
+  },
+  {
+    name: "Iced Coffee",
+    item_type: "Iced",
+    price: "3.14",
+    description: "Our custom blend of beans, from Colombia’s Nariño region and from East
+  Africa, are grown to steep long and cold for a super-smooth flavor. Nariño
+  70 Cold Brew is handcrafted in small batches daily, slow-steeped in cool
+  water for 20 hours, without touching heat.",
+  image: Rails.root.join("/app/assets/image/icedcoffee.jpg").open
+  }
+])

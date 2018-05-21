@@ -18,7 +18,19 @@
               <%= link_to "Menu", items_path %>
             </p>
             <p class="control">
-              <%= link_to "Order", "#" %>
+              <%#= link_to "Order", "#" %>
+
+              <% if cart_has_items %>
+                <%= link_to cart_path(@cart), class:"navbar-item button is-info" do %>
+                  <span class="icon is-small">
+                    <i class="fa fa-shopping-cart"></i>
+                  </span>
+                  <span>Cart
+                    <%= cart_count_over_one %>
+                  </span>
+                <% end %>
+              <% end %>
+
             </p>
             <!-- <p class="control">
               <span>
