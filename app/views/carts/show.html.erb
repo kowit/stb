@@ -1,9 +1,13 @@
 <%= render "layouts/navbar" %>
+<%= params.inspect %>
 
 <p id="notice"><%= notice %></p>
+
 <div class="container">
   <div class="keep-shopping pv1 mt4 has-text-right">
-    <%= link_to "Order", "#", class: "button is-primary is-large" %>
+    <%#= rails routes with nested route, we can pass in the actual @cart object
+      from the session %>
+    <%= link_to "Order", new_cart_order_path(@cart), class: "button is-primary is-large" %>
     <%= link_to "Keep Shopping", items_path, class: 'button is-warning is-large' %>
   </div>
 

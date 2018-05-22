@@ -12,4 +12,5 @@ class Item < ApplicationRecord
       throw :abort
     end
   end
+
 end

@@ -1,34 +1,47 @@
-<h1 class="title"><%= link_to "Spill the Beans", root_path, class: "navbar-item" %></h1>
+<nav class="navbar">
+  <div class="navbar-brand">
+    <h1 class="title"><%= link_to "Spill the Beans", root_path, class: "navbar-item" %></h1>
+  </div>
 
-<div class="tabs">
-  <ul>
-    <% if signed_in? %>
-      <% if cart_has_items %>
-        <%= link_to cart_path(@cart), class: "is-primary" do %>
-          <li>
-            Cart <%= cart_count_over_one %>
-          </li>
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="field is-grouped">
+        <% if signed_in? %>
+          <p class="control">
+            <span>
+              <% if cart_has_items %>
+                <%= link_to cart_path(@cart), class: "button is-warning is-large" do %>
+                  Cart <%= cart_count_over_one %>
+                <% end %>
+              <% end %>
+            </span>
+          </p>
+          <p class="control">
+            <span>
+              <%= link_to "Menu", items_path, class: "button is-large is-primary" %>
+            </span>
+          </p>
+          <p class="control">
+            <span>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "button is-large is-primary" %>
+            </span>
+          </p>
+        <% else %>
+          <% if cart_has_items %>
+            <%= link_to cart_path(@cart), class:"" do %>
+              Cart <%= cart_count_over_one %>
+            <% end %>
+          <% end %>
+          <%= link_to "Menu", items_path %>
+          <%= link_to "Sign in", new_user_session_path %>
+          <%= link_to "Sign up", new_user_registration_path %>
         <% end %>
-      <% end %>
-      <li><%= link_to "Menu", items_path %></li>
-      <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-    <% else %>
-      <% if cart_has_items %>
-        <%= link_to cart_path(@cart), class:"" do %>
-          Cart <%= cart_count_over_one %>
-          <!-- <span class="icon is-large">
-            <i class="fa fa-shopping-cart"></i>
-            </span> -->
-        <% end %>
-      <% end %>
-      <li><%= link_to "Menu", items_path %></li>
-      <!-- <li><%#= link_to "Order", "#" %></li>-->
-      <li><%= link_to "Sign in", new_user_session_path %></li>
-      <li><%= link_to "Sign up", new_user_registration_path %></li>
-    <% end %>
-  </ul>
-</div>
 
-<% if signed_in? %>
-  <p class="signed-in-notification">Signed in as: <%= current_user.email %></p>
-<% end %>
+        <% if signed_in? %>
+          <p class="signed-in-notification">Signed in as: <%= current_user.email %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</nav>

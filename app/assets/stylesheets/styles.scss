@@ -73,6 +73,22 @@
   margin: 0.5rem;
 }
 
+.tmp-border {
+  border: 1px solid #eee;
+}
+
+.remove-item {
+  a {
+    color: #fff;
+
+    &:hover {
+      color: #cc0000;
+    }
+  }
+}
+
+/* Responsive */
+
 // Tablet
 @media screen and (min-width: 600px) {
   .grid {

@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   resource :dashboard, only: [:show]
 
   resources :line_items
-  resources :carts
+
+  resources :carts do
+    resources :orders, only: [:new]
+  end
+
   resources :items
+
+  resources :charges
 end
