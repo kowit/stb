@@ -1,14 +1,22 @@
 <%= render "layouts/navbar" %>
-<%= params.inspect %>
 
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <%= params.inspect %>
+</div>
+
+<p id="notice">
+  <%= notice %>
+</p>
 
 <div class="container">
   <div class="keep-shopping pv1 mt4 has-text-right">
     <%#= rails routes with nested route, we can pass in the actual @cart object
       from the session %>
-    <%= link_to "Order", new_cart_order_path(@cart), class: "button is-primary is-large" %>
-    <%= link_to "Keep Shopping", items_path, class: 'button is-warning is-large' %>
+    <%# app/views/charges/new.html.erb %>
+
+
+    <%#= link_to "Order", new_cart_order_path(@cart), class: "button is-primary is-large" %>
+    <%#= link_to "Keep Shopping", items_path, class: 'button is-warning is-large' %>
   </div>
 
   <hr />
@@ -24,6 +32,26 @@
         <h4 class="title is-4">
           <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price, precision: 2) %>
         </h4>
+        <%= form_tag charges_path do %>
+          <article>
+            <% if flash[:error].present? %>
+              <div id="error_explanation">
+                <p><%= flash[:error] %></p>
+              </div>
+            <% end %>
+            <label class="amount">
+              <!-- <span><%#= @cart.total_price %></span> -->
+              <!-- span>Amount: <%#= pretty_amount(@amount) %></span> -->
+            </label>
+          </article>
+
+          <script src="https://checkout.stripe.com/checkout.js" 
+                  class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                  data-description="Signed in as"
+                  data-amount="<%= number_to_currency(@cart.total_price) %>"
+                  data-locale="auto"></script>
+        <% end %>
       </div>
     </div>
   </section>

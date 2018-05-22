@@ -21,8 +21,10 @@
         <div class="item-price">
           <%= @item.price %>
         </div>
+
+        <%= button_to "Add to cart", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
+
         <% if signed_in? %>
-          <%= button_to "Add to cart", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
           <%#= link_to "Add Item", "#", class: "button is-primary is-large" %><br /><br />
           <%#= link_to "Edit", edit_item_path, class: "button is-medium" %>
           <%#= link_to "Destroy", "#", class: "button is-medium" %>

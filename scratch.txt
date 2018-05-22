@@ -1,7 +1,34 @@
 Useful Commands:
 
 pg_ctl -D /usr/local/var/postgres start/stop
-  
+
+#TODOS:
+Start on SRS....
+
+# TODOS:
+Added stripe initializers.
+Nested cart and orders. Need to implement Orders Controller next.
+So that Orders controller can get the current cart id.
+
+Need to generate the model for the Order with the attributes.
+Order model with have FK reference to the cart id. So that the Order
+model can get the total price from cart and calculate the final total
+based on tax.
+
+Cart total will become subtotal. Order will add the tax yielding new
+total.
+
+Charges controller will be able to get the current order and the final
+calculated total from the order object.
+
+#TODOS:
+Add Nested Routes Item model.
+  User will be able to add options to Menu Item
+
+  * Todo: Create storyboard/wireframe for how it will look like.
+          * This will be on the LineItems page
+            (ex: no onions etc.)
+
 
 Models
 -------

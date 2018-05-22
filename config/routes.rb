@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
 
-  root to: "welcomes#show", via: :get
+  get "redirect_to_cart_path", to: "carts#show"
+
+  root to: "items#index"
+  # root to: "welcomes#show", via: :get
+
+  get 'thanks', to: 'charges#thanks', as: 'thanks'
 
   namespace :admin do
     resources :users
