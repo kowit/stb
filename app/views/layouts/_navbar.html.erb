@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar is-fixed-top is-transparent top-nav">
   <div class="navbar-brand">
     <h1 class="title"><%= link_to "Spill the Beans", root_path, class: "navbar-item" %></h1>
   </div>
@@ -35,10 +35,6 @@
           <%= link_to "Menu", items_path %>
           <%= link_to "Sign in", new_user_session_path %>
           <%= link_to "Sign up", new_user_registration_path %>
-        <% end %>
-
-        <% if signed_in? %>
-          <p class="signed-in-notification">Signed in as: <%= current_user.email %></p>
         <% end %>
       </div>
     </div>
