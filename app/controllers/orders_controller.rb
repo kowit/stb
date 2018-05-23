@@ -8,10 +8,12 @@ class OrdersController < ApplicationController
   end
 
   def show
+    # @cart = Cart.find_by_id(session[:id])
     # respond_with current_user.orders.find(params[:id])
   end
 
   def new
+
   end
 
   def create
@@ -29,6 +31,14 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:total, :user_id, :line_items => [])
     # params.require(:order).permit(:total, :user_id, :product_ids => [])
+  end
+
+  def set_order
+    @cart = Card.find(params[:id])
+  end
+
+  def cart_params
+    params.fetch(:cart, {})
   end
 
   # def order_params

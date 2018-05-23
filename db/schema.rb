@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180523194532) do
+ActiveRecord::Schema.define(version: 20180523214520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20180523194532) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "cart_id"
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
     t.index ["order_number"], name: "index_orders_on_order_number"
     t.index ["status"], name: "index_orders_on_status"
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -89,6 +91,7 @@ ActiveRecord::Schema.define(version: 20180523194532) do
 
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "items"
+  add_foreign_key "orders", "carts"
   add_foreign_key "orders", "users"
   add_foreign_key "placements", "line_items", column: "line_items_id"
   add_foreign_key "placements", "orders"
