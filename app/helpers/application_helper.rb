@@ -7,8 +7,9 @@ module ApplicationHelper
     end
   end
 
+  # if cart has line_iems >= to 0
+  # return the count of line_items
   def cart_has_items
-    return @cart.line_items.count > 0
+    return @cart.line_items.count >= 0
   end
-
 end

@@ -2,11 +2,29 @@
 
 <div class="global-wrapper">
   <div class="responsive-container">
+    <div class="container">
+      <% if signed_in? %>
+        <button class="button normal is-outlined user-notification">
+          Signed in as: <%= current_user.email %>
+        </button>
+      <% end %>
+    </div>
+    <br />
     <div class="grid">
       <% @items.each do |item| %>
         <div class="cell">
-          <%= link_to image_tag(item.image.url, alt: "Image"), item %><br />
-          <%= item.name %>
+          <div class="card">
+            <div class="card-image">
+              <figure>
+                <%= link_to image_tag(item.image.url, alt: "Image"), item %><br />
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <strong class="item-name"><%= item.name %></strong>
+              </div>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>

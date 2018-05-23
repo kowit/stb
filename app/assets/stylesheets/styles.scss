@@ -1,3 +1,10 @@
+/* styles.scss */
+.item-name {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 200;
+  font-size: 24px;
+}
+
 .top-nav {
   padding: 10px 200px 10px 200px;
 }
@@ -12,11 +19,32 @@
   padding-bottom: 100px;
 }
 
+.global-bottom-nav {
+  border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.is-center {
+  max-width: 50%;
+}
+
 .hero {
   font-family: "Circular Std", sans-serif;
   background-image: image-url('coffee1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.add-to-cart {
+  border-radius: 50px;
+
+  &:hover {
+    box-shadow: 3px 3px #eee;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+  }
 }
 
 .welcome-message {
@@ -49,7 +77,7 @@
 }
 
 .is-round {
-  border-radius: 25px;
+  border-radius: 5px;
 }
 
 .is-white {
@@ -63,15 +91,17 @@
 #cart-link {
 }
 
-.signed-in-notification {
-  font-size: 18px;
+.user-notification {
+  font-family: "Circular Std", sans-serif;
+  font-size: 20px;
 }
 
 /***********/
 
 .responsive-container {
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 50px;
+  // box-shadow: 3px 3px 3px 3px #eee;
 }
 
 .responsive-image {
@@ -98,26 +128,5 @@
     &:hover {
       color: #cc0000;
     }
-  }
-}
-
-/* Responsive */
-
-// Tablet
-@media screen and (min-width: 600px) {
-  .grid {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-  }
-  .cell {
-    width: calc(50% - 2rem);
-  }
-}
-
-// Desktop
-@media screen and (min-width: 1000px) {
-  .cell {
-    width: calc(33.3333% - 2rem);
   }
 }

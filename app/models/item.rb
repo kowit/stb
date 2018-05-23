@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
-  before_destroy :not_referenced_by_any_line_item
   mount_uploader :image, ImageUploader
+
+  before_destroy :not_referenced_by_any_line_item
   has_many :line_items
   default_scope { where(active: true) }
 

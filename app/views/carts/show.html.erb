@@ -52,10 +52,8 @@
                 <p><%= flash[:error] %></p>
               </div>
             <% end %>
-            <label class="amount">
-              <!-- <span><%#= @cart.total_price %></span> -->
-              <!-- span>Amount: <%#= pretty_amount(@amount) %></span> -->
-            </label>
+            <!-- <span><%#= @cart.total_price %></span> -->
+            <!-- span>Amount: <%#= pretty_amount(@amount) %></span> -->
           </article>
 
           <script src="https://checkout.stripe.com/checkout.js" 
@@ -63,8 +61,24 @@
                   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                   data-description="Signed in as"
                   data-amount="<%= number_to_currency(@cart.total_price) %>"
-                  data-locale="auto"></script>
+                  data-locale="auto">
+          </script>
         <% end %>
+        <script>
+          $(document).ready(function() {
+            $(':submit').on('click', function(event) {
+              event.preventDefault();
+              var $button = $(this),
+                $form = $button.parents('form');
+              var opts = $.extend({}, $button.data(), {
+                token: function(result) {
+                  $form.append($('<input>').attr({ type: 'hidden', name: 'stripeToken', value: result.id })).submit();
+                }
+              });
+              StripeCheckout.open(opts);
+            });
+          });
+        </script>
       </div>
     </div>
   </div>
