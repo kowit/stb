@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
+  
+  namespace :users, only: [:show, :create, :update, :destroy] do
+    resources :carts, only: [:create, :update, :destroy]
+    resources :orders, only: [:index, :show, :new]
+  end
   # devise_for :users, controllers: { registrations: "registrations" }
 
   get "connect_to_items_path", to: "items#index"
@@ -12,6 +17,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :items
+    resources :orders
 
     root to: "users#index"
   end
@@ -19,12 +25,13 @@ Rails.application.routes.draw do
   resource :dashboard, only: [:show]
 
   resources :line_items
+  resources :carts
 
-  resources :carts do
-    resources :orders, only: [:new]
-  end
+  # resources :carts do
+  #   resources :orders, only: [:new]
+  # end
 
+  resources :orders, only: [:index, :show, :new]
   resources :items
-
   resources :charges
 end

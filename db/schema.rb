@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180522230918) do
+ActiveRecord::Schema.define(version: 20180523194532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,29 @@ ActiveRecord::Schema.define(version: 20180522230918) do
     t.index ["item_id"], name: "index_line_items_on_item_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.decimal "subtotal"
+    t.decimal "tax"
+    t.decimal "total"
+    t.integer "order_number"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_number"], name: "index_orders_on_order_number"
+    t.index ["status"], name: "index_orders_on_status"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "placements", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "line_items_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["line_items_id"], name: "index_placements_on_line_items_id"
+    t.index ["order_id"], name: "index_placements_on_order_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -66,4 +89,7 @@ ActiveRecord::Schema.define(version: 20180522230918) do
 
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "items"
+  add_foreign_key "orders", "users"
+  add_foreign_key "placements", "line_items", column: "line_items_id"
+  add_foreign_key "placements", "orders"
 end

@@ -5,6 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :orders, dependent: :destroy
+
   # if user is deleted make sure to delete their orders too
   # has_many :orders, dependent: :destroy
 

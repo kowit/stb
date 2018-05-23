@@ -45,41 +45,8 @@
             <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price, precision: 2) %>
           </h4>
         </div>
-
-        <%= form_tag charges_path do %>
-          <article>
-            <% if flash[:error].present? %>
-              <div id="error_explanation">
-                <p><%= flash[:error] %></p>
-              </div>
-            <% end %>
-            <!-- <span><%#= @cart.total_price %></span> -->
-            <!-- span>Amount: <%#= pretty_amount(@amount) %></span> -->
-          </article>
-
-          <script src="https://checkout.stripe.com/checkout.js" 
-                  class="stripe-button"
-                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                  data-description="Signed in as"
-                  data-amount="<%= number_to_currency(@cart.total_price) %>"
-                  data-locale="auto">
-          </script>
-        <% end %>
-        <script>
-          $(document).ready(function() {
-            $(':submit').on('click', function(event) {
-              event.preventDefault();
-              var $button = $(this),
-                $form = $button.parents('form');
-              var opts = $.extend({}, $button.data(), {
-                token: function(result) {
-                  $form.append($('<input>').attr({ type: 'hidden', name: 'stripeToken', value: result.id })).submit();
-                }
-              });
-              StripeCheckout.open(opts);
-            });
-          });
-        </script>
+        <!-- Continue to Create a new Order -->
+        <%= link_to "Continue", new_order_path, class: "button is-large is-warning" %>
       </div>
     </div>
   </div>

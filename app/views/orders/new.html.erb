@@ -1,17 +1,69 @@
 <%= render "layouts/navbar" %>
 
-<%# New order will be made based on the cart id params! %>
-<%= params.inspect %>
+<div class="new-order-wrapper">
+  <div class="global-wrapper">
+    <%# New order will be made based on the cart id params! %>
+    <div class="card order-summary-card">
+      <div class="card-content">
+        <div class="card-header-title is-centered">
+          <h2 class="title">Order Summary</h2>
+        </div>
+        <table class="order-summary">
+          <% @cart.line_items.each do |line_item| %>
+            <tr>
+              <td class="td-item-name">
+                <%= line_item.item.name %>
+              </td>
+              <td class="td-item-price">
+                <%= line_item.item.price %>
+              </td>
+            </tr>
+          <% end %>
+          <tr>
+            <td>
+              Tax:
+              Subtotal: ####
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
-<form action="your-server-side-code" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-    data-amount="999"
-    data-name="Stripe.com"
-    data-description="Widget"
-    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-    data-locale="auto"
-    data-zip-code="true">
-  </script>
-</form>
+<nav class="navbar is-fixed-bottom is-transparent bottom-nav" role="navigation">
+  <div class="navbar-brand">
+    <%= button_to 'Back', cart_path(@cart), class: "button is-large is-warning" %>
+  </div>
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="field is-grouped">
+        <div class="column total has-text-right">
+          <h4 class="title is-4">
+            <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price, precision: 2) %>
+          </h4>
+        </div>
+        <%= form_tag charges_path do %>
+          <article>
+            <% if flash[:error].present? %>
+              <div id="error_explanation">
+                <p><%= flash[:error] %></p>
+              </div>
+            <% end %>
+            <!-- <span><%#= @cart.total_price %></span> -->
+            <!-- span>Amount: <%#= pretty_amount(@amount) %></span> -->
+          </article>
+
+          <script src="https://checkout.stripe.com/checkout.js" 
+                  class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                  data-description="Signed in as"
+                  data-amount="<%= number_to_currency(@cart.total_price) %>"
+                  data-locale="auto">
+          </script>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
+</nav>

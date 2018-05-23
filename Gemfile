@@ -28,6 +28,7 @@ gem 'cocoon', '~> 1.2', '>= 1.2.11'
 gem 'simple_form', '~> 4.0', '>= 4.0.1'
 gem 'stripe', '~> 3.15'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
+gem 'active_model_serializers', '~> 0.10.7'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
