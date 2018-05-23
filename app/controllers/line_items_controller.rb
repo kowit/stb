@@ -28,13 +28,15 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     @item = Item.find(params[:item_id])
-    # add_item method from cart model
     @line_item = @cart.add_item(@item)
+
+    # add_item method from cart model
     # @line_item = LineItem.new(line_item_params)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: 'Item added to cart.' }
+        format.html { redirect_to items_path, notice: 'Item added to cart' }
+        # format.html { redirect_to @line_item.cart, notice: 'Item added to cart.' }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }

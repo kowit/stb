@@ -11,7 +11,7 @@
             <span>
               <% if cart_has_items %>
                 <%= link_to cart_path(@cart), class: "button is-warning is-large" do %>
-                  Cart <%= cart_count_over_one %>
+                  Order <%= cart_count_over_one %>
                 <% end %>
               <% end %>
             </span>
@@ -29,7 +29,7 @@
         <% else %>
           <% if cart_has_items %>
             <%= link_to cart_path(@cart), class:"" do %>
-              Cart <%= cart_count_over_one %>
+              Order <%= cart_count_over_one %>
             <% end %>
           <% end %>
           <%= link_to "Menu", items_path %>

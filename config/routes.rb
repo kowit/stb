@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users
+  # devise_for :users, controllers: { registrations: "registrations" }
 
-  get "redirect_to_cart_path", to: "carts#show"
+  get "connect_to_items_path", to: "items#index"
 
   root to: "items#index"
   # root to: "welcomes#show", via: :get
