@@ -1,9 +1,15 @@
 Useful Commands:
-
 pg_ctl -D /usr/local/var/postgres start/stop
 
-#TODOS:
-Start on SRS....
+# TODOS
+Create order model so payment/charges can interact with the order.
+
+Order model
+  subtotal
+  tax
+  total
+
+  has_many :charges (stripe)
 
 # TODOS:
 Added stripe initializers.
