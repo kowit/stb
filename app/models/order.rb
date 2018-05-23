@@ -8,6 +8,12 @@ class Order < ApplicationRecord
   has_many :placements
   has_many :line_items, through: :placements
 
+  def total_price_of_order
+    subtotal_price = line_items.to_a.sum { |item| item.total_price }
+    tax = 0.07
+    new_total_price = subtotal_price * tax
+  end
+
   # def set_total!
   #     self.total = products.map(&:price).sum
   # end
