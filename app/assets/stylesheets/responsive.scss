@@ -7,9 +7,11 @@
     flex-wrap: wrap;
     flex-direction: row;
   }
+
   .cell {
     width: calc(50% - 2rem);
   }
+
 }
 
 // Desktop
@@ -20,5 +22,12 @@
 
   .global-bottom-nav {
     padding-right: 200px;
+  }
+
+  .top-nav {
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: center;
   }
 }
