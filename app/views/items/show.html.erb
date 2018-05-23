@@ -1,34 +1,43 @@
 <%= render "layouts/navbar" %>
 
 <div class="global-wrapper">
-
-  <div class="card">
-    <div class="card-content">
-      <% if !signed_in? %>
-        <div id="notice">Sign in to add item to order</div>
-        <hr />
+  <div class="responsive-container">
+    <div class="container">
+      <% if signed_in? %>
+        <button class="button normal is-outlined user-notification">
+          Signed in as: <%= current_user.email %>
+        </button>
       <% end %>
+    </div>
+    <br />
+    <div class="card">
+      <div class="card-content">
+        <% if !signed_in? %>
+          <div id="notice">Sign in to add item to order</div>
+          <hr />
+        <% end %>
 
-      <div class="columns">
-        <div class="column is-one-quarter">
-          <div class="item-image">
-            <%= image_tag(@item.image.url, alt: "Image", class: "is-round") if @item.image? %>
+        <div class="columns">
+          <div class="column is-one-quarter">
+            <div class="item-image">
+              <%= image_tag(@item.image.url, alt: "Image", class: "is-round") if @item.image? %>
+            </div>
           </div>
-        </div>
 
-        <div class="column is-two-thirds">
-          <div class="item-name">
-            <%= @item.name %>
+          <div class="column is-two-thirds">
+            <div class="item-name">
+              <%= @item.name %>
+            </div>
+            <div class="item-price">
+              <%= @item.price %>
+            </div>
+            <% if signed_in? %>
+              <%#= link_to "Add Item", "#", class: "button is-primary is-large" %><br /><br />
+              <%#= link_to "Edit", edit_item_path, class: "button is-medium" %>
+              <%#= link_to "Destroy", "#", class: "button is-medium" %>
+            <% end %>
+            <%= @item.description %><br />
           </div>
-          <div class="item-price">
-            <%= @item.price %>
-          </div>
-          <% if signed_in? %>
-            <%#= link_to "Add Item", "#", class: "button is-primary is-large" %><br /><br />
-            <%#= link_to "Edit", edit_item_path, class: "button is-medium" %>
-            <%#= link_to "Destroy", "#", class: "button is-medium" %>
-          <% end %>
-          <%= @item.description %><br />
         </div>
       </div>
     </div>

@@ -28,13 +28,29 @@
           </p>
         <% else %>
           <% if cart_has_items %>
-            <%= link_to cart_path(@cart), class:"" do %>
-              Order <%= cart_count_over_one %>
-            <% end %>
+            <p class="control">
+              <span>
+                <%= link_to cart_path(@cart), class: "button is-info is-large" do %>
+                  Order <%= cart_count_over_one %>
+              <% end %>
+              </span>
+            </p>
           <% end %>
-          <%= link_to "Menu", items_path %>
-          <%= link_to "Sign in", new_user_session_path %>
-          <%= link_to "Sign up", new_user_registration_path %>
+          <p class="control">
+            <span>
+              <%= link_to "Menu", items_path, class: "button is-large is-primary" %>
+            </span>
+          </p>
+          <p class="control">
+            <span>
+              <%= link_to "Sign in", new_user_session_path, class: "button is-large is-primary" %>
+            </span>
+          </p>
+          <p class="control">
+            <span>
+              <%= link_to "Sign up", new_user_registration_path, class: "button is-large is-primary" %>
+            </span>
+          </p>
         <% end %>
       </div>
     </div>
