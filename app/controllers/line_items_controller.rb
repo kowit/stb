@@ -27,7 +27,10 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
+    # find the Item with the item_id as the params
     @item = Item.find(params[:item_id])
+    # once the item is found, add the item to @cart
+    # and assign that new added cart item to be the @line_item
     @line_item = @cart.add_item(@item)
 
     # add_item method from cart model
