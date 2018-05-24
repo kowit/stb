@@ -10,11 +10,12 @@ Rails.application.routes.draw do
   get "connect_to_items_path", to: "items#index"
 
   root to: "items#index"
-  # root to: "welcomes#show", via: :get
 
   get 'thanks', to: 'charges#thanks', as: 'thanks'
 
+  # namespace for administrate
   namespace :admin do
+    # resources for administrate
     resources :users
     resources :items
     resources :orders
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
 
   resources :line_items
   resources :items
+
   resources :carts do
     resources :orders
   end

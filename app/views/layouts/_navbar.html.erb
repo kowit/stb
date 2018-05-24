@@ -13,7 +13,8 @@
             <span>
               <% if cart_has_items %>
                 <%= link_to cart_path(@cart), class: "button is-warning is-large" do %>
-                  Order <%= cart_count_over_one %>
+                  <%= fa_icon "shopping-cart", class: "pull-left text-muted shopping-cart-icon" %>
+                  <%= cart_count_over_one %>
                 <% end %>
               <% end %>
             </span>

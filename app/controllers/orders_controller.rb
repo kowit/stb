@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+
   # before_action :authenticate_with_token!
   # respond_to :json
 
@@ -19,12 +20,6 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     # order = current_user.orders.build(order_params)
-
-    if order.save
-      render json: order, status: 201, location: [:api, current_user, order]
-    else
-      render json: { errors: order.errors }, status: 422
-    end
   end
 
   private
