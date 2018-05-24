@@ -8,6 +8,11 @@ module ApplicationHelper
     end
   end
 
+  def cart_is_empty
+    if @cart.line_items.count == 0
+      return "Cart is empty".html_safe
+    end
+  end
   # if cart has line_iems >= to 0
   # return the count of line_items
   def cart_has_items
