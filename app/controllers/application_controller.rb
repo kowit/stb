@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   # make cart show everywhere
   before_action :set_cart
 
+  # after user signs in, redirect them
+  def after_sign_in_path(resource)
+    items_path
+  end
+
   # helper_method :current_order
 
   # def current_order

@@ -54,7 +54,9 @@
     <div class="navbar-item">
       <div class="field is-grouped">
         <div class="is-center">
-          <%= button_to "+ Add to cart", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
+          <span>
+            <%= button_to "+ Add to cart", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
+          </span>
         </div>
       </div>
     </div>
