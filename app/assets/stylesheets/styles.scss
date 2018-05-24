@@ -10,6 +10,10 @@
   padding: 10px 200px 10px 200px;
 }
 
+.empty-btn {
+  margin-right: 10px;
+}
+
 .order-summary {
   margin: 0 auto;
   width: 100%;
@@ -52,6 +56,7 @@
 }
 
 .global-bottom-nav {
+  padding-left: 200px;
   border-top: 1px solid #eee;
   display: flex;
   align-items: center;
@@ -67,6 +72,12 @@
   background-image: image-url('coffee1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.title {
+  a {
+    color: #e5e5e5;
+  }
 }
 
 .add-to-cart {

@@ -28,7 +28,12 @@
 
 <nav class="navbar is-fixed-bottom is-transparent bottom-nav" role="navigation">
   <div class="navbar-brand">
-    <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-danger is-large" %>
+    <p class="control">
+      <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-danger is-large empty-btn" %>
+    </p>
+  </div>
+  <div class="navbar-start">
+    <%= link_to "Return to Menu", items_path, class: "button is-large is-warning" %>
   </div>
   <div class="navbar-end">
     <div class="navbar-item">
@@ -38,7 +43,6 @@
             <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price, precision: 2) %>
           </h4>
         </div>
-        <!-- Continue to Create a new Order -->
         <%= link_to "Continue", new_cart_order_path(@cart), class: "button is-large is-warning" %>
       </div>
     </div>
