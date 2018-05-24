@@ -23,9 +23,9 @@
             <td>
             </td>
             <td class="td-summary-price">
-              Subtotal: ####
+              <strong>Subtotal: <%= number_to_currency(@cart.total_price) %></strong>
               <br />
-              Tax: ####
+              <strong>Sales Tax: <%= number_to_currency(@cart.total_price * (@order.tax_amount), precision: 2) %></strong>
             </td>
           </tr>
         </table>
@@ -44,29 +44,11 @@
       <div class="field is-grouped">
         <div class="column total has-text-right">
           <h4 class="title is-4">
-            <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price, precision: 2) %>
+            <%# new calculated total %>
+            <span class="f5 has-text-grey">Total:</span> 
+            <%= number_to_currency(total_price_after_sales_tax) %>
           </h4>
         </div>
-        <%= form_tag charges_path do %>
-          <article>
-            <% if flash[:error].present? %>
-              <div id="error_explanation">
-                <p><%= flash[:error] %></p>
-              </div>
-            <% end %>
-            <!-- <span><%#= @cart.total_price %></span> -->
-            <!-- span>Amount: <%#= pretty_amount(@amount) %></span> -->
-          </article>
-
-          <script src="https://checkout.stripe.com/checkout.js" 
-                  class="stripe-button"
-                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                  data-description="Signed in as"
-                  data-amount="<%= number_to_currency(@cart.total_price) %>"
-                  data-locale="auto">
-          </script>
-        <% end %>
-
       </div>
     </div>
   </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180523214520) do
+ActiveRecord::Schema.define(version: 20180524053758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,10 @@ ActiveRecord::Schema.define(version: 20180523214520) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_id"
+    t.bigint "line_item_id"
+    t.index ["line_item_id"], name: "index_carts_on_line_item_id"
+    t.index ["order_id"], name: "index_carts_on_order_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -47,24 +51,15 @@ ActiveRecord::Schema.define(version: 20180523214520) do
     t.decimal "subtotal"
     t.decimal "tax"
     t.decimal "total"
-    t.integer "order_number"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "cart_id"
+    t.bigint "line_item_id"
     t.index ["cart_id"], name: "index_orders_on_cart_id"
-    t.index ["order_number"], name: "index_orders_on_order_number"
+    t.index ["line_item_id"], name: "index_orders_on_line_item_id"
     t.index ["status"], name: "index_orders_on_status"
     t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "placements", force: :cascade do |t|
-    t.bigint "order_id"
-    t.bigint "line_items_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["line_items_id"], name: "index_placements_on_line_items_id"
-    t.index ["order_id"], name: "index_placements_on_order_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,10 +84,11 @@ ActiveRecord::Schema.define(version: 20180523214520) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "carts", "line_items"
+  add_foreign_key "carts", "orders"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "items"
   add_foreign_key "orders", "carts"
+  add_foreign_key "orders", "line_items"
   add_foreign_key "orders", "users"
-  add_foreign_key "placements", "line_items", column: "line_items_id"
-  add_foreign_key "placements", "orders"
 end

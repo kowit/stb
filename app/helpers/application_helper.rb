@@ -12,4 +12,10 @@ module ApplicationHelper
   def cart_has_items
     return @cart.line_items.count >= 0
   end
+
+  def total_price_after_sales_tax
+    subtotal = @cart.total_price * (@order.tax_amount)
+    total_price = @cart.total_price + subtotal
+    total_price
+  end
 end

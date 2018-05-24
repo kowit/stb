@@ -13,11 +13,12 @@ class OrdersController < ApplicationController
   end
 
   def new
-
+    @order = Order.new
   end
 
   def create
-    order = current_user.orders.build(order_params)
+    @order = Order.new(order_params)
+    # order = current_user.orders.build(order_params)
 
     if order.save
       render json: order, status: 201, location: [:api, current_user, order]
@@ -29,17 +30,18 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:total, :user_id, :line_items => [])
+    params.require(:order).permit(:subtotal, :tax, :total, :user_id, :line_items => [])
     # params.require(:order).permit(:total, :user_id, :product_ids => [])
   end
 
   def set_order
-    @cart = Card.find(params[:id])
+    @order = Order.find(params[:id])
+    # @cart = Card.find(params[:id])
   end
 
-  def cart_params
-    params.fetch(:cart, {})
-  end
+  # def cart_params
+  #   params.fetch(:cart, {})
+  # end
 
   # def order_params
   #     params.require(:order).permit(:product_ids => [])

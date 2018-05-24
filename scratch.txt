@@ -1,77 +1,54 @@
 Useful Commands:
+
+
 pg_ctl -D /usr/local/var/postgres start/stop
 
-# TODOS
-Create order model so payment/charges can interact with the order.
+steps to undo db migration:
 
-Order model
+rails db:migrate:down VERSION
+rails destroy model <insert_model_name>
+
+User
+  email
+  password
+  first_name
+  last_name
+  role
+
+LineItem
+  id
+  quantity
+
+  cart_id FK
+
+  created_at
+  updated_at
+
+Order
+  id
   subtotal
-  tax
   total
+  tax
+  status
 
-  has_many :charges (stripe)
+  user_id FK
+  cart_id FK
 
-# TODOS:
-Added stripe initializers.
-Nested cart and orders. Need to implement Orders Controller next.
-So that Orders controller can get the current cart id.
+  created_at
+  updated_at
 
-Need to generate the model for the Order with the attributes.
-Order model with have FK reference to the cart id. So that the Order
-model can get the total price from cart and calculate the final total
-based on tax.
+Item
+  id
+  name
+  item_type
+  price
+  description
+  image
+  active
+  created_at
 
-Cart total will become subtotal. Order will add the tax yielding new
-total.
-
-Charges controller will be able to get the current order and the final
-calculated total from the order object.
-
-#TODOS:
-Add Nested Routes Item model.
-  User will be able to add options to Menu Item
-
-  * Todo: Create storyboard/wireframe for how it will look like.
-          * This will be on the LineItems page
-            (ex: no onions etc.)
-
-
-Models
--------
-
-Items
-  name:string
-  item_type:string
-  price:decimal
-  description:text
-  image:string
-
-  name:index
-  item_type:index (wip)
-
-OrderStatus
-  name:string
-
-Order
-  order_status:references
-  user:references
-  has_many :order_items
-
-  subtotal:decimal
-  tax:decimal
-  total:decimal
-
-
-OrderItem
-  item:references
-  order:references
-  quantity:integer
-
-Order
-  has_many :charges
-  cart:references (FK)
-
-  unit_price:decimal
-  sub_total:decimal
-  tax:decimal
-  total_price:decimal
+Cart
+  id
+  created_at
+  updated_at
+  update_at

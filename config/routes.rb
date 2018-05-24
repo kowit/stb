@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :line_items
   resources :items
   resources :carts do
-    resources :orders, only: [:new]
+    resources :orders
   end
 
   resources :charges
