@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users
   
   namespace :users, only: [:show, :create, :update, :destroy] do
@@ -11,14 +13,14 @@ Rails.application.routes.draw do
   root to: "items#index"
 
   # namespace for administrate
-  namespace :admin do
-    # resources for administrate
-    resources :users
-    resources :items
-    resources :orders
+  # namespace :admin do
+  #   # resources for administrate
+  #   resources :users
+  #   resources :items
+  #   resources :orders
 
-    root to: "users#index"
-  end
+  #   root to: "users#index"
+  # end
 
   resource :dashboard, only: [:show]
 

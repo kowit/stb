@@ -8,6 +8,14 @@ steps to undo db migration:
 rails db:migrate:down VERSION
 rails destroy model <insert_model_name>
 
+# ACTIVEADMIN
+https://activeadmin.info/documentation.html
+Register model to activeadmin
+$> rails generate active_admin:resource
+
+User: admin@example.com
+password: password
+
 #TODOS
 
 

@@ -4,10 +4,12 @@
   <div class="responsive-container">
     <div class="container">
       <% if signed_in? %>
-        <button class="button normal is-outlined user-notification">
+        <%= link_to "", class: "button is-medium" do %>
           <%= fa_icon "user", class: "pull-left" %>
           <%= current_user.email %>
-        </button>
+        <% end %>
+      <% else %>
+        <p>Not signed in</p>
       <% end %>
     </div>
     <br />
