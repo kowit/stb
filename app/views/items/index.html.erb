@@ -6,7 +6,7 @@
       <% if signed_in? %>
         <button class="button normal is-outlined user-notification">
           <%= fa_icon "user", class: "pull-left" %>
-          Signed in as: <%= current_user.email %>
+          <%= current_user.email %>
         </button>
       <% end %>
     </div>

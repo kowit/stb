@@ -1,7 +1,13 @@
 <%= render "layouts/navbar" %>
 
-<div class="line-items-index">
-  <div class="container">
+<div class="global-wrapper">
+  <div class="responsive-container">
+    <div class="container">
+      <button class="button normal is-outlined user-notification">
+        <%= fa_icon "user", class: "pull-left" %>
+        <%= current_user.email %>
+      </button>
+    </div>
     <div class="keep-shopping pv1 mt4 has-text-right">
       <%#= rails routes with nested route, we can pass in the actual @cart object from the session %>
       <%# app/views/charges/new.html.erb %>
@@ -15,9 +21,9 @@
 
     <hr />
 
-    <section class="section">
+    <div class="carts-container">
       <%= render(@cart.line_items)%>
-    </section>
+    </div>
     <%#= link_to 'Edit', edit_cart_path(@cart) %>
     <%#= link_to 'Back', carts_path %>
   </div>
