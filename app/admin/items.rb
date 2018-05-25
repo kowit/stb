@@ -1,19 +1,17 @@
 ActiveAdmin.register Item do
-  index do
-    column :id
-    column :name
-    column :item_type
-    column :price
-    column :active
-    column :image
-    column "description" do |item|
-      truncate(item.description, length: 10)
-    end
-    column :created_at
-    column :updated_at
-
-    #.....
-  end
+  # index do
+  #   column :id
+  #   column :name
+  #   column :item_type
+  #   column :price
+  #   column :active
+  #   column :image
+  #   column "description" do |item|
+  #     truncate(item.description, length: 10)
+  #   end
+  #   column :created_at
+  #   column :updated_at
+  # end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
