@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     # resources :carts, only: [:create, :update, :destroy]
     resources :orders, only: [:index, :show, :new]
   end
-  # devise_for :users, controllers: { registrations: "registrations" }
 
   get "connect_to_items_path", to: "items#index"
 
