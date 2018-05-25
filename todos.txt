@@ -14,7 +14,9 @@ simulate a restaurant ordering system in that it will:
 
 # TODOS
 
-[ ] Add Order Model
-[ ] Add Stripe for payment simulation
-[ ] Figure out how to modify Administrate Dashboard Views
-[ ] User ActionMailer for emailing "receipts"
+Actually persist the Order to the Database.
+
+Figure out the relationship between current_user and order
+  ex: current_user.order.total_price
+
+Then we can assign that current_user orders' total_price to the Stripe amount attribute

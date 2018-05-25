@@ -30,7 +30,18 @@ class ChargesController < ApplicationController
     #   :currency    => 'usd'
     # )
 
+    # This will work!
+  # customer = Stripe::Customer.create
+  # current_user.update_attributes :stripe_id => customer.id
+
+  # TODO: Have to get order from current_user
   customer = Stripe::Customer.create
+  charge = Stripe::Charge.create({
+    amount: current_user.orders.total,
+    currency: 'usd',
+    source: 'tok_visa',
+    receipt_email: current_user.email
+  })
   current_user.update_attributes :stripe_id => customer.id
 
     # customer = Stripe::Customer.create(

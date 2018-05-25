@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:subtotal, :tax, :total, :user_id, :line_items => [])
+    params.require(:order).permit(:subtotal, :tax, :total, :user_id)
     # params.require(:order).permit(:total, :user_id, :product_ids => [])
   end
 

@@ -34,7 +34,7 @@
               <%#= link_to "Edit", edit_item_path, class: "button is-medium" %>
               <%#= link_to "Destroy", "#", class: "button is-medium" %>
             <% end %>
-            <%= @item.description %><br />
+            <%= sanitize(@item.description) %><br />
           </div>
         </div>
       </div>

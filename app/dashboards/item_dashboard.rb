@@ -13,7 +13,8 @@ class ItemDashboard < Administrate::BaseDashboard
     item_type: Field::String,
     active: Field::String,
     price: Field::String.with_options(searchable: false),
-    description: Field::Text,
+    description: TrixField,
+    # description: Field::Text,
     image: Field::Carrierwave.with_options(
       image: :standard,
       image_on_index: true,

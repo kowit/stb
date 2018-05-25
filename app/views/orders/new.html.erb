@@ -43,8 +43,11 @@
   <div class="navbar-end">
     <div class="navbar-item">
       <div class="field is-grouped">
-        <div class="column total has-text-right">
-          <%#= link_to "Continue", "#", class: "button is-large is-warning" %>
+        <div class="column">
+          <%# Create new order ! %>
+          <%#= link_to "Create Order", new_order_path, class: "button is-medium is-warning" %>
+        </div>
+        <div class="column has-text-right">
           <%# Stripe %>
           <%= form_tag charges_path do %>
             <article>

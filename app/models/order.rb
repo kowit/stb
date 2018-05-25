@@ -6,18 +6,6 @@ class Order < ApplicationRecord
   has_many :carts
   # has_many :line_items, through: :carts
 
-  def add_item(line_item_from_cart)
-    current_item = cart.line_items.find_by(line_item_id: line_item.id)
-
-    if current_item
-      current_item = cart.line_items.find_by(line_item_id: line_item.id)
-    else
-      current_item = cart.line_items.find_by(line_item_id: line_item.id)
-    end
-
-    current_item
-  end
-
   def tax_amount
     tax = 7.0 / 100.0
     tax
