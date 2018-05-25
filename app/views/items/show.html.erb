@@ -5,7 +5,8 @@
     <div class="container is-responsive">
       <% if signed_in? %>
         <button class="button normal is-outlined user-notification">
-          Signed in as: <%= current_user.email %>
+          <%= fa_icon "user", class: "pull-left" %>
+          <%= current_user.email %>
         </button>
       <% end %>
     </div>
