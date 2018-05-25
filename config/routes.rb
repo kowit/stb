@@ -11,8 +11,6 @@ Rails.application.routes.draw do
 
   root to: "items#index"
 
-  #get 'thanks', to: 'charges#thanks', as: 'thanks'
-
   # namespace for administrate
   namespace :admin do
     # resources for administrate
