@@ -1,6 +1,6 @@
 ActiveAdmin.setup do |config|
   # Strong parameters
-  config.before_filter do
+  config.before_action do
     params.permit!
   end
 
