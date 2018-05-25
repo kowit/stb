@@ -1,10 +1,9 @@
 class ChargesController < ApplicationController
+  # Shows a credit card form (using Checkout).
+  # Creates the actual charges by calling our API.
   before_action :authenticate_user!
   before_action :amount_to_be_charged
   before_action :set_description
-
-  def thanks
-  end
 
   def new
   end
@@ -14,22 +13,40 @@ class ChargesController < ApplicationController
     # @current_cart = Cart.find_by_id(params[:id])
     # @current_cart = Cart.find(cart_params)
     # @amount = @current_cart.total_price
-    
-    customer = Stripe::Customer.create(
-      :email => current_user.email,
-      :source => params[:stripeToken]
-      # :email => params[:stripeEmail],
-      # :source  => params[:stripeToken]
-    )
+    @amount = 500
 
-    charge = Stripe::Charge.create(
-      :customer    => current_user.id,
-      :amount      => @cart.total_price,
-      :description => @description,
-      :currency    => 'usd'
-    )
+    # customer is the the current_user
+    # customer = Stripe::Customer.create(
+    #   :email => current_user.email,
+    #   :source => params[:stripeToken]
+    #   # :email => params[:stripeEmail],
+    #   # :source  => params[:stripeToken]
+    # )
 
-    redirect_to thanks_path
+    # customer = Stripe::Charge.create(
+    #   :customer    => current_user.id,
+    #   :amount      => @amount,
+    #   :description => @description,
+    #   :currency    => 'usd'
+    # )
+
+  customer = Stripe::Customer.create
+  current_user.update_attributes :stripe_id => customer.id
+
+    # customer = Stripe::Customer.create(
+    #   :email => params[:stripeEmail],
+    #   :source  => params[:stripeToken]
+    # )
+
+    # charge = Stripe::Charge.create(
+    #   :customer    => customer.id,
+    #   :amount      => @amount,
+    #   :description => 'Rails Stripe customer',
+    #   :currency    => 'usd'
+    # )
+
+    # redirect_to thanks_path
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path

@@ -1,7 +1,10 @@
 <div class="columns">
   <div class="column auto">
     <strong class="remove-item">
-      <%= link_to "", line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "delete is-large is-danger" %>
+      <%#= link_to "", line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "delete is-large is-danger" %>
+      <%= link_to line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "delete is-large is-danger" do %>
+        <%= fa_icon "times-circle" %>
+      <% end %>
     </strong>
   </div>
   <div class="column is-one-fifths tmp-border">

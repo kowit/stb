@@ -22,6 +22,8 @@
               <strong>Subtotal: <%= number_to_currency(@cart.total_price) %></strong>
               <br />
               <strong>Sales Tax: <%= number_to_currency(@cart.total_price * (@order.tax_amount), precision: 2) %></strong>
+              <br />
+              <strong>Total: <%= number_to_currency(total_price_after_sales_tax) %></strong>
             </td>
           </tr>
         </table>
@@ -31,19 +33,37 @@
 </div>
 
 <nav class="navbar is-fixed-bottom is-transparent bottom-nav" role="navigation">
-  <div class="navbar-brand">
-    <%= link_to 'Back', cart_path(@cart), class: "button is-large is-warning" %>
-    <%#= button_to 'Back', cart_path(@cart), class: "button is-large is-warning" %>
+  <div class="navbar-start">
+    <div class="navbar-item">
+      <div class="field is-grouped">
+        <%= link_to 'Back', cart_path(@cart), class: "button is-large is-warning" %>
+      </div>
+    </div>
   </div>
   <div class="navbar-end">
     <div class="navbar-item">
       <div class="field is-grouped">
         <div class="column total has-text-right">
-          <h4 class="title is-4">
-            <%# new calculated total %>
-            <span class="f5 has-text-grey">Total:</span> 
-            <%= number_to_currency(total_price_after_sales_tax) %>
-          </h4>
+          <%#= link_to "Continue", "#", class: "button is-large is-warning" %>
+          <%# Stripe %>
+          <%= form_tag charges_path do %>
+            <article>
+              <% if flash[:error].present? %>
+                <div id="error_explanation">
+                  <p><%= flash[:error] %></p>
+                </div>
+              <% end %>
+            </article>
+
+            <script src="https://checkout.stripe.com/checkout.js" 
+                    class="stripe-button"
+                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                    data-amount="<%= number_to_currency(total_price_after_sales_tax) %>"
+                    data-email="<%= current_user.email %>"
+                    data-locale="auto">
+            </script>
+          <% end %>
+          <%# end stripe %>
         </div>
       </div>
     </div>

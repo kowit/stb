@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   def index
   end
 
+  # Show action is probably only relevant!
   def show
     # @cart = Cart.find_by_id(session[:id])
     # respond_with current_user.orders.find(params[:id])

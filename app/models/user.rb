@@ -10,12 +10,4 @@ class User < ApplicationRecord
   # if user is deleted make sure to delete their orders too
   # has_many :orders, dependent: :destroy
 
-  def set_default_role
-    self.role ||= :customer
-  end
-
-  def admin?
-    self.role == "admin"
-  end
-
 end

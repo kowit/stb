@@ -54,9 +54,10 @@
     <div class="navbar-item">
       <div class="field is-grouped">
         <div class="is-center">
-          <span>
-            <%= button_to "+ Add to cart", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
-          </span>
+          <%#= button_to line_items_path(item_id: @item), class: "button is-primary is-large add-to-cart" do %>
+            <%#= fa_icon "cart-plus", class: "text-muted" %>
+          <%# end %>
+          <%= button_to "Add item", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
         </div>
       </div>
     </div>
