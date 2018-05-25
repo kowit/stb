@@ -1,5 +1,7 @@
 <%= render "layouts/navbar" %>
-<!-- <h2>Thanks, you paid <strong><%#= number_to_currency(total_price_after_sales_tax) %></strong>!</h2>-->
-<h1 class="title">WIP PAGE</h1>
-<p>Payment has been processed tho.</p>
-<h2>Thanks, you paid <strong>$5.00</strong>!</h2>
+
+<h2>Thanks, you paid 
+  <strong>
+    <%= number_to_currency(total_price_after_sales_tax) %>
+  </strong>!
+</h2>

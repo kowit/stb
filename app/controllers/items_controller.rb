@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    # @line_item = LineItem.new
   end
 
   def create

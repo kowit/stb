@@ -20,7 +20,8 @@ module ApplicationHelper
   end
 
   def total_price_after_sales_tax
-    subtotal = @cart.total_price * (@order.tax_amount)
+    # subtotal = @cart.total_price * (@order.tax_amount)
+    subtotal = @cart.total_price * (7.0 / 100.0)
     total_price = @cart.total_price + subtotal
     total_price
   end

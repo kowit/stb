@@ -19,6 +19,7 @@
             <div class="card-image">
               <figure>
                 <%= link_to image_tag(item.image.url, alt: "Image"), item %><br />
+                <%#= button_to "Add item", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
               </figure>
             </div>
 
