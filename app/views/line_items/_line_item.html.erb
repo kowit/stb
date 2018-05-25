@@ -15,7 +15,7 @@
   </div>
   <div class="column is-half tmp-border">
     <strong><%= line_item.item.name %></strong>
-    <p><%= truncate(line_item.item.description, length: 120) %></p>
+    <%= sanitize(line_item.item.description) %>
   </div>
   <div class="column is-one-quarter tmp-border">
     <%= number_to_currency(line_item.item.price) %>
