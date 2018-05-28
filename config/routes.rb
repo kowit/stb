@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :orders
+    resources :items
+    resources :employees
+    resources :users
+
+    resources :carts
+    resources :employee_carts
+    resources :employee_line_items
+    resources :line_items
+
+    root to: "employees#index"
+  end
+
   # Master route for employees/admin
   get "/stb" => "welcomes#show"
 
@@ -17,10 +31,9 @@ Rails.application.routes.draw do
 	end
 
   # Routes for ActiveAdmin
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  # devise_for :admin_users, ActiveAdmin::Devise.config
 
-  get "/admins" => "admin/dashboard#index"
+  # get "/admins" => "admin/dashboard#index"
 
   # Devise routes for Users
   devise_for :users, path: 'users', controllers: {
@@ -44,9 +57,6 @@ Rails.application.routes.draw do
 
   resources :line_items
   resources :items
-  # resources :carts do
-  #   resources :orders
-  # end
   resources :carts
   resources :cart_reviews, only: [:show]
   resources :order_items
@@ -55,17 +65,5 @@ Rails.application.routes.draw do
   resources :employee_line_items
   resources :employee_carts
   resources :charges
-
-  # root to: "items#index"
-
-  # namespace for administrate
-  # namespace :admin do
-  #   # resources for administrate
-  #   resources :users
-  #   resources :items
-  #   resources :orders
-
-  #   root to: "users#index"
-  # end
 
 end
