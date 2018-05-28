@@ -13,8 +13,11 @@
       <br />
       <br />
 
-      <%= link_to "Admin", admins_path, class: "button is-warning is-large" %>
-      <%= link_to "Employee", new_employee_session_path, class: "button is-warning is-large" %>
+      <%#= link_to "Admin", admin_path, class: "button is-warning is-large" %>
+      <%= link_to "Employee Sign in", new_employee_session_path, class: "button is-warning is-large" %>
+      <br />
+      <br />
+      <%= link_to "Employee Sign up", new_employee_registration_path, class: "button is-warning is-large" %>
 
       <%# if signed_in? %>
         <%#= link_to "Dashboard", dashboard_path %>

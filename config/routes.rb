@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   # create employee_root_path
   # get "/employees" => "employees#index", as: :employee_root 
   get "/stb" => "welcomes#show", as: :employee_root 
-	namespace :employee do
+
+	namespace :employees do
 		root 'employees#show' # creates user_root_path
 	end
 
