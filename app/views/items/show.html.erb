@@ -1,66 +1,128 @@
-<%= render "layouts/navbar" %>
-
-<div class="global-wrapper">
-  <div class="responsive-container">
-    <div class="container is-responsive">
-      <% if signed_in? %>
-        <button class="button normal is-outlined user-notification">
-          <%= fa_icon "user", class: "pull-left" %>
-          <%= current_user.email %>
-        </button>
-      <% end %>
-    </div>
-    <br />
-    <div class="card">
-      <div class="card-content">
-        <% if !signed_in? %>
-          <div id="notice">Sign in to add item to order</div>
-          <hr />
-        <% end %>
-        <div class="columns">
-          <div class="column is-one-quarter">
-            <div class="item-image">
-              <%= image_tag(@item.image.url, alt: "Image", class: "is-round") if @item.image? %>
+<% if user_signed_in? %>
+  <%= render "layouts/navbar" %>
+  <div class="global-wrapper">
+    <div class="responsive-container">
+      <div class="container is-responsive">
+        <%# if signed_in? %>
+        <!-- <button class="button normal is-outlined user-notification">-->
+        <%#= fa_icon "user", class: "pull-left" %>
+        <%#= current_user.email %>
+        <!-- </button> -->
+        <%# end %>
+      </div>
+      <br />
+      <div class="card">
+        <div class="card-content">
+          <% if !signed_in? %>
+            <div id="notice">Sign in to add item to order</div>
+            <hr />
+          <% end %>
+          <div class="columns">
+            <div class="column is-one-quarter">
+              <div class="item-image">
+                <%= image_tag(@item.image.url, alt: "Image", class: "is-round") if @item.image? %>
+              </div>
+            </div>
+            <div class="column is-two-thirds">
+              <div class="item-name">
+                <%= @item.name %>
+              </div>
+              <div class="item-price">
+                <%= @item.price %>
+              </div>
+              <% if signed_in? %>
+                <%#= link_to "Add Item", "#", class: "button is-primary is-large" %><br /><br />
+                <%#= link_to "Edit", edit_item_path, class: "button is-medium" %>
+                <%#= link_to "Destroy", "#", class: "button is-medium" %>
+              <% end %>
+              <%= sanitize(@item.description) %><br />
             </div>
           </div>
-          <div class="column is-two-thirds">
-            <div class="item-name">
-              <%= @item.name %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <nav class="navbar is-fixed-bottom is-transparent global-bottom-nav" role="navigation">
+    <div class="navbar-start">
+      <div class="navbar-item">
+        <%= link_to "Return to menu", items_path, class: "button is-large is-warning" %>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="field is-grouped">
+          <div class="is-center">
+            <%#= button_to line_items_path(item_id: @item), class: "button is-primary is-large add-to-cart" do %>
+              <%#= fa_icon "cart-plus", class: "text-muted" %>
+              <%# end %>
+              <%= button_to "Add item", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+<% end %>
+
+
+<%# ---------- EMPLOYEES ---------- %>
+<% if employee_signed_in? %>
+  <%= render "layouts/employees_nav" %>
+  <div class="columns is-responsive">
+    <div class="column is-two-fifths">
+      <div class="card">
+        <div class="card-content">
+          <div class="columns">
+            <%#= render(@employee_cart.employee_line_items)%>
+          </div>
+        </div>
+        <div class="card-content content">
+          <div class="columns">
+            <div class="column price-summary-col">
+              <div><strong>Subtotal:</strong></div>
+              <div><strong>Tax:</strong></div>
+              <div><strong>Total:</strong></div>
             </div>
-            <div class="item-price">
-              <%= @item.price %>
+            <div class="column food-price-col">
+              <div><strong>$0.00</strong></div>
+              <div><strong>$0.00</strong></div>
+              <div><strong>$0.00</strong></div>
             </div>
-            <% if signed_in? %>
-              <%#= link_to "Add Item", "#", class: "button is-primary is-large" %><br /><br />
-              <%#= link_to "Edit", edit_item_path, class: "button is-medium" %>
-              <%#= link_to "Destroy", "#", class: "button is-medium" %>
-            <% end %>
-            <%= sanitize(@item.description) %><br />
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">Send</a>
+          <a href="#" class="card-footer-item">Pay</a>
+        </footer>
+      </div>
+    </div>
+    <div class="column is-responsive auto">
+      <div class="card">
+        <div class="card-content">
+
+          <div class="columns">
+            <div class="column is-one-quarter">
+              <div class="item-image">
+                <%= image_tag(@item.image.url, alt: "Image", class: "is-round") if @item.image? %>
+              </div>
+            </div>
+            <div class="column is-two-thirds">
+              <div class="item-name">
+                <h1 class="title"><%= @item.name %></h1>
+              </div>
+              <div class="item-price">
+                <%= number_to_currency(@item.price) %>
+              </div>
+              <%= sanitize(@item.description) %><br />
+              <%= button_to "Add Item", employee_line_items_path(item_id: @item), class: "button is-primary is-large" %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+<% end %>
 
-</div>
-
-<nav class="navbar is-fixed-bottom is-transparent global-bottom-nav" role="navigation">
-  <div class="navbar-start">
-    <div class="navbar-item">
-      <%= link_to "Return to menu", items_path, class: "button is-large is-warning" %>
-    </div>
-  </div>
-
-  <div class="navbar-end">
-    <div class="navbar-item">
-      <div class="field is-grouped">
-        <div class="is-center">
-          <%#= button_to line_items_path(item_id: @item), class: "button is-primary is-large add-to-cart" do %>
-            <%#= fa_icon "cart-plus", class: "text-muted" %>
-          <%# end %>
-          <%= button_to "Add item", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>

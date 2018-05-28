@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  include Accessible
   before_action :set_item, only: [:show, :edit, :update]
 
   def index
@@ -6,6 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    # @employee_cart = EmployeeCart.find(params[:id])
   end
 
   def new

@@ -1,4 +1,41 @@
 /* styles.scss */
+
+.employee-cart-table {
+  font-size: 18px;
+}
+
+.signed-in-as-container {
+  padding-left: 20px;
+}
+
+.employees-nav {
+  font-size: 22px;
+}
+
+.dashboard-wrapper {
+  margin: 0 auto;
+  padding-left: 80px;
+}
+
+.food-name-col {
+  text-align: left;
+}
+
+.food-price-col {
+  text-align: right;
+}
+
+.price-summary-col {
+  @extend .food-name-col;
+}
+
+.food-price-col {
+  @extend .food-price-col;
+}
+
+.cell-card {
+}
+
 .item-name {
   font-family: "Proxima Nova", sans-serif;
   font-weight: 200;
@@ -117,8 +154,19 @@
   }
 }
 
+.payment-col {
+  margin: 0 auto;
+  max-height: 100%;
+  font-size: 24px;
+  ul {
+    li {
+      list-style-type: none;
+    }
+  }
+}
+
 .user-notice {
-  color: #fff;
+  color: #000;
 }
 
 .navbar {
@@ -161,7 +209,6 @@
 
 .cell img {
   display: block;
-  @extend .is-round;
 }
 
 .cell {

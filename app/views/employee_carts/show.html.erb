@@ -1,0 +1,54 @@
+<%= render "layouts/employees_nav" %>
+
+<!-- <div class="global-wrapper">
+  <div class="responsive-container">
+    <div class="container">
+      <button class="button normal is-outlined user-notification">
+        <%#= fa_icon "user", class: "pull-left" %>
+        <%#= current_employee.email %>
+      </button>
+    </div>
+    <p id="notice">
+      <%#= notice %>
+    </p>
+    <hr />
+    <div class="carts-container">
+      <%#= render(@employee_cart.employee_line_items)%>
+    </div>
+    <%#= link_to 'Edit', edit_cart_path(@cart) %>
+    <%#= link_to 'Back', carts_path %>
+  </div>
+</div> -->
+
+<%# Employees dashboard %>
+<%# dashboard for employee is here %>
+<div class="dashboard-wrapper">
+  <div class="columns is-responsive">
+    <%# Cart %>
+    <%= render "employee_carts/employee_cart_info" %>
+    <%# Menu %>
+    <div class="column is-two-thirds">
+      <div class="grid">
+        <% @items.each do |item| %>
+          <div class="cell-unit">
+            <%= link_to(item) do %>
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <%= image_tag(item.image) %>
+                  </figure>
+                </div>
+                <footer class="card-footer">
+                  <%= link_to "Show", item %>
+                </footer>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%= render "layouts/employees_bottom_nav" %>

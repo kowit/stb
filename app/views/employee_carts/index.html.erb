@@ -1,0 +1,125 @@
+<%= render "layouts/employees_nav" %>
+
+<!-- <div class="global-wrapper">
+  <div class="responsive-container">
+    <div class="container">
+      <button class="button normal is-outlined user-notification">
+        <%#= fa_icon "user", class: "pull-left" %>
+        <%#= current_employee.email %>
+      </button>
+    </div>
+    <p id="notice">
+      <%#= notice %>
+    </p>
+    <hr />
+    <div class="carts-container">
+      <%#= render(@employee_cart.employee_line_items)%>
+    </div>
+    <%#= link_to 'Edit', edit_cart_path(@cart) %>
+    <%#= link_to 'Back', carts_path %>
+  </div>
+</div> -->
+
+<%# Employees dashboard %>
+<%# dashboard for employee is here %>
+<div class="dashboard-wrapper">
+  <div class="columns is-responsive">
+    <%# Cart %>
+    <div class="column is-one-third">
+      <div class="card">
+        <div class="card-content">
+          <div class="columns">
+            <%= render(@employee_cart.employee_line_items)%>
+          </div>
+        </div>
+        <div class="card-content content">
+          <div class="columns">
+            <div class="column price-summary-col">
+              <div><strong>Subtotal:</strong></div>
+              <div><strong>Tax:</strong></div>
+              <div><strong>Total:</strong></div>
+            </div>
+            <div class="column food-price-col">
+              <div><strong>$0.00</strong></div>
+              <div><strong>$0.00</strong></div>
+              <div><strong>$0.00</strong></div>
+            </div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">Send</a>
+          <a href="#" class="card-footer-item">Pay</a>
+        </footer>
+      </div>
+      <!--
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            <strong>Items (0):</strong>
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <div class="columns">
+              <div class="column food-name-col">
+                Food Item<br />
+                Food Item<br />
+                Food Item<br />
+                Food Item
+              </div>
+              <div class="column food-price-col">
+                $0.00<br />
+                $0.00<br />
+                $0.00<br />
+                $0.00
+              </div>
+            </div>
+            <div class="content">
+              <div class="columns">
+                <div class="column price-summary-col">
+                  <div><strong>Subtotal:</strong></div>
+                  <div><strong>Tax:</strong></div>
+                  <div><strong>Total:</strong></div>
+                </div>
+                <div class="column food-price-col">
+                  <div><strong>$0.00</strong></div>
+                  <div><strong>$0.00</strong></div>
+                  <div><strong>$0.00</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">Send</a>
+          <a href="#" class="card-footer-item">Pay</a>
+        </footer>
+      </div> -->
+    </div>
+
+    <%# Menu %>
+    <div class="column auto">
+      <div class="grid">
+        <% @items.each do |item| %>
+          <div class="cell-unit">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <%= image_tag(item.image) %>
+                </figure>
+              </div>
+              <footer class="card-footer">
+                <%= link_to "Show", item %>
+                <%#= link_to "Add Item", "#", class: "card-footer-item" %>
+                <%#= button_to "Add Item", employee_line_items_path(item_id: @item), class: "card-footer-item" %>
+              </footer>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%= render "layouts/employees_bottom_nav" %>

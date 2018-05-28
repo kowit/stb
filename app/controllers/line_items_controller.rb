@@ -34,9 +34,6 @@ class LineItemsController < ApplicationController
     # and assign that new added cart item to be the @line_item
     @line_item = @cart.add_item(@item)
 
-    # add_item method from cart model
-    # @line_item = LineItem.new(line_item_params)
-
     respond_to do |format|
       if @line_item.save
         # format.html { redirect_to items_path, notice: 'Item added to cart' }
@@ -68,6 +65,7 @@ class LineItemsController < ApplicationController
   def destroy
     @cart = Cart.find(session[:cart_id])
     @line_item.destroy
+
     respond_to do |format|
       format.html { redirect_to cart_path(@cart), notice: "Item successfully removed from cart." }
       format.json { head :no_content }

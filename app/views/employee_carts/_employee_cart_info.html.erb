@@ -1,0 +1,63 @@
+<%# Employee Carts Partial %>
+<div class="column is-one-third">
+  <div class="card">
+    <div class="card-content">
+      <div class="content">
+        <table class="employee-cart-table">
+          <% if employee_cart_has_items %>
+            <strong>
+              Order Quantity: <%= employee_cart_count_over_one %>
+            </strong>
+            <hr />
+          <% end %>
+          <% @employee_cart.employee_line_items.each do |employee_line_item| %>
+            <tr>
+              <td>
+                <%= link_to "", employee_line_item, method: :delete, 
+                  data: { confirm: "Are you sure?" }, 
+                  class: "button is-medium delete is-large is-danger" %>
+              </td>
+              <td class="employee-item-name">
+                <%= employee_line_item.item.name %>
+              </td>
+              <td class="employee-item-price">
+                <%= employee_line_item.item.price %>
+              </td>
+            </tr>
+          <% end %>
+          <%#= render(@employee_cart.employee_line_items)%>
+        </table>
+      </div>
+    </div>
+    <div class="card-content content">
+      <div class="columns">
+        <div class="column price-summary-col">
+          <div>
+            <strong>
+              Subtotal: <%#= number_to_currency(@employee_cart.total_price) %>
+            </strong>
+            <br />
+            <strong>
+              Sales Tax: <%#= number_to_currency(@employee_cart.total_price) %>
+            </strong>
+            <br />
+            <strong>
+              Total: <%#= number_to_currency(@employee_cart.total_price) %>
+            </strong>
+            <br />
+          </div>
+        </div>
+        <div class="column food-price-col">
+          <div><strong>$0.00</strong></div>
+          <div><strong>$0.00</strong></div>
+          <div><strong>$0.00</strong></div>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <%# Send to Orders %>
+      <a href="#" class="card-footer-item">Send</a>
+      <a href="#" class="card-footer-item">Pay</a>
+    </footer>
+  </div>
+</div>

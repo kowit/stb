@@ -2,7 +2,12 @@ class Item < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   before_destroy :not_referenced_by_any_line_item
+
   has_many :line_items
+  has_many :employee_line_items
+
+  belongs_to :employee_cart
+
   default_scope { where(active: true) }
 
   private

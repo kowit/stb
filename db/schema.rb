@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180525184548) do
+ActiveRecord::Schema.define(version: 20180527222038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,41 @@ ActiveRecord::Schema.define(version: 20180525184548) do
     t.index ["order_id"], name: "index_carts_on_order_id"
   end
 
+  create_table "employee_carts", force: :cascade do |t|
+    t.bigint "employee_line_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "item_id"
+    t.index ["employee_line_item_id"], name: "index_employee_carts_on_employee_line_item_id"
+    t.index ["item_id"], name: "index_employee_carts_on_item_id"
+  end
+
+  create_table "employee_line_items", force: :cascade do |t|
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "employee_cart_id"
+    t.index ["employee_cart_id"], name: "index_employee_line_items_on_employee_cart_id"
+    t.index ["item_id"], name: "index_employee_line_items_on_item_id"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_employees_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "item_type"
@@ -86,9 +121,7 @@ ActiveRecord::Schema.define(version: 20180525184548) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "cart_id"
-    t.bigint "line_item_id"
     t.index ["cart_id"], name: "index_orders_on_cart_id"
-    t.index ["line_item_id"], name: "index_orders_on_line_item_id"
     t.index ["status"], name: "index_orders_on_status"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -117,9 +150,12 @@ ActiveRecord::Schema.define(version: 20180525184548) do
 
   add_foreign_key "carts", "line_items"
   add_foreign_key "carts", "orders"
+  add_foreign_key "employee_carts", "employee_line_items"
+  add_foreign_key "employee_carts", "items"
+  add_foreign_key "employee_line_items", "employee_carts"
+  add_foreign_key "employee_line_items", "items"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "items"
   add_foreign_key "orders", "carts"
-  add_foreign_key "orders", "line_items"
   add_foreign_key "orders", "users"
 end

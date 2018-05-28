@@ -1,4 +1,17 @@
 module ApplicationHelper
+  TAX = 0.07
+
+  def employee_cart_count_over_one
+    if @employee_cart.employee_line_items.count > 0
+      return "#{@employee_cart.employee_line_items.count}".html_safe
+    else
+      return "0".html_safe
+    end
+  end
+
+  def employee_cart_has_items
+    return @employee_cart.employee_line_items.count >= 0
+  end
 
   def cart_count_over_one
     if @cart.line_items.count > 0
@@ -24,5 +37,9 @@ module ApplicationHelper
     subtotal = @cart.total_price * (7.0 / 100.0)
     total_price = @cart.total_price + subtotal
     total_price
+  end
+
+  def sales_tax_florida
+    TAX
   end
 end

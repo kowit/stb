@@ -19,9 +19,12 @@
   .cell {
     // 4 items per row
     width: calc(26% - 2rem);
+  }
 
+  .cell-unit {
     // 3 items per row
-    // width: calc(33.3333% - 2rem);
+    width: calc(33.3333% - 2rem);
+    padding: 5px;
   }
 
   .global-bottom-nav {

@@ -1,0 +1,26 @@
+<%= render "layouts/employees_nav" %>
+<div class="global-wrapper">
+  <section class="section">
+    <div>
+      <em><h1 class="subtitle"><%= params.inspect %></h1></em>
+      <h1 class="title">Spill the Beans</h1>
+      <h1 class="subtitle">Employee Dashboard</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <%# Employee %>
+    <% if signed_in? %>
+      <%= link_to "Sign out", destroy_employee_session_path, method: :delete, class: "button is-large" %>
+    <% else %>
+      <%= link_to "Sign in", new_employee_session_path, class: "button is-primary is-large" %>
+      <%= link_to "Sign up", new_employee_registration_path, class: "button is-primary is-large" %> 
+    <% end %>
+  </section>
+  <section>
+    <% @orders.each do |order| %>
+      <%= order %>
+      <br />
+    <% end %>
+  </section>
+</div>

@@ -16,8 +16,8 @@
             <%= number_to_currency(@cart.total_price, precision: 2) %>
           </h4>
         </div>
-        <%# Continue actually calls new action  %>
-        <%= link_to "Continue", new_cart_order_path(@cart), class: "button is-large is-warning" %>
+        <%= link_to "Continue", cart_review_path, class: "button is-large is-warning" %>
+        <%#= link_to "Continue", new_cart_order_path(@cart), class: "button is-large is-warning" %>
       </div>
     </div>
   </div>

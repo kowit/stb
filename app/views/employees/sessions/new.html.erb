@@ -1,0 +1,29 @@
+<%= render "layouts/employees_nav" %>
+<div class="global-wrapper">
+  <h2>Employee Log in</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <div>
+        <%= f.email_field :email, required: false, 
+          autofocus: true, class: "input" %>
+      </div>
+      <br />
+      <div>
+        <%= f.password_field :password, 
+          required: false, class: "input" %>
+      </div>
+      <div>
+        <%= f.check_box :remember_me, class: "checkbox", as: :boolean if devise_mapping.rememberable? %>
+        <%= f.label :remember_me, class: "checkbox" %>
+      </div>
+    </div>
+
+    <br />
+    <div class="form-actions">
+      <%= f.submit "Submit", class: "button is-primary is-large" %>
+    </div>
+  <% end %>
+
+  <%= render "employees/shared/links" %>
+</div>

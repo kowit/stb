@@ -1,3 +1,57 @@
-<%= render "layouts/navbar" %>
-<h1>User Dashboard</h1>
-<p><%= params.inspect %></p>
+<%# Employees dashboard %>
+
+<%= render "layouts/employees_nav" %>
+
+<%# Employees Dashboard  %>
+<div class="dashboard-wrapper">
+  <%= params.inspect %>
+  <div class="columns is-responsive">
+    <%# Menu %>
+    <%#= render "employee_carts/employee_cart_info" %>
+    <!--
+    <div class="column is-two-fifths">
+      <div class="card">
+        <div class="card-content">
+          <div class="content">
+            <table class="dash-employee-cart-table">
+              <tr>
+                <td class="dash-employee-item-name"></td>
+                <td class="dash-employee-item-price"></td>
+              </tr>
+              <%#= render(@employee_cart.employee_line_items)%>
+            </table>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">Save</a>
+          <a href="#" class="card-footer-item">Edit</a>
+        </footer>
+      </div>
+    </div>
+    -->
+    <div class="column auto">
+      <div class="grid">
+        <% @items.each do |item| %>
+          <div class="cell-unit">
+            <div class="card">
+              <div class="card-image">
+                <%= link_to(item) do %>
+                  <figure class="image is-4by3">
+                    <%= image_tag(item.image) %>
+                  </figure>
+              </div>
+              <div class="card-content">
+                <%= item.name %><br />
+                <%= number_to_currency(item.price) %>
+              </div>
+            <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%= render "layouts/employees_bottom_nav" %>
