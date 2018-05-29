@@ -6,7 +6,7 @@ class Item < ApplicationRecord
 
   has_many :line_items
   has_many :employee_line_items
-
+  # has_many :employee_carts
   # belongs_to :employee_cart
 
   default_scope { where(active: true) }

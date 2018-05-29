@@ -1,6 +1,8 @@
 class EmployeeCart < ApplicationRecord
+  # has_many :items
   has_many :employee_line_items, dependent: :destroy
-  has_many :items
+
+  belongs_to :order_items, optional: true
 
   def add_item_to_employee_cart(item)
     current_item = employee_line_items.find_by(item_id: item.id)

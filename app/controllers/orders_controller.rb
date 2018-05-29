@@ -1,12 +1,12 @@
 class OrdersController < ApplicationController
+  include CurrentOrder
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
   # before_action :authenticate_employee!
   # before_action :authenticate_user!
-  # before_action :set_order, only: [:show, :edit, :update, :destroy]
-
   # before_action :authenticate_with_token!
-  # respond_to :json
 
   def index
+    @orders = Order.all
   end
 
   # Show action is probably only relevant!
@@ -23,6 +23,10 @@ class OrdersController < ApplicationController
   end
 
   def create
+    # find the employee cart and cart ids
+    # @cart = Cart.find(params[:cart_id])
+    # @employee_cart = EmployeeCart.find(params[:employee_cart_id])
+
     @order = Order.new(order_params)
 
     # Once the order is save redirect to the orders #show page
@@ -44,10 +48,9 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:subtotal, :tax, :total, :status)
   end
 
-  def set_order
-    @order = Order.find(params[:id])
-    # @cart = Card.find(params[:id])
-  end
+  # def set_order
+  #   @order = Order.find(params[:id])
+  # end
 
   # def cart_params
   #   params.fetch(:cart, {})

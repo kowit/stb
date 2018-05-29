@@ -40,4 +40,17 @@ class ApplicationController < ActionController::Base
   #   end
   # end
 
+  # before_action :protect
+
+  # private
+
+  # def protect
+  #   addresses = ['127.0.0.1', ...]
+  #   if addresses.include?(request.remote_ip)
+  #     # give access
+  #   else
+  #     # restrict access
+  #   end
+  # end
+
 end

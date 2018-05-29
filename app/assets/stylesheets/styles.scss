@@ -14,7 +14,9 @@
 
 .dashboard-wrapper {
   margin: 0 auto;
+  height: 100%;
   padding-left: 80px;
+  padding-bottom: 120px;
 }
 
 .food-name-col {
@@ -38,8 +40,8 @@
 
 .item-name {
   font-family: "Proxima Nova", sans-serif;
-  font-weight: 200;
-  font-size: 24px;
+  font-weight: 400;
+  font-size: 16px;
 }
 
 .shopping-cart-icon {

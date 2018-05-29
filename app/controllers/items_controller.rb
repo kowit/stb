@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @employee_cart = EmployeeCart.find(params[:id])
+    @items = Item.all
   end
 
   def new

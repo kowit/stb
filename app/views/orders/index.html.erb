@@ -1,10 +1,19 @@
 <%= render "layouts/employees_nav" %>
 
 <div class="container">
-  <p>WIP</p>
-  <p>Order Index will be here</p>
-  <p>
     <%= params.inspect %>
+    <% @orders.each do |order| %>
+      <%= order.id %>
+      <%#= order.user_id %>
+      <%#= order.subtotal %>
+      <%#= order.tax %>
+      <%#= order.total %>
+      <%#= order.status %>
+      <%#= order.created_at %>
+      <%#= order.updated_at %>
+      <%#= order.employee_cart_id %>
+      <%#= order.cart_id %>
+    <% end %>
   </p>
 </div>
 

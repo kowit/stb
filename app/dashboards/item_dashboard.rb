@@ -8,8 +8,8 @@ class ItemDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    line_items: Field::HasMany,
-    employee_line_items: Field::HasMany,
+    # line_items: Field::HasMany,
+    # employee_line_items: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     item_type: Field::String,
@@ -31,16 +31,20 @@ class ItemDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :line_items,
-    :employee_line_items,
+    # :line_items,
+    # :employee_line_items,
     :id,
+    :name,
+    :price,
+    :item_type,
+    :active,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :line_items,
-    :employee_line_items,
+    # :line_items,
+    # :employee_line_items,
     :id,
     :name,
     :item_type,
@@ -56,8 +60,8 @@ class ItemDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :line_items,
-    :employee_line_items,
+    # :line_items,
+    # :employee_line_items,
     # :employee_cart,
     :name,
     :item_type,

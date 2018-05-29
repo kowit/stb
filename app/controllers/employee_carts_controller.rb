@@ -1,5 +1,5 @@
 class EmployeeCartsController < ApplicationController
-  # rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
   # before_action :authenticate_user!
   before_action :set_employee_cart, only: [:show, :edit, :update, :destroy]
 
@@ -81,8 +81,8 @@ class EmployeeCartsController < ApplicationController
     params.fetch(:employee_cart, {})
   end
 
-  # def invalid_cart
-  #   logger.error "Attempt to access invalid cart #{params[:id]}"
-  #   redirect_to root_path, notice: "That cart doesn't exist"
-  # end
+  def invalid_cart
+    logger.error "Attempt to access invalid cart #{params[:id]}"
+    redirect_to root_path, notice: "That cart doesn't exist"
+  end
 end

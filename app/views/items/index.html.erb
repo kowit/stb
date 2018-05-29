@@ -30,9 +30,8 @@
             <%= link_to item do %>
               <div class="card-content">
                 <div class="content">
-                  <strong class="item-name"><%= item.name %></strong>
-                  <br />
-                  <strong class="item-name"><%= number_to_currency(item.price) %></strong>
+                  <p class="item-name"><%= item.name %></p>
+                  <!-- <strong class="item-name"><%#= number_to_currency(item.price) %></strong> -->
                 </div>
               </div>
             <% end %>

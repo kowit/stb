@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528215720) do
+ActiveRecord::Schema.define(version: 20180529024708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,19 +49,19 @@ ActiveRecord::Schema.define(version: 20180528215720) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "order_id"
     t.bigint "line_item_id"
+    t.bigint "order_item_id"
     t.index ["line_item_id"], name: "index_carts_on_line_item_id"
-    t.index ["order_id"], name: "index_carts_on_order_id"
+    t.index ["order_item_id"], name: "index_carts_on_order_item_id"
   end
 
   create_table "employee_carts", force: :cascade do |t|
     t.bigint "employee_line_item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "item_id"
+    t.bigint "order_item_id"
     t.index ["employee_line_item_id"], name: "index_employee_carts_on_employee_line_item_id"
-    t.index ["item_id"], name: "index_employee_carts_on_item_id"
+    t.index ["order_item_id"], name: "index_employee_carts_on_order_item_id"
   end
 
   create_table "employee_line_items", force: :cascade do |t|
@@ -99,6 +99,8 @@ ActiveRecord::Schema.define(version: 20180528215720) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active"
+    t.bigint "employee_cart_id"
+    t.index ["employee_cart_id"], name: "index_items_on_employee_cart_id"
     t.index ["name"], name: "index_items_on_name"
   end
 
@@ -110,6 +112,11 @@ ActiveRecord::Schema.define(version: 20180528215720) do
     t.integer "quantity", default: 1
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
     t.index ["item_id"], name: "index_line_items_on_item_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -149,11 +156,12 @@ ActiveRecord::Schema.define(version: 20180528215720) do
   end
 
   add_foreign_key "carts", "line_items"
-  add_foreign_key "carts", "orders"
+  add_foreign_key "carts", "order_items"
   add_foreign_key "employee_carts", "employee_line_items"
-  add_foreign_key "employee_carts", "items"
+  add_foreign_key "employee_carts", "order_items"
   add_foreign_key "employee_line_items", "employee_carts"
   add_foreign_key "employee_line_items", "items"
+  add_foreign_key "items", "employee_carts"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "items"
   add_foreign_key "orders", "carts"
