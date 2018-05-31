@@ -30,10 +30,13 @@ class LineItemsController < ApplicationController
     # Find the current item_id, user_id
     @item = Item.find(params[:item_id])
     @current_user_id = current_user.id
+    @item_name = @item.name
     @item_price = @item.price
+    @item_type = @item.item_type
 
     # Create a new LineItem with the item and current_user ID params
-    @line_item = @cart.add_item(@item, @current_user_id, @item_price)
+    @line_item = @cart.add_item(@item, @current_user_id, 
+                                @item_price, @item_name, @item_type)
 
     respond_to do |format|
       if @line_item.save

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   skip_before_action :verify_authenticity_token
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
+
   # include CurrentOrder
   # before_action :set_order, only: [:show, :edit, :update, :destroy]
   # before_action :authenticate_employee!
@@ -16,7 +17,10 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
     # update the attribute with the current user's ID
-    @order.update_attribs(current_user.id, @cart.total, @cart.total_with_tax, @cart.tax)
+    @order.update_attribs(current_user.id,
+                          @cart.total,
+                          @cart.total_with_tax,
+                          @cart.tax)
   end
 
   def new
@@ -31,11 +35,19 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     # update the attribute with the current user's ID
-    @order.update_attribs(current_user.id, @cart.total, @cart.total_with_tax, @cart.tax)
+    @order.update_attribs(current_user.id,
+                          @cart.total,
+                          @cart.total_with_tax,
+                          @cart.tax)
+
+    @current_user = current_user
 
     # Once the order is save redirect to the orders #show page
     # on the order#show page, user will "pay" there.
     respond_to do |format|
+      # send email here
+      # OrderMailer.receipt(@order, @current_user_email).deliver_now
+      OrderMailer.receipt(@current_user).deliver
       if @order.save
         format.html { redirect_to @order, notice: "Order successfully created." }
         format.json { render :show, status: :created, location: @order }

@@ -8,14 +8,13 @@ class Order < ApplicationRecord
 
   # add the cart to the order item
   def add_cart(cart)
+    # build the order_item based on the current cart
     current_cart = order_items.find_by(cart_id: cart.id)
-
     if current_cart
       current_cart = order_items.build(cart_id: cart.id)
     else
       current_cart = order_items.build(cart_id: cart.id)
     end
-
     current_cart
   end
 

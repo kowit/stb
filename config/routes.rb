@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   # Master route for employees/admin
-  get "/stb" => "welcomes#show"
+  get "/employees" => "welcomes#show"
 
   # Devise route for Employees
   devise_for :employees, path: 'employees', controllers: {
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   # Routes for /employees
   # create employee_root_path
   # get "/employees" => "employees#index", as: :employee_root 
-  get "/stb" => "welcomes#show", as: :employee_root 
+  get "/employees" => "welcomes#show", as: :employee_root 
 
 	namespace :employees do
 		root 'employees#show' # creates user_root_path

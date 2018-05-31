@@ -1,41 +1,56 @@
 class Cart < ApplicationRecord
   has_many :line_items, dependent: :destroy
 
+  # before_destroy :not_referenced_by_any_order_item
+
   # An Id is not required
   belongs_to :order_items, optional: true
   belongs_to :users, optional: true
 
   # Need to pass in all the attribs from Item upwards
-  def add_item(item, current_user_id, item_price)
+  def add_item(item, current_user_id, item_price, item_name, type)
     current_item = line_items.find_by(price: item_price, 
                                       user_id: current_user_id, 
-                                      item_id: item.id)
+                                      item_id: item.id,
+                                      name: item_name,
+                                      item_type: type)
 
     # build the line item based on current item
     if current_item
       current_item = line_items.build(
         price: item_price,
         user_id: current_user_id,
-        item_id: item.id
+        item_id: item.id,
+        name: item_name,
+        item_type: type
       )
       self.update(user_id: current_user_id)
     else
       current_item = line_items.build(
         price: item_price,
         user_id: current_user_id,
-        item_id: item.id
+        item_id: item.id,
+        name: item_name,
+        item_type: type
       )
       self.update(user_id: current_user_id)
     end
 
-    current_item
-
     # if current_item
-    #   current_item.increment(:quantity)
+    #   # current_item.increment(:quantity)
     # else
     #   current_item = line_items.build(item_id: item.id)
     # end
+
+    current_item
   end
+
+  # def not_referenced_by_any_order_item
+  #   unless order_items.empty?
+  #     errors.add(:base, "Order items present")
+  #     throw :abort
+  #   end
+  # end
 
   STATE_TAX = 0.06
 

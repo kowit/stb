@@ -23,7 +23,7 @@ class OrderItemsController < ApplicationController
     # Find the cart id that is going to be added into the order_item
     @cart = Cart.find(params[:cart_id])
 
-    # add the @cart being passed as the param to the order_item
+    # create a new order item with the order and cart
     @order_item = @order.add_cart(@cart)
 
     respond_to do |format|
