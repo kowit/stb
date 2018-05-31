@@ -31,8 +31,8 @@ class OrderItemsController < ApplicationController
       # so the user can enter a name for the order
       if @order_item.save
         # format.html { redirect_to @order, notice: "Order successfully created." }
-        # format.html { redirect_to @order_item.order, notice: "Order successfully created." }
-        format.html { redirect_to new_order_path, notice: "Order successfully created." }
+        format.html { redirect_to @order_item.order, notice: "Order successfully created." }
+        # format.html { redirect_to new_order_path, notice: "Order successfully created." }
         format.json { render :show, status: :created, location: @order_item}
       else
         format.html { render :new }
