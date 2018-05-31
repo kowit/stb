@@ -1,5 +1,51 @@
 <%= render "layouts/navbar" %>
 
 <div class="global-wrapper">
-  <%= params.inspect %>
+  <strong>
+    <!-- Subtotal: <%#= number_to_currency(@cart.total_price) %> -->
+    Subtotal: <%= number_to_currency(@cart.total_price) %>
+  </strong>
+  <br />
+  <strong>
+    <!-- Sales Tax: <%#= number_to_currency(@cart.total_price * (sales_tax_florida), precision: 2) %> -->
+    Sales Tax: <%= number_to_currency(@cart.tax_on_price) %>
+  </strong>
+  <br />
+  <strong>
+    Total: <%= number_to_currency(@cart.total_price_with_tax) %>
+  </strong>
+  <br />
+  <br />
+
+  <%= form_for @order, url: {action: "create"} do |f| %>
+    <label class="label">Name for order:</label>
+    <%= f.text_field :name, class: "input", placeholder: "enter name" %>
+    <br />
+    <br />
+    <%= button_to "Create", class: "button is-large is-primary" %>
+  <% end %>
+
+  <br />
+
+  <!--
+  <%#= form_tag charges_path do %>
+    <article>
+      <%# if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%#= flash[:error] %></p>
+        </div>
+      <%# end %>
+      <!-- <span><%#= @cart.total_price %></span> -->
+      <!-- span>Amount: <%#= pretty_amount(@amount) %></span> -->
+      <!-- >
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" 
+            class="stripe-button"
+            data-key="<%#= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Signed in as"
+            data-amount="<%#= number_to_currency(@cart.total_price_with_tax) %>"
+            data-locale="auto">
+    </script> -->
+  <%# end %>
 </div>

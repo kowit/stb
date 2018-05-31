@@ -1,20 +1,18 @@
+1. Admin User Login Page for administrate /admin
+2. Program the Order and OrderItem functionality
+
 Useful Commands:
-
-
 pg_ctl -D /usr/local/var/postgres start/stop
-
-steps to undo db migration:
-
-rails db:migrate:down VERSION
-rails destroy model <insert_model_name>
 
 # ACTIVEADMIN
 https://activeadmin.info/documentation.html
 Register model to activeadmin
 $> rails generate active_admin:resource
 
-User: admin@example.com
-password: password
+One-to-one
+One-to-many
+Many-to-many
+Polymorphic one-to-many<Paste>
 
 #TODOS
 
@@ -113,3 +111,22 @@ Table #1
   (FK) employee_cart_id: nil,
   (FK) employee_line_item_id: nil,
   (FK) employee_id: nil
+
+
+-------------------------------------------------------------
+Orders
+attributes:
+number: id
+item_total:
+adjustment_total:
+total: the result of the sum of the item_total and adjustment_total
+payment_total
+shipment_total
+additional_tax_total: sum of all shipments' and line items' additional_tax
+included_tax_total: the sum of all shipments' and line items' included tax
+state:
+email: The email address for the user who placed this order. Stored in case this order is for a guest user.
+user_id: The ID for the corresponding user record for this order. Stored only if the order is placed by a signed-in user.
+completed_at: The timestamp of when the order was completed.
+payment_state: The current payment state of the order. For possible states, please see the Payments guide.
+item_count: The total value of line items’ quantity.

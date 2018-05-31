@@ -32,14 +32,18 @@ module ApplicationHelper
     return @cart.line_items.count >= 0
   end
 
-  def total_price_after_sales_tax
-    # subtotal = @cart.total_price * (@order.tax_amount)
-    subtotal = @cart.total_price * (7.0 / 100.0)
-    total_price = @cart.total_price + subtotal
-    total_price
-  end
-
-  def sales_tax_florida
+  def get_sales_tax
     TAX
   end
+
+  # def total_price_after_sales_tax
+  #   # subtotal = @cart.total_price * (@order.tax_amount)
+  #   subtotal = @cart.total_price * (7.0 / 100.0)
+  #   total_price = @cart.total_price + subtotal
+  #   total_price
+  # end
+
+  # def sales_tax_florida
+  #   TAX
+  # end
 end

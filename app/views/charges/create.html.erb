@@ -1,5 +1,6 @@
 <%= render "layouts/navbar" %>
-<h2>Thanks, you paid</h2>
+
+<h2>Thanks, you paid.</h2>
 <strong>
-  <%= number_to_currency(total_price_after_sales_tax) %>
-</strong>!
+  <%= number_to_currency(@cart.total_price_with_tax) %>
+</strong>

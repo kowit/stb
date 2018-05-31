@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
-  include CurrentOrder
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
+  # include CurrentOrder
+  # before_action :set_order, only: [:show, :edit, :update, :destroy]
   # before_action :authenticate_employee!
   # before_action :authenticate_user!
   # before_action :authenticate_with_token!
@@ -9,10 +11,12 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
 
-  # Show action is probably only relevant!
   def show
-    # @cart = Cart.find_by_id(session[:id])
-    # respond_with current_user.orders.find(params[:id])
+    # Find the current order by params id
+    @order = Order.find(params[:id])
+
+    # update the attribute with the current user's ID
+    @order.update_attribs(current_user.id, @cart.total, @cart.total_with_tax, @cart.tax)
   end
 
   def new
@@ -23,11 +27,11 @@ class OrdersController < ApplicationController
   end
 
   def create
-    # find the employee cart and cart ids
-    # @cart = Cart.find(params[:cart_id])
-    # @employee_cart = EmployeeCart.find(params[:employee_cart_id])
-
+    # Create the order
     @order = Order.new(order_params)
+
+    # update the attribute with the current user's ID
+    @order.update_attribs(current_user.id, @cart.total, @cart.total_with_tax, @cart.tax)
 
     # Once the order is save redirect to the orders #show page
     # on the order#show page, user will "pay" there.
@@ -45,7 +49,12 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:subtotal, :tax, :total, :status)
+    params.require(:order).permit(:name, :subtotal, :tax, :total, :status)
+  end
+
+  def invalid_order
+    logger.error "Attempt to access invalid order #{params[:id]}"
+    redirect_to root_path, notice: "That order doesn't exist"
   end
 
   # def set_order

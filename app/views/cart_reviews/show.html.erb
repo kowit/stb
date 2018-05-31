@@ -1,7 +1,6 @@
 <%= render "layouts/navbar" %>
 <div class="new-order-wrapper">
   <div class="global-wrapper">
-    <%= params.inspect %>
     <%# New order will be made based on the cart id params! %>
     <div class="card order-summary-card">
       <div class="card-content">
@@ -24,15 +23,17 @@
             </td>
             <td class="td-summary-price">
               <strong>
+                <!-- Subtotal: <%#= number_to_currency(@cart.total_price) %> -->
                 Subtotal: <%= number_to_currency(@cart.total_price) %>
               </strong>
               <br />
               <strong>
-                Sales Tax: <%= number_to_currency(@cart.total_price * (sales_tax_florida), precision: 2) %>
+                <!-- Sales Tax: <%#= number_to_currency(@cart.total_price * (sales_tax_florida), precision: 2) %> -->
+                Sales Tax: <%= number_to_currency(@cart.tax_on_price) %>
               </strong>
               <br />
               <strong>
-                Total: <%= number_to_currency(total_price_after_sales_tax) %>
+                Total: <%= number_to_currency(@cart.total_price_with_tax) %>
               </strong>
             </td>
           </tr>
@@ -54,11 +55,12 @@
     <div class="navbar-item">
       <div class="field is-grouped">
         <div class="column">
-          <%= link_to "Submit Order", new_order_item_path, class: "button is-medium is-primary" %>
-          <%#= link_to "Submit Order", order_items_path(cart_id: @cart), class: "button is-medium is-primary" %>
+          <%# passes in the cart id to the order_item %>
+          <%= button_to "Create Order", order_items_path(cart_id: @cart), class: "button is-medium is-primary" %>
+          <%#= link_to "Continue", new_order_path(cart_id: @cart), class: "button is-medium is-primary" %>
+          <%#= button_to "Submit Order", order_items_path(cart_id: @cart), class: "button is-medium is-primary" %>
         </div>
       </div>
     </div>
-  </div>
   </div>
 </nav>

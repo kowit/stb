@@ -1,29 +1,20 @@
 class OrderItem < ApplicationRecord
 
-  has_many :employee_carts
-  has_many :carts
+  belongs_to :cart
+  belongs_to :order
 
-  def add_cart_to_order_item(cart)
-    current_cart = carts.find_by(cart_id: cart.id)
+  # has_many :employee_carts
+  # has_many :carts
 
-    if current_cart
-      current_cart = order_item.build(cart_id: cart.id)
-    else
-      current_cart = order_item.build(cart_id: cart.id)
-    end
+  # def add_employee_cart_to_order_item(cart)
+  #   current_employee_cart = employee_carts.find_by(employee_cart_id: employee_cart.id)
 
-    current_cart
-  end
+  #   if current_employee_cart
+  #     current_employee_cart = order_item.build(employee_cart_id: employee_cart.id)
+  #   else
+  #     current_employee_cart = order_item.build(employee_cart_id: employee_cart.id)
+  #   end
 
-  def add_employee_cart_to_order_item(cart)
-    current_employee_cart = employee_carts.find_by(employee_cart_id: employee_cart.id)
-
-    if current_employee_cart
-      current_employee_cart = order_item.build(employee_cart_id: employee_cart.id)
-    else
-      current_employee_cart = order_item.build(employee_cart_id: employee_cart.id)
-    end
-
-    current_employee_cart
-  end
+  #   current_employee_cart
+  # end
 end

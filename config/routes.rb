@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :employee_line_items
     resources :line_items
 
+    resources :order_items
+
     root to: "employees#index"
   end
 

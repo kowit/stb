@@ -3,6 +3,9 @@
 <div class="global-wrapper">
   <div class="responsive-container">
     <div class="container is-responsive">
+      <% if signed_in? %>
+        <%= current_user.id %>
+      <% end %>
       <%# if signed_in? %>
       <!-- <button class="button normal is-outlined user-notification">-->
       <%#= fa_icon "user", class: "pull-left" %>
@@ -55,8 +58,8 @@
         <div class="is-center">
           <%#= button_to line_items_path(item_id: @item), class: "button is-primary is-large add-to-cart" do %>
             <%#= fa_icon "cart-plus", class: "text-muted" %>
-            <%# end %>
-            <%= button_to "Add item", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
+          <%# end %>
+          <%= button_to "Add item", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
         </div>
       </div>
     </div>

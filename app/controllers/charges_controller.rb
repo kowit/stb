@@ -6,6 +6,8 @@ class ChargesController < ApplicationController
   before_action :set_description
 
   def new
+    @user = current_user
+    @current_user_email = current_user.email
   end
 
   def create
@@ -14,21 +16,6 @@ class ChargesController < ApplicationController
     # @current_cart = Cart.find(cart_params)
     # @amount = @current_cart.total_price
     @amount = 500
-
-    # customer is the the current_user
-    # customer = Stripe::Customer.create(
-    #   :email => current_user.email,
-    #   :source => params[:stripeToken]
-    #   # :email => params[:stripeEmail],
-    #   # :source  => params[:stripeToken]
-    # )
-
-    # customer = Stripe::Charge.create(
-    #   :customer    => current_user.id,
-    #   :amount      => @amount,
-    #   :description => @description,
-    #   :currency    => 'usd'
-    # )
 
     # This will work!
   # customer = Stripe::Customer.create
@@ -44,19 +31,19 @@ class ChargesController < ApplicationController
   # })
   current_user.update_attributes :stripe_id => customer.id
 
-    # customer = Stripe::Customer.create(
-    #   :email => params[:stripeEmail],
-    #   :source  => params[:stripeToken]
-    # )
+  customer = Stripe::Customer.create(
+    :email => params[:stripeEmail],
+    :source  => params[:stripeToken]
+  )
 
-    # charge = Stripe::Charge.create(
-    #   :customer    => customer.id,
-    #   :amount      => @amount,
-    #   :description => 'Rails Stripe customer',
-    #   :currency    => 'usd'
-    # )
+  charge = Stripe::Charge.create(
+    :customer    => customer.id,
+    :amount      => @amount,
+    :description => 'Rails Stripe customer',
+    :currency    => 'usd'
+  )
 
-    # redirect_to thanks_path
+  # redirect_to thanks_path
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

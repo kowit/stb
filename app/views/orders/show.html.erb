@@ -1,0 +1,24 @@
+<nav class="navbar">
+  <%= link_to "Home", root_path %>
+</nav>
+<div class="global-wrapper">
+  <p id="notice"><%= notice %></p>
+  <div class="card">
+    <div class="card-content">
+      <div class="content">
+        <header class="card-header">
+          <h2 class="subtitle">Order Summary</h2>
+        </header>
+
+        <br />
+        <p><%= params.inspect %></p>
+        <br />
+        <strong>Name of order: <%= @order.name %></strong><br/>
+        <strong>Order number: <%= @order.id %></strong><br />
+        <strong>Order subtotal: <%= @order.subtotal %></strong><br />
+        <strong>Order tax: <%= number_to_currency(@order.tax, precision: 2) %></strong><br />
+        <strong>Order total: <%= number_to_currency(@order.total) %></strong><br />
+      </div>
+    </div>
+  </div>
+</div>

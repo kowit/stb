@@ -12,6 +12,7 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    @cart.update_cart_price_attributes(@cart.total_price, @cart.total_price_with_tax)
   end
 
   # GET /carts/new
@@ -26,7 +27,9 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
+    # Create new cart
     @cart = Cart.new(cart_params)
+    @cart.update_cart_price_attributes(@cart.total_price, @cart.total_price_with_tax)
 
     respond_to do |format|
       if @cart.save
@@ -68,18 +71,18 @@ class CartsController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cart
-      @cart = Cart.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cart
+    @cart = Cart.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def cart_params
-      params.fetch(:cart, {})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def cart_params
+    params.fetch(:cart, {})
+  end
 
-    def invalid_cart
-      logger.error "Attempt to access invalid cart #{params[:id]}"
-      redirect_to root_path, notice: "That cart doesn't exist"
-    end
+  def invalid_cart
+    logger.error "Attempt to access invalid cart #{params[:id]}"
+    redirect_to root_path, notice: "That cart doesn't exist"
+  end
 end
