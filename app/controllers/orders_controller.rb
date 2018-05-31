@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       # send email here
       # OrderMailer.receipt(@order, @current_user_email).deliver_now
-      OrderMailer.receipt(@current_user).deliver
+      OrderMailer.receipt.deliver_now
       if @order.save
         format.html { redirect_to @order, notice: "Order successfully created." }
         format.json { render :show, status: :created, location: @order }

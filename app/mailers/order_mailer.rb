@@ -5,7 +5,7 @@ class OrderMailer < ApplicationMailer
   #
   #   en.order_mailer.receipt.subject
   #
-  def receipt(user)
+  def receipt
     @greeting = "Hi"
     # order.order_items.map { |order_item| order_item.carts.map { |line_item| line_item.name }}
     # order.subtotal
@@ -13,6 +13,6 @@ class OrderMailer < ApplicationMailer
     # order.total
 
     # mail to: current_user_email
-    mail to: user.email, subject: "A Receipt", from: "info@mysite.com"
+    mail to: "codykarunas@gmail.com", subject: "A Receipt", from: "info@mysite.com"
   end
 end
