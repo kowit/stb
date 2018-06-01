@@ -28,10 +28,16 @@ class ItemsController < ApplicationController
   def edit
   end
 
+  def sort_by_item_type
+    render text: "Hello World"
+  end
+
   private
 
   def item_params
-    params.require(:item).permit(:name, :item_type, :price, :description, :image, :active)
+    params.require(:item).permit(:name, :item_type, 
+                                 :price, :description,
+                                 :image, :active)
   end
 
   def set_item

@@ -36,6 +36,14 @@ module ApplicationHelper
     TAX
   end
 
+  def print_item_names(order)
+    order.order_items.each do |order_item|
+      order_item.cart.line_items.each do |line_item|
+        return "<li><strong>#{line_item.name}</strong></li>".html_safe
+      end
+    end
+  end
+
   # def total_price_after_sales_tax
   #   # subtotal = @cart.total_price * (@order.tax_amount)
   #   subtotal = @cart.total_price * (7.0 / 100.0)

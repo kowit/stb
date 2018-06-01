@@ -1,0 +1,3 @@
+<%= render "layouts/employees_nav" %>
+<%= params.inspect %>
+<%= link_to "Delete", employee_order_path(@order), data: { confirm: "Are you sure?", method: "delete" } %>

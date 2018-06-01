@@ -1,67 +1,44 @@
 <%= render "layouts/employees_nav" %>
 
 <div class="orders-index-wrapper">
-  <div>
-    <div class="yellow-tape">
-      <em>Testing</em>
-    </div>
-    <%= params.inspect %>
-  </div>
-
   <h1 class="title">Orders</h1>
   <table style="100%" class="orders-index">
     <tr class="orders-title-row">
-      <td>Order ID</td>
-      <td>User ID</td>
-      <td>Subtotal</td>
-      <td>Tax</td>
-      <td>Total</td>
+      <td>Order No.</td>
+      <td>User No.</td>
+      <!-- <td>Subtotal</td> -->
+      <!-- <td>Tax</td> -->
+      <!-- <td>Total</td> -->
       <td>Created At</td>
-      <td>Updated At</td>
-      <td>COOK THIS</td>
+      <!-- <td>Updated At</td> -->
       <td>Status</td>
+      <td>Order Items</td>
     </tr>
     <% @orders.each do |order| %>
       <tr>
-        <td>
-          <%= order.id %>
-        </td>
-        <td>
-          <%= order.user_id %>
-        </td>
-        <td>
-          <%= number_to_currency(order.subtotal) %>
-        </td>
-        <td>
-          <%= number_to_currency(order.tax) %>
-        </td>
-        <td>
-          <%= number_to_currency(order.total) %>
-        </td>
-        <td>
-          <%= time_ago_in_words(order.created_at) %>
-        </td>
-        <td>
-          <%= time_ago_in_words(order.updated_at) %>
-        </td>
-        <td>
-          <%#= order.order_items.map { |oi| oi.cart.line_items.map { |li| li.item_type }  } %>
-          <% order.order_items.each do |order_item| %>
-            <% order_item.cart.line_items.each do |line_item| %>
-              <%= line_item.name %><br />
-            <% end %>
-          <% end %>
-          <%# order.order_items.map { |order_item| order_item.cart.line_items.map { |li| li.name } } %>
-        </td>
+        <!-- <td><%#= link_to order.id, employee_order_path(order) %></td> -->
+        <td><%= order.id %></td>
+        <td><%= order.user_id %></td>
+        <!-- <td><%#= number_to_currency(order.subtotal) %></td> -->
+        <!-- <td><%#= number_to_currency(order.tax) %></td> -->
+        <!-- <td><%#= number_to_currency(order.total) %></td> -->
+        <!-- <td><%#= time_ago_in_words(order.updated_at) %></td> -->
+        <td><%= time_ago_in_words(order.created_at) %></td>
         <td>
           <%# Temporary! %>
-          <select name="post[person_id]" id="post_person_id">
-            <option value="">None</option>
-            <option value="1" selected="selected">pending</option>
-            <option value="2">completed</option>
+          <select name="item[item_type]" id="item_type">
+            <option value="1" selected>Pending</option>
+            <option value="2">Completed</option>
           </select>
           <%#= "pending" %>
           <%#= order.status %>
+        </td>
+        <td>
+          <% order.order_items.each do |order_item| %>
+            <% order_item.cart.line_items.each do |line_item| %>
+              <li><strong><%= line_item.name %></strong></li>
+            <% end %>
+          <% end %>
         </td>
       </tr>
       <%#= order.employee_cart_id %>
@@ -70,4 +47,4 @@
   </table>
 </div>
 
-<%= render "layouts/employees_bottom_nav" %>
+<%#= render "layouts/employees_bottom_nav" %>

@@ -1,10 +1,10 @@
 class Cart < ApplicationRecord
+  # before_destroy :not_referenced_by_any_order_item
+  has_many :order_items
   has_many :line_items, dependent: :destroy
 
-  # before_destroy :not_referenced_by_any_order_item
-
   # An Id is not required
-  belongs_to :order_items, optional: true
+  # belongs_to :order_items, optional: true
   belongs_to :users, optional: true
 
   # Need to pass in all the attribs from Item upwards

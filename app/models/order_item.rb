@@ -1,7 +1,7 @@
 class OrderItem < ApplicationRecord
   # has_many :carts, dependent: :nullify
-  belongs_to :cart
   belongs_to :order
+  belongs_to :cart
 
   # has_many :employee_carts
   # has_many :carts

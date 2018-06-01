@@ -4,17 +4,27 @@ class Order < ApplicationRecord
   # belongs_to :user
 
   has_many :order_items, dependent: :destroy
-  belongs_to :users, optional: true
+  # belongs_to :order_items, optiona: true
+  belongs_to :user, optional: true
 
-  # add the cart to the order item
   def add_cart(cart)
     # build the order_item based on the current cart
-    current_cart = order_items.find_by(cart_id: cart.id)
+    current_cart = order_items.find_by(cart_id: cart.id,
+                                       subtotal: cart.total,
+                                       tax: cart.tax,
+                                       total: cart.total_with_tax)
     if current_cart
-      current_cart = order_items.build(cart_id: cart.id)
+      current_cart = order_items.build(cart_id: cart.id,
+                                       subtotal: cart.total,
+                                       tax: cart.tax,
+                                       total: cart.total_with_tax)
     else
-      current_cart = order_items.build(cart_id: cart.id)
+      current_cart = order_items.build(cart_id: cart.id,
+                                       subtotal: cart.total,
+                                       tax: cart.tax,
+                                       total: cart.total_with_tax)
     end
+
     current_cart
   end
 

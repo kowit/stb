@@ -12,19 +12,20 @@
 
 .orders-index-wrapper {
   margin: 0 auto;
-  max-width: 1260px;
+  max-width: 980px;
   font-size: 18px;
+  padding-left: 60px;
 
   table {
-    border: 1px solid #eee;
+    border: 1px solid #b3b3b3;
 
     tr {
-      border: 1px solid #eee;
+      border: 1px solid #b3b3b3;
     }
 
     td {
       padding: 5px 10px 5px 10px;
-      border: 1px solid #eee;
+      border: 1px solid #b3b3b3;
     }
   }
 

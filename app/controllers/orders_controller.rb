@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
   def show
     # Find the current order by params id
     @order = Order.find(params[:id])
-
     # update the attribute with the current user's ID
     @order.update_attribs(current_user.id,
                           @cart.total,
@@ -45,10 +44,13 @@ class OrdersController < ApplicationController
     # Once the order is save redirect to the orders #show page
     # on the order#show page, user will "pay" there.
     respond_to do |format|
-      # send email here
-      # OrderMailer.receipt(@order, @current_user_email).deliver_now
-      OrderMailer.receipt.deliver_now
+
+
+      # If the order is saved successfully
       if @order.save
+        # OrderMailer.receipt(@order, @current_user_email).deliver_now
+        OrderMailer.receipt(@current_user).deliver_now
+
         format.html { redirect_to @order, notice: "Order successfully created." }
         format.json { render :show, status: :created, location: @order }
       else
@@ -56,6 +58,22 @@ class OrdersController < ApplicationController
         format.json { render json: @orders.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def destroy
+    # @order.destroy if @order == session[:order_id]
+    @order = Order.find(params[:id])
+
+    @order.destroy
+    respond_to do |format|
+      format.html { redirect_to orders_path, notice: "Order was successfuly done." }
+      format.json { head :no_content }
+    end
+
+  end
+
+  def employee_order
+    @order = Order.find(params[:id])
   end
 
   private
