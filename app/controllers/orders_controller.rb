@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
 
   def index
-    @orders = Order.all
+    @orders = Order.order("created_at DESC")
   end
 
   def show
@@ -13,11 +13,8 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     # update the attribute with the current user's ID
     @pending_status = "pending"
-    @order.update_attribs(current_user.id,
-                          @cart.total,
-                          @cart.total_with_tax,
-                          @cart.tax,
-                          @order_status)
+    @order.update_attribs(current_user.id, @cart.total,
+                          @cart.total_with_tax, @cart.tax, @order_status)
 
   end
 
@@ -88,12 +85,4 @@ class OrdersController < ApplicationController
     logger.error "Attempt to access invalid order #{params[:id]}"
     redirect_to root_path, notice: "That order doesn't exist"
   end
-
-  # def set_order
-  #   @order = Order.find(params[:id])
-  # end
-
-  # def cart_params
-  #   params.fetch(:cart, {})
-  # end
 end

@@ -33,12 +33,9 @@ class Order < ApplicationRecord
   end
 
   # update the Order's attributes
-  def update_attribs(current_user_id, cart_subtotal, 
-                     cart_total, cart_tax, order_status)
-    self.update(tax: cart_tax,
-                user_id: current_user_id,
-                subtotal: cart_subtotal,
-                total: cart_total,
+  def update_attribs(current_user_id, cart_subtotal, cart_total, cart_tax, order_status)
+    self.update(tax: cart_tax, user_id: current_user_id,
+                subtotal: cart_subtotal, total: cart_total,
                 status: order_status)
   end
 
