@@ -1,5 +1,6 @@
 <div class="tabs is-centered employees-nav">
   <ul>
+    <li><div id="notice"><%= notice %></div></li>
     <% if employee_signed_in? %>
       <li>
         <span class="signed-in-as-container">
@@ -12,4 +13,5 @@
     <!-- <li><%#= link_to "EmployeeDash", dashboard_path %> -->
     <li><%= link_to "Orders", orders_path %></li>
   </ul>
+
 </div>

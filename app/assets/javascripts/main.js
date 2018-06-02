@@ -1,6 +1,4 @@
-// $(document).ready(function() {
-
-  // var itemType = document.getElementById('order_status');
+// var itemType = document.getElementById('order_status');
   // console.log(itemType);
 
   // // gets pending first element in selected array
@@ -38,5 +36,3 @@
   // }
 
   // console.log(employeeItemNames);
-// });
-

@@ -1,4 +1,19 @@
 <%= render "layouts/employees_nav" %>
+
+<!--
+<div class="container">
+  <%#= form_for @order do |f| %>
+    <label class="label">Order No. <%%= params[:id] %> Status</label>
+    <div class="column auto">
+      <%#= f.text_field :status, class: "input" %>
+    </div>
+    <%#= select_tag(@order, '<option value="1">Pending</option>') %>
+    <%#= select_tag(@order, options_for_select([["Pending", 1], ["Completed", 2]])) %>
+    <%#= f.submit "Submit", class: "button is-warning" %>
+  <%# end %>
+</div>
+-->
+
 <div class="orders-index-wrapper">
 	<div class="grid">
 		<% @orders.each do |order| %>
@@ -9,7 +24,17 @@
               <%= order.status %>
             </span>
             <header class="card-header">
-              <%= link_to "Change Status", edit_order_path(order), class: "button is-primary edit-order-status-btn" %>
+              <%= form_for order do |f| %>
+                <span>
+                  <%= f.text_field :status, class: "input order-status-input-field" %>
+                </span>
+                <span>
+                  <%= f.submit "Submit", class: "button is-success is-medium" %>
+                </span>
+                <%#= select_tag(@order, '<option value="1">Pending</option>') %>
+                <%#= select_tag(@order, options_for_select([["Pending", 1], ["Completed", 2]])) %>
+              <% end %>
+              <br />
             </header>
 
             <div class="card-content">
@@ -31,8 +56,11 @@
                 <div class="columns is-multiline">
                   <% order.order_items.each do |order_item| %>
                     <% order_item.cart.line_items.each do |line_item| %>
-                      <div class="column auto line-item-name-col">
+                      <div class="column is-half line-item-name kitchen-line-item-name">
                         <%= line_item.name %>
+                      </div>
+                      <div class="column is-half line-item-price kitchen-line-item-price">
+                        <%= line_item.price %>
                       </div>
                     <% end %>
                   <% end %>
@@ -45,6 +73,3 @@
 	<% end %>
 	</div>
 </div>
-
-
-<%#= render "layouts/employees_bottom_nav" %>

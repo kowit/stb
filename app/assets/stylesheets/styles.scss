@@ -1,11 +1,35 @@
 /* styles.scss */
 
+.edit-order-status-btn {
+  width: 100%;
+}
+
+.order-status-input-field {
+  height: 45px;
+  font-size: 20px;
+  width: 260px;
+}
+
+.order-status-notice {
+  width: 100%;
+}
+
+.order-status-notice-header {
+  @extend .order-status-notice;
+  font-size: 24px;
+  font-weight: bold;
+}
+
 .kitchen-line-item-name {
   border-bottom: 1px solid #eee;
 }
 
 .kitchen-line-item-price {
   border-bottom: 1px solid #eee;
+}
+
+.line-item-name-col {
+  border: 1px solid #eee;
 }
 
 .line-item-name {

@@ -23,6 +23,27 @@ class OrdersController < ApplicationController
   end
 
   def edit
+    @orders = Order.order("created_at DESC")
+    @order = Order.find(params[:id])
+
+    if @order.status == "completed"
+      @order.destroy
+      respond_to do |format|
+        format.html { redirect_to orders_path, notice: "Order was successfuly completed." }
+        format.json { head :no_content }
+      end
+    end
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    if @order.update_attributes(order_params)
+      flash[:notice] = "Order Status Updated"
+      # redirect_to edit_order_path
+      redirect_to orders_path
+    else
+      render "edit"
+    end
   end
 
   def create
@@ -52,8 +73,8 @@ class OrdersController < ApplicationController
       if @order.save
         # format.html { redirect_to @order, notice: "Order successfully created." }
         # format.json { render :show, status: :created, location: @order }
-        format.html { redirect_to order_summary(@order), notice: "Order successfully created." }
-        format.json { render :order_summary, status: :created, location: order_summary(@order) }
+        format.html { redirect_to order_summary, notice: "Order successfully created." }
+        format.json { render :order_summary, status: :created, location: order_summary }
       else
         format.html { render cart_path }
         format.json { render json: @orders.errors, status: :unprocessable_entity }
@@ -82,7 +103,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     # update the attribute with the current user's ID
     @pending_status = "pending"
-    @order.update_attribs(current_user.id, @cart.total, @cart.total_with_tax, @cart.tax, @order_status)
+    # @order.update_attribs(current_user.id, @cart.total, @cart.total_with_tax, @cart.tax, @order_status)
   end
 
   private
