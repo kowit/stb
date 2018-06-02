@@ -1,7 +1,6 @@
 class OrderItemsController < ApplicationController
   # include the current based on session id
   include CurrentOrder
-  # include CurrentCart
   before_action :authenticate_user!
   before_action :set_order_item, only: [:show, :edit, :update, :destroy]
   before_action :set_order, only: [:create]

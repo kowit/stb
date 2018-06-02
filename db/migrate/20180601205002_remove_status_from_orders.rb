@@ -1,5 +1,5 @@
 class RemoveStatusFromOrders < ActiveRecord::Migration[5.1]
   def change
-    remove_column :orders, :status, :string
+    remove_column :orders, :status, :boolean
   end
 end

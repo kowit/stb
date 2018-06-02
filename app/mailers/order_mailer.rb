@@ -14,6 +14,6 @@ class OrderMailer < ApplicationMailer
     @user = user
 
     # mail to: current_user_email
-    mail to: @user.email, subject: "Test Receipt."
+    mail to: user.email, subject: "Test Receipt."
   end
 end

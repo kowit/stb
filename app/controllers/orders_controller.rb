@@ -1,12 +1,8 @@
 class OrdersController < ApplicationController
+  include CurrentCart
+
   skip_before_action :verify_authenticity_token
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
-
-  # include CurrentOrder
-  # before_action :set_order, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_employee!
-  # before_action :authenticate_user!
-  # before_action :authenticate_with_token!
 
   def index
     @orders = Order.all
@@ -16,10 +12,13 @@ class OrdersController < ApplicationController
     # Find the current order by params id
     @order = Order.find(params[:id])
     # update the attribute with the current user's ID
+    @pending_status = "pending"
     @order.update_attribs(current_user.id,
                           @cart.total,
                           @cart.total_with_tax,
-                          @cart.tax)
+                          @cart.tax,
+                          @order_status)
+
   end
 
   def new
@@ -33,24 +32,27 @@ class OrdersController < ApplicationController
     # Create the order
     @order = Order.new(order_params)
 
+    @current_user = current_user
+    @pending_status = "pending"
+
     # update the attribute with the current user's ID
     @order.update_attribs(current_user.id,
                           @cart.total,
                           @cart.total_with_tax,
-                          @cart.tax)
+                          @cart.tax,
+                          @pending_status)
 
-    @current_user = current_user
+    # TODO: update the cart's order_id attribute
+    # order29.order_items.map { |order_item| order_item.cart.order_id }
+    # order_35.order_items.map { |oi| oi.cart.order_id = order_35.id }
+    @current_order_id = @order.id
+    @order.update_cart_order_attribute(@current_order_id)
 
     # Once the order is save redirect to the orders #show page
     # on the order#show page, user will "pay" there.
     respond_to do |format|
-
-
       # If the order is saved successfully
       if @order.save
-        # OrderMailer.receipt(@order, @current_user_email).deliver_now
-        OrderMailer.receipt(@current_user).deliver_now
-
         format.html { redirect_to @order, notice: "Order successfully created." }
         format.json { render :show, status: :created, location: @order }
       else
@@ -93,9 +95,5 @@ class OrdersController < ApplicationController
 
   # def cart_params
   #   params.fetch(:cart, {})
-  # end
-
-  # def order_params
-  #     params.require(:order).permit(:product_ids => [])
   # end
 end

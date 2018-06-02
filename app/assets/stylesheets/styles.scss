@@ -1,5 +1,27 @@
 /* styles.scss */
 
+.kitchen-line-item-name {
+  border-bottom: 1px solid #eee;
+}
+
+.kitchen-line-item-price {
+  border-bottom: 1px solid #eee;
+}
+
+.line-item-name {
+  text-align: left;
+  font-family: Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.line-item-price {
+  text-align: right;
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .yellow-tape {
   background-color: #FFFF7F;
   color: black;
@@ -12,9 +34,9 @@
 
 .orders-index-wrapper {
   margin: 0 auto;
-  max-width: 980px;
+  font-family: Helvetica, sans-serif;
   font-size: 18px;
-  padding-left: 60px;
+  padding-left: 40px;
 
   table {
     border: 1px solid #b3b3b3;

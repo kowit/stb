@@ -2,7 +2,13 @@
 2. Program the Order and OrderItem functionality
 
 TODOS:
-Get orderstatuses association working.
+
+**** Need to find a way to delete the cart after its been added to the order
+  Find out when the order is being saved.
+  Right after the order is saved, delete the cart!
+
+*** Need to figure out why action mailer isnt working
+
 
 Useful Commands:
 pg_ctl -D /usr/local/var/postgres start/stop

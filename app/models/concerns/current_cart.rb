@@ -6,5 +6,10 @@ module CurrentCart
   rescue ActiveRecord::RecordNotFound
     @cart = Cart.create
     session[:cart_id] = @cart.id
+
+    if @cart.order_id.is_a?(Integer)
+      @cart = Cart.create
+      session[:cart_id] = @cart.id
+    end
   end
 end

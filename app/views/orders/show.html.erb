@@ -1,6 +1,4 @@
-<nav class="navbar">
-  <%= link_to "Home", root_path %>
-</nav>
+<%= render "layouts/order_summary_navbar" %>
 <div class="global-wrapper">
   <p id="notice"><%= notice %></p>
   <div class="card">
@@ -8,16 +6,39 @@
       <div class="content">
         <header class="card-header">
           <h2 class="subtitle">Order Summary</h2>
+	  <p><%= @current_sessions_cart_id %>
         </header>
 
-        <br />
-        <p><%= params.inspect %></p>
-        <br />
-        <strong>Name of order: <%= @order.name %></strong><br/>
-        <strong>Order number: <%= @order.id %></strong><br />
-        <strong>Order subtotal: <%= @order.subtotal %></strong><br />
-        <strong>Order tax: <%= number_to_currency(@order.tax, precision: 2) %></strong><br />
-        <strong>Order total: <%= number_to_currency(@order.total) %></strong><br />
+        <br/>
+
+        <div class="columns is-multiline is-responsive">
+          <% @order.order_items.each do |order_item| %>
+            <% order_item.cart.line_items.each do |line_item| %>
+              <div class="column is-half line-item-name">
+                <%= line_item.name %>
+              </div>
+              <div class="column is-half line-item-price">
+                <%= number_to_currency(line_item.price) %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <hr />
+
+        <div class="columns is-multiline is-responsive">
+          <div class="column is-half line-item-name">
+            <strong>Order number:</strong><br />
+            <strong>Order subtotal:</strong><br />
+            <strong>Order tax: </strong><br />
+            <strong>Order total:</strong>
+          </div>
+          <div class="column is-half line-item-price">
+            <%= @order.id %><br />
+            <%= @order.subtotal %><br />
+            <%= number_to_currency(@order.tax, precision: 2) %><br />
+            <%= number_to_currency(@order.total) %>
+          </div>
       </div>
     </div>
   </div>

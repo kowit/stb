@@ -1,0 +1,55 @@
+<!-- navbar -->
+<nav class="navbar is-transparent is-fixed-top top-nav">
+
+  <div class="navbar-brand">
+    <h1 class="title">
+      <%= link_to "Spill the Beans", root_path, class: "navbar-item" %>
+    </h1>
+  </div>
+
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="field is-grouped">
+        <% if signed_in? %>
+          <p class="control">
+            <span>
+              <%= link_to "Menu", items_path, class: "button is-large is-primary" %>
+            </span>
+          </p>
+          <p class="control">
+            <span>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "button is-large is-primary" %>
+            </span>
+          </p>
+        <% else %>
+          <% if cart_has_items %>
+            <p class="control">
+              <span>
+                <%= link_to cart_path(@cart), class: "button is-info is-large" do %>
+                  <%= fa_icon "shopping-cart", class: "pull-left text-muted shopping-cart-icon" %>
+                  <%= cart_count_over_one %>
+              <% end %>
+              </span>
+            </p>
+          <% end %>
+          <p class="control">
+            <span>
+              <%= link_to "Menu", items_path, class: "button is-large is-primary" %>
+            </span>
+          </p>
+          <p class="control">
+            <span>
+              <%= link_to "Sign in", new_user_session_path, class: "button is-large is-primary" %>
+            </span>
+          </p>
+          <p class="control">
+            <span>
+              <%= link_to "Sign up", new_user_registration_path, class: "button is-large is-primary" %>
+            </span>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</nav>

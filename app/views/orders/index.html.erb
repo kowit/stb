@@ -1,50 +1,57 @@
 <%= render "layouts/employees_nav" %>
 
 <div class="orders-index-wrapper">
-  <h1 class="title">Orders</h1>
-  <table style="100%" class="orders-index">
-    <tr class="orders-title-row">
-      <td>Order No.</td>
-      <td>User No.</td>
-      <!-- <td>Subtotal</td> -->
-      <!-- <td>Tax</td> -->
-      <!-- <td>Total</td> -->
-      <td>Created At</td>
-      <!-- <td>Updated At</td> -->
-      <td>Status</td>
-      <td>Order Items</td>
-    </tr>
-    <% @orders.each do |order| %>
-      <tr>
-        <!-- <td><%#= link_to order.id, employee_order_path(order) %></td> -->
-        <td><%= order.id %></td>
-        <td><%= order.user_id %></td>
-        <!-- <td><%#= number_to_currency(order.subtotal) %></td> -->
-        <!-- <td><%#= number_to_currency(order.tax) %></td> -->
-        <!-- <td><%#= number_to_currency(order.total) %></td> -->
-        <!-- <td><%#= time_ago_in_words(order.updated_at) %></td> -->
-        <td><%= time_ago_in_words(order.created_at) %></td>
-        <td>
-          <%# Temporary! %>
-          <select name="item[item_type]" id="item_type">
-            <option value="1" selected>Pending</option>
-            <option value="2">Completed</option>
-          </select>
-          <%#= "pending" %>
-          <%#= order.status %>
-        </td>
-        <td>
-          <% order.order_items.each do |order_item| %>
-            <% order_item.cart.line_items.each do |line_item| %>
-              <li><strong><%= line_item.name %></strong></li>
-            <% end %>
-          <% end %>
-        </td>
-      </tr>
-      <%#= order.employee_cart_id %>
-      <%#= order.cart_id %>
-    <% end %>
-  </table>
+	<h1 class="title">Orders</h1>
+	<div class="grid">
+		<% @orders.each do |order| %>
+			<div class="kitchen-cell">
+				<div class="card kitchen-orders">
+					<%= div_for(order, class: "order") do %>
+						<div class="field">
+							<div class="control">
+								<div class="select">
+									<select name="order_status" id="order_status">
+										<option value="1" selected>Pending</option>
+										<option value="2">Completed</option>
+									</select>
+								</div>
+							</div>
+						</div>
+            <div class="card-content">
+              <div class="content">
+                <!-- <td><%#= link_to order.id, employee_order_path(order) %></td> -->
+                <span class="tag is-warning is-medium">
+                  Order No. <%= order.id %>
+                </span>
+                <span class="tag is-primary is-medium">
+                  User No. <%= order.user_id %>
+                </span>
+                <span class="tag is-danger is-medium">
+                  <%= time_ago_in_words(order.created_at) %>
+                </span>
+              </div>
+            </div>
+						<div class="card-content">
+							<div class="content">
+                <div class="columns is-multiline">
+                  <% order.order_items.each do |order_item| %>
+                    <% order_item.cart.line_items.each do |line_item| %>
+                      <div class="column is-half line-item-name kitchen-line-item-name">
+                        <%= line_item.name %>
+                      </div>
+                      <div class="column is-half line-item-price kitchen-line-item-price">
+                        <%= line_item.price %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+							</div>
+						</div>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+	</div>
 </div>
 
 <%#= render "layouts/employees_bottom_nav" %>

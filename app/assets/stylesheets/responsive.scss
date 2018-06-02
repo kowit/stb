@@ -16,6 +16,11 @@
 
 // Desktop
 @media screen and (min-width: 1000px) {
+  .kitchen-cell {
+    width: calc(26% - 2rem);
+    padding: 5px;
+  }
+
   .cell {
     // 4 items per row
     width: calc(26% - 2rem);

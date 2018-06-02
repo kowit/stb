@@ -4,35 +4,42 @@ class Order < ApplicationRecord
   # belongs_to :user
 
   has_many :order_items, dependent: :destroy
-  # belongs_to :order_items, optiona: true
+  # belongs_to :order_items, optional: true
   belongs_to :user, optional: true
 
   def add_cart(cart)
-    # build the order_item based on the current cart
-    current_cart = order_items.find_by(cart_id: cart.id,
+    # Build the order item
+    current_order = order_items.find_by(cart_id: cart.id,
                                        subtotal: cart.total,
                                        tax: cart.tax,
                                        total: cart.total_with_tax)
-    if current_cart
-      current_cart = order_items.build(cart_id: cart.id,
+    if current_order
+      current_order = order_items.build(cart_id: cart.id,
                                        subtotal: cart.total,
                                        tax: cart.tax,
                                        total: cart.total_with_tax)
     else
-      current_cart = order_items.build(cart_id: cart.id,
+      current_order = order_items.build(cart_id: cart.id,
                                        subtotal: cart.total,
                                        tax: cart.tax,
                                        total: cart.total_with_tax)
     end
 
-    current_cart
+    current_order
   end
 
-  def update_attribs(current_user_id, cart_subtotal, cart_total, cart_tax)
+  def update_cart_order_attribute
+    self.order_items.map { |oi| oi.cart.update(order_id: self.id) }
+  end
+
+  # update the Order's attributes
+  def update_attribs(current_user_id, cart_subtotal, 
+                     cart_total, cart_tax, order_status)
     self.update(tax: cart_tax,
                 user_id: current_user_id,
                 subtotal: cart_subtotal,
-                total: cart_total)
+                total: cart_total,
+                status: order_status)
   end
 
 
