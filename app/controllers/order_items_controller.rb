@@ -1,11 +1,10 @@
 class OrderItemsController < ApplicationController
   # include the current based on session id
   include CurrentOrder
+
   before_action :authenticate_user!
   before_action :set_order_item, only: [:show, :edit, :update, :destroy]
   before_action :set_order, only: [:create]
-  # before_action :set_cart, only: [:create]
-  # before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
   def index
     @order_items = OrderItem.all
@@ -42,10 +41,6 @@ class OrderItemsController < ApplicationController
   end
 
   private
-
-  # def set_cart
-  #   @cart = Cart.find(params[:cart_id])
-  # end
   
   def set_order_item
     params.require(:order_item).permit(:cart_id, :order_id)

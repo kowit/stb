@@ -1,4 +1,7 @@
+<%# Orders#order_summary %>
+
 <%= render "layouts/order_summary_navbar" %>
+
 <div class="global-wrapper">
   <p id="notice"><%= notice %></p>
   <div class="card">
@@ -6,7 +9,7 @@
       <div class="content">
         <header class="card-header">
           <h2 class="subtitle">Order Summary</h2>
-	  <p><%= @current_sessions_cart_id %>
+          <p><%= @current_sessions_cart_id %>
         </header>
 
         <br/>
@@ -39,7 +42,7 @@
             <%= number_to_currency(@order.tax, precision: 2) %><br />
             <%= number_to_currency(@order.total) %>
           </div>
+        </div>
       </div>
     </div>
   </div>
-</div>

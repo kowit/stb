@@ -7,4 +7,5 @@ module CurrentOrder
     @order = Order.create
     session[:order_id] = @order.id
   end
+
 end

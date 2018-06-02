@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   include CurrentCart
 
   skip_before_action :verify_authenticity_token
+
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
 
   def index
@@ -11,11 +12,10 @@ class OrdersController < ApplicationController
   def show
     # Find the current order by params id
     @order = Order.find(params[:id])
+
     # update the attribute with the current user's ID
     @pending_status = "pending"
-    @order.update_attribs(current_user.id, @cart.total,
-                          @cart.total_with_tax, @cart.tax, @order_status)
-
+    @order.update_attribs(current_user.id, @cart.total, @cart.total_with_tax, @cart.tax, @order_status)
   end
 
   def new
@@ -50,8 +50,10 @@ class OrdersController < ApplicationController
     respond_to do |format|
       # If the order is saved successfully
       if @order.save
-        format.html { redirect_to @order, notice: "Order successfully created." }
-        format.json { render :show, status: :created, location: @order }
+        # format.html { redirect_to @order, notice: "Order successfully created." }
+        # format.json { render :show, status: :created, location: @order }
+        format.html { redirect_to order_summary(@order), notice: "Order successfully created." }
+        format.json { render :order_summary, status: :created, location: order_summary(@order) }
       else
         format.html { render cart_path }
         format.json { render json: @orders.errors, status: :unprocessable_entity }
@@ -73,6 +75,14 @@ class OrdersController < ApplicationController
 
   def employee_order
     @order = Order.find(params[:id])
+  end
+
+  def order_summary
+    # Find the current order by params id
+    @order = Order.find(params[:id])
+    # update the attribute with the current user's ID
+    @pending_status = "pending"
+    @order.update_attribs(current_user.id, @cart.total, @cart.total_with_tax, @cart.tax, @order_status)
   end
 
   private

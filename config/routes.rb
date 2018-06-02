@@ -33,7 +33,6 @@ Rails.application.routes.draw do
 		root 'employees#show' # creates user_root_path
 	end
 
-
   # Routes for ActiveAdmin
   # devise_for :admin_users, ActiveAdmin::Devise.config
 
@@ -56,6 +55,9 @@ Rails.application.routes.draw do
   end
 
   # get '/orders', to: 'orders#employee_order', as: 'employee_order'
+
+  get "/orders/:id" => "orders#order_summary"
+  get "/order_dashboard" => "orders#order_dashboard"
 
   root to: "items#index"
 

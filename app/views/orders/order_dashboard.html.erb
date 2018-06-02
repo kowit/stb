@@ -1,3 +1,5 @@
+<%# Order#order_dashboard %>
+
 <%= render "layouts/employees_nav" %>
 
 <div class="orders-index-wrapper">
@@ -9,11 +11,15 @@
 					<%= div_for(order, class: "order") do %>
 						<div class="field">
 							<div class="control">
-                <div class="select">
-                  <%= select_tag "order-status", options_for_select(['pending', 'completed']), :onchange => 'onChangeFunc()' %>
-                </div>
+								<div class="select">
+									<select name="order_status" id="order_status">
+										<option value="1" selected>Pending</option>
+										<option value="2">Completed</option>
+									</select>
+								</div>
 							</div>
 						</div>
+            <%= link_to 'Delete',  order,  method: :delete, data: { confirm: 'Are you sure?' } %>
             <div class="card-content">
               <div class="content">
                 <!-- <td><%#= link_to order.id, employee_order_path(order) %></td> -->
@@ -50,22 +56,5 @@
 	<% end %>
 	</div>
 </div>
-
-<script>
-  function onChangeFunc() {
-    // var orderStatus = document.getElementById("order-status").options[document.getElementById("order-status").selectedIndex].value;
-    var orderStatus = document.getElementById("order-status");
-    // console.log(orderStatus.options[orderStatus.selectedIndex]);
-    console.log(orderStatus.options[orderStatus.selectedIndex].value);
-
-    if (orderStatus === "completed") {
-      // Hides the current div
-      var orderId = document.getElementById("order_10");
-      orderId.setAttribute("style", "display: none;");
-      console.log(orderId);
-    }
-  }
-
-</script>
 
 <%#= render "layouts/employees_bottom_nav" %>
