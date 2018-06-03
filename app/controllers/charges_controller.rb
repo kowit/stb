@@ -23,27 +23,27 @@ class ChargesController < ApplicationController
 
   # TODO: Have to get order from current_user
   customer = Stripe::Customer.create
-  # charge = Stripe::Charge.create({
-  #   amount: current_user.orders.total,
-  #   currency: 'usd',
-  #   source: 'tok_visa',
-  #   receipt_email: current_user.email
-  # })
+  charge = Stripe::Charge.create({
+    amount: current_user.orders.total,
+    currency: 'usd',
+    source: 'tok_visa',
+    receipt_email: current_user.email
+  })
   current_user.update_attributes :stripe_id => customer.id
 
   customer = Stripe::Customer.create(
     :email => params[:stripeEmail],
     :source  => params[:stripeToken]
-  )
+  ) 
 
-  charge = Stripe::Charge.create(
-    :customer    => customer.id,
-    :amount      => @amount,
-    :description => 'Rails Stripe customer',
-    :currency    => 'usd'
-  )
+  # charge = Stripe::Charge.create(
+  #   :customer    => customer.id,
+  #   :amount      => @amount,
+  #   :description => 'Rails Stripe customer',
+  #   :currency    => 'usd'
+  # )
 
-  # redirect_to thanks_path
+  redirect_to thanks_path
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

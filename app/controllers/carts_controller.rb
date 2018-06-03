@@ -12,6 +12,7 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    @cart = Cart.find(params[:id])
     @cart.update_cart_price_attributes(@cart.total_price, @cart.total_price_with_tax)
   end
 
