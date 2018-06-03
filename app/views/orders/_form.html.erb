@@ -56,11 +56,8 @@
                 <div class="columns is-multiline">
                   <% order.order_items.each do |order_item| %>
                     <% order_item.cart.line_items.each do |line_item| %>
-                      <div class="column is-half line-item-name kitchen-line-item-name">
+                      <div class="column auto line-item-name-col">
                         <%= line_item.name %>
-                      </div>
-                      <div class="column is-half line-item-price kitchen-line-item-price">
-                        <%= line_item.price %>
                       </div>
                     <% end %>
                   <% end %>
