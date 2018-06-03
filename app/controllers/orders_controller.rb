@@ -103,7 +103,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     # update the attribute with the current user's ID
     @pending_status = "pending"
-    # @order.update_attribs(current_user.id, @cart.total, @cart.total_with_tax, @cart.tax, @order_status)
+    @order.update_attribs(current_user.id, @cart.total, @cart.total_with_tax, @cart.tax)
   end
 
   private
