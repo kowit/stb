@@ -1,15 +1,25 @@
 1. Admin User Login Page for administrate /admin
 2. Program the Order and OrderItem functionality
 
-TODOS:
+============================================================
+CONCERNS:
 
-1. Build a P.O.S. System for a Restaurant with self-service. This system will simulate a restaurant ordering system in that it will 
+1. Build a P.O.S. System for a Restaurant with self-service. This system will
+simulate a restaurant ordering system in that it will 
+
   [DONE] 1) place an order containing several food items, 
   [DONE] 2) send messages to different terminals telling workers what to make, 
-  3) allow workers to indicate that the food is done, 
-  4) checkoff that the order is assembled and delivered and 
+  [DONE] 3) allow workers to indicate that the food is done, 
+  [DONE] 4) checkoff that the order is assembled and delivered and 
   [DONE] 5) allow the customer to serve themselves from a kiosk or app
 
+FEATURES:
+  (?) 1) Payment system with Stripe
+  (?) 2) LineItem pending/completed
+  (?) 3) Email receipt to current user's E-mail address
+  (?) 4) Employee Orders
+  (?) 5) LineItem options: [small, medium, large], [hot, cold]
+============================================================
 
 Nested Routes
  
@@ -21,8 +31,6 @@ Nested Routes
   4) checkoff that the order is assembled and delivered and 
     OrderStatus
       Assembeled and Delivered
-
-
 
 LineItem
   id: 6,
