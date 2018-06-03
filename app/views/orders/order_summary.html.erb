@@ -38,7 +38,7 @@
           </div>
           <div class="column is-half line-item-price">
             <%= @order.id %><br />
-            <%= @order.subtotal %><br />
+            <%= number_to_currency(@order.subtotal) %><br />
             <%= number_to_currency(@order.tax, precision: 2) %><br />
             <%= number_to_currency(@order.total) %>
           </div>
