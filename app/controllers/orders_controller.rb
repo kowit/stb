@@ -41,6 +41,7 @@ class OrdersController < ApplicationController
       flash[:notice] = "Order Status Updated"
       # redirect_to edit_order_path
       redirect_to orders_path
+      @order.destroy
     else
       render "edit"
     end
@@ -57,8 +58,7 @@ class OrdersController < ApplicationController
     @order.update_attribs(current_user.id,
                           @cart.total,
                           @cart.total_with_tax,
-                          @cart.tax,
-                          @pending_status)
+                          @cart.tax)
 
     # TODO: update the cart's order_id attribute
     # order29.order_items.map { |order_item| order_item.cart.order_id }

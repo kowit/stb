@@ -33,13 +33,16 @@ class Order < ApplicationRecord
   end
 
   # update the Order's attributes
-  def update_attribs(current_user_id, cart_subtotal, cart_total, cart_tax, order_status)
+  def update_attribs(current_user_id, cart_subtotal, cart_total, cart_tax)
 
     self.update(tax: cart_tax, user_id: current_user_id,
                 subtotal: cart_subtotal, total: cart_total,
-                status: order_status)
+                status: "pending")
   end
 
+  def set_status_to_pending
+    self.update(status: "pending")
+  end
 
   # def tax_amount
   #   tax = 7.0 / 100.0
