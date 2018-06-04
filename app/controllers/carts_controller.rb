@@ -61,8 +61,12 @@ class CartsController < ApplicationController
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
-    @cart.destroy if @cart.id == session[:cart_id]
-    session[:cart_id] = nil
+    # @cart.destroy if @cart.id == session[:cart_id]
+    # Instead of destroying the cart, iterate through and delete the line items instead
+    @cart.line_items.each do |line_item|
+      line_item.destroy
+    end
+
     respond_to do |format|
       # format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
       format.html { redirect_to items_path, notice: 'Cart was successfully destroyed.' }
