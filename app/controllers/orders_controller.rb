@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
     @orders = Order.order("created_at DESC")
     @order = Order.find(params[:id])
 
-    if @order.status == "completed"
+    if @order.status == "Completed"
       @order.destroy
       respond_to do |format|
         format.html { redirect_to orders_path, notice: "Order was successfuly completed." }
@@ -39,11 +39,21 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
+
     if @order.update_attributes(order_params)
+      if @order.status == "Completed"
+        @order.destroy
+        respond_to do |format|
+          format.html { redirect_to orders_path, notice: "Order was successfuly completed." }
+          format.json { head :no_content }
+        end
+      elsif @order.status == "Pending"
+        redirect_to orders_path
+      end
       flash[:notice] = "Order Status Updated"
       # redirect_to edit_order_path
-      redirect_to orders_path
-      @order.destroy
+      # redirect_to orders_path
+      # @order.destroy
     else
       render "edit"
     end
