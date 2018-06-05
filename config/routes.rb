@@ -73,5 +73,4 @@ Rails.application.routes.draw do
   resources :employee_line_items
   resources :employee_carts
   resources :charges
-
 end

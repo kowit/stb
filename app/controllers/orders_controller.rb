@@ -116,9 +116,17 @@ class OrdersController < ApplicationController
     # update the attribute with the current user's ID
     @pending_status = "pending"
     @order.update_attribs(current_user.id, @cart.total, @cart.total_with_tax, @cart.tax)
+    set_new_cart
   end
 
   private
+
+  def set_new_cart
+    # Make a new cart so the previous cart does not
+    # tamper with the state of the Order.
+    @cart = Cart.create
+    session[:cart_id] = @cart.id
+  end
 
   def order_params
     params.require(:order).permit(:name, :subtotal, :tax, :total, :status)
