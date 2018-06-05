@@ -2,18 +2,6 @@
 <%= render "layouts/navbar" %>
 <div class="global-wrapper">
   <div class="responsive-container">
-    <div class="container is-responsive">
-      <% if signed_in? %>
-        <%= current_user.id %>
-      <% end %>
-      <%# if signed_in? %>
-      <!-- <button class="button normal is-outlined user-notification">-->
-      <%#= fa_icon "user", class: "pull-left" %>
-      <%#= current_user.email %>
-      <!-- </button> -->
-      <%# end %>
-    </div>
-    <br />
     <div class="card">
       <div class="card-content">
         <% if !signed_in? %>
