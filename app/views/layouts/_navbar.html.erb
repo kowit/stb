@@ -14,7 +14,7 @@
           <p class="control">
             <span>
               <% if cart_has_items %>
-                <%= link_to cart_path(@cart), class: "button is-warning is-large" do %>
+                <%= link_to cart_path(@cart), class: "button is-warning is-medium" do %>
                   <%= fa_icon "shopping-cart", class: "pull-left text-muted shopping-cart-icon" %>
                   <%= cart_count_over_one %>
                 <% end %>
@@ -23,19 +23,19 @@
           </p>
           <p class="control">
             <span>
-              <%= link_to "Menu", items_path, class: "button is-large is-primary" %>
+              <%= link_to "Menu", items_path, class: "button is-medium is-primary" %>
             </span>
           </p>
           <p class="control">
             <span>
-              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "button is-large is-primary" %>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "button is-medium is-primary" %>
             </span>
           </p>
         <% else %>
           <% if cart_has_items %>
             <p class="control">
               <span>
-                <%= link_to cart_path(@cart), class: "button is-info is-large" do %>
+                <%= link_to cart_path(@cart), class: "button is-info is-medium" do %>
                   <%= fa_icon "shopping-cart", class: "pull-left text-muted shopping-cart-icon" %>
                   <%= cart_count_over_one %>
               <% end %>
@@ -44,17 +44,17 @@
           <% end %>
           <p class="control">
             <span>
-              <%= link_to "Menu", items_path, class: "button is-large is-primary" %>
+              <%= link_to "Menu", items_path, class: "button is-medium is-primary" %>
             </span>
           </p>
           <p class="control">
             <span>
-              <%= link_to "Sign in", new_user_session_path, class: "button is-large is-primary" %>
+              <%= link_to "Sign in", new_user_session_path, class: "button is-medium is-primary" %>
             </span>
           </p>
           <p class="control">
             <span>
-              <%= link_to "Sign up", new_user_registration_path, class: "button is-large is-primary" %>
+              <%= link_to "Sign up", new_user_registration_path, class: "button is-medium is-primary" %>
             </span>
           </p>
         <% end %>
