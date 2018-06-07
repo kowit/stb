@@ -1,38 +1,24 @@
 <%= render "layouts/navbar" %>
-
 <div class="global-wrapper">
-  <div class="responsive-container">
-    <div class="container">
-      <button class="button normal is-outlined user-notification">
-        <%= fa_icon "user", class: "pull-left" %>
-        <%= current_user.email %>
-      </button>
-    </div>
-    <div class="keep-shopping pv1 mt4 has-text-right">
-      <%#= rails routes with nested route, we can pass in the actual @cart object from the session %>
-      <%# app/views/charges/new.html.erb %>
-      <%#= link_to "Order", new_cart_order_path(@cart), class: "button is-primary is-large" %>
-      <%#= link_to "Keep Shopping", items_path, class: 'button is-warning is-large' %>
-    </div>
+  <button class="button normal user-notification">
+    <%= fa_icon "user", class: "pull-left" %>
+    <%= current_user.email %>
+  </button>
 
-    <p id="notice">
-      <%= notice %>
-    </p>
+  <p id="notice">
+  <%= notice %>
+  </p>
+  <br />
 
-    <hr />
+  <% if @cart.line_items.count == 0 %>
+    <br/>
+    <h1 class="title">Your Shopping Cart is empty.</h1>
+    <p><em>Your Shopping Cart lives to serve. Give it purpose</em></p>
+  <% else %>
+    <%= render(@cart.line_items)%>
+  <% end %>
+  <%#= link_to 'Edit', edit_cart_path(@cart) %>
+  <%#= link_to 'Back', carts_path %>
 
-    <div class="carts-container">
-      <% if @cart.line_items.count == 0 %>
-        <br/>
-        <h1 class="title">Your Shopping Cart is empty.</h1>
-        <p><em>Your Shopping Cart lives to serve. Give it purpose</em></p>
-      <% else %>
-      <%= render(@cart.line_items)%>
-      <% end %>
-    </div>
-    <%#= link_to 'Edit', edit_cart_path(@cart) %>
-    <%#= link_to 'Back', carts_path %>
-  </div>
 </div>
-
 <%= render "layouts/bottom_nav" %>

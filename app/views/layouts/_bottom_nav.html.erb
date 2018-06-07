@@ -1,25 +1,18 @@
-<nav class="navbar is-fixed-bottom is-transparent bottom-nav" role="navigation">
-  <div class="navbar-brand">
-    <p class="control">
-      <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-danger is-medium empty-btn" %>
-    </p>
-  </div>
+<nav class="navbar is-fixed-bottom bottom-nav" role="navigation">
   <div class="navbar-start">
-    <%= link_to "Return to Menu", items_path, class: "button is-medium is-warning" %>
+    <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-danger is-medium empty-btn navbar-item" %>
+    <%= link_to "Return to Menu", items_path, class: "button is-medium is-warning navbar-item" %>
   </div>
-  <div class="navbar-end">
+  <div class="navbar-left">
     <div class="navbar-item">
-      <div class="field is-grouped">
-        <div class="column total has-text-right">
-          <h4 class="title is-4">
-            <span class="f5 has-text-grey">Total:</span> 
-            <%#= number_to_currency(@cart.total_price, precision: 2) %>
-            <%= number_to_currency(@cart.total_price, precision: 2) %>
-          </h4>
-        </div>
-        <%= link_to "Continue", cart_review_path, class: "button is-medium is-warning" %>
-        <%#= link_to "Continue", new_cart_order_path(@cart), class: "button is-medium is-warning" %>
-      </div>
+      <strong>
+        Total: <%= number_to_currency(@cart.total_price, precision: 2) %>
+      </strong>
     </div>
+  </div>
+  <div class="navbar-left">
+    <!-- <span class="f5 has-text-grey navbar-item">Total:</span>  -->
+    <%= link_to "Continue", cart_review_path, class: "button is-medium is-primary navbar-item" %>
+    <%#= link_to "Continue", new_cart_order_path(@cart), class: "button is-medium is-warning" %>
   </div>
 </nav>

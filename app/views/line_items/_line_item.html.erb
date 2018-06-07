@@ -4,24 +4,26 @@
       <%#= link_to "", line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "delete is-large is-danger" %>
       <%#= link_to line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "delete is-large is-danger" do %>
         <%#= fa_icon "times-circle" %>
-      <%# end %>
+        <%# end %>
     </strong>
   </div>
-  <div class="column is-one-fifths tmp-border">
-    <figure class="is-128x128 image tmp-border">
+  <div class="column is-one-fifths">
+    <figure class="is-128x128 image">
       <%= image_tag(line_item.item.image_url(:thumb)) %>
     </figure>
     <!-- <strong>Amount: <%#= line_item.quantity %></strong> -->
   </div>
-  <div class="column is-half tmp-border">
-    <strong class="remove-item">
-      <%= link_to "", line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "button is-medium delete is-large is-danger" %>
-    </strong>
+
+  <div class="column is-half">
     <strong><%= line_item.item.name %></strong>
-    <%#= sanitize(line_item.item.description) %>
+    <%= sanitize(line_item.item.description) %>
   </div>
-  <div class="column is-one-quarter tmp-border">
+  <div class="column is-one-quarter">
     <%= number_to_currency(line_item.item.price) %>
+  </div>
+
+  <div class="column is-one-quarter">
+    <%= link_to "", line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "button is-medium delete is-large is-danger" %>
   </div>
 
   <!-- <strong class="f4">

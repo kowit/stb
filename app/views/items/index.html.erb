@@ -1,43 +1,45 @@
 <%= render "layouts/navbar" %>
 
-<div class="global-wrapper">
-  <div class="responsive-container">
-    <div class="container">
-      <%# if signed_in? %>
+<div class="global-wrapper is-off-white">
+  <div class="items-container">
+    <div class="responsive-container">
+      <div class="container">
+        <%# if signed_in? %>
         <%#= current_user.email %>
         <%# end %>
-      <%# if signed_in? %>
+        <%# if signed_in? %>
         <%#= link_to "", class: "button is-medium" do %>
           <%#= fa_icon "user", class: "pull-left" %>
           <%#= current_user.email %>
-        <%# end %>
-      <%# end %>
-    </div>
-    <br />
-    <div class="grid">
-      <% @items.each do |item| %>
-        <div class="cell">
-          <!-- card -->
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <%= link_to image_tag(item.image.url, alt: "Image"), item %><br />
-                <%#= button_to "Add item", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
-              </figure>
-            </div>
-
-            <!-- card-content -->
-            <%= link_to item do %>
-              <div class="card-content">
-                <div class="content">
-                  <p class="item-name"><%= item.name %></p>
-                  <!-- <strong class="item-name"><%#= number_to_currency(item.price) %></strong> -->
-                </div>
+          <%# end %>
+          <%# end %>
+      </div>
+      <br />
+      <div class="grid">
+        <% @items.each do |item| %>
+          <div class="cell">
+            <!-- card -->
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <%= link_to image_tag(item.image.url, alt: "Image"), item %><br />
+                  <%#= button_to "Add item", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
+                </figure>
               </div>
-            <% end %>
+
+              <!-- card-content -->
+              <%= link_to item do %>
+                <div class="card-content">
+                  <div class="content">
+                    <p class="item-name"><%= item.name %></p>
+                    <!-- <strong class="item-name"><%#= number_to_currency(item.price) %></strong> -->
+                  </div>
+                </div>
+              <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

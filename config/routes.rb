@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # Administrate
   namespace :admin do
     resources :orders
     resources :items
@@ -60,6 +61,8 @@ Rails.application.routes.draw do
   get "/order_dashboard" => "orders#order_dashboard"
 
   root to: "items#index"
+
+  # get "pages" => "pages#show", via: [:get]
 
   resource :dashboard, only: [:show]
 

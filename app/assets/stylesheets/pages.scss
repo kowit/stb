@@ -1,0 +1,37 @@
+.grid-container {
+  display: grid;
+  // grid-row-gap: 50px;
+  grid-template-rows: 60px;
+  color: #f2f2f2;
+}
+
+.grid-item {
+  border: 1px solid #000;
+
+  .pages-title {
+    color: #f2f2f2;
+  }
+}
+
+.grid-item-nav {
+}
+
+.pages-wrapper {
+  background-image: url("coffee1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  // background-color: #d2d2d2;
+  max-width: 0 auto;
+  height: 100%;
+}
+
+.pages-nav {
+  align-items: left;
+  width: 100%;
+
+  ul {
+    li {
+      display: inline;
+    }
+  }
+}

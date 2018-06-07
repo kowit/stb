@@ -155,8 +155,15 @@
 }
 
 .bottom-nav {
+  display: flex;
   border-top: 1px solid #eee;
-  padding: 10px 200px 10px 200px;
+  padding: 10px 100px 10px 100px;
+}
+
+.bottom-nav-col1 {
+}
+
+.bottom-nav-col2 {
 }
 
 .empty-btn {
@@ -256,10 +263,11 @@
 }
 
 .navbar {
+  font-size: 18px;
   .navbar-brand {
     font-family: "Circular Std", sans-serif;
     font-weight: bold;
-    font-size: 36px;
+    // font-size: 24px;
   }
 }
 
