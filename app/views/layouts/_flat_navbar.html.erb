@@ -1,0 +1,33 @@
+<!-- navbar -->
+<nav class="navbar is-fixed-top flat-nav">
+  <div class="navbar-start">
+    <%= link_to "Spill the Bean Coffee", root_path, class: "navbar-item main-title" %>
+  </div>
+
+  <div class="navbar-left flat-navbar-left">
+    <div class="navbar-item">
+      <div class="field is-grouped">
+        <% if signed_in? %>
+          <% if cart_has_items %>
+            <%= link_to cart_path(@cart), class: "navbar-item" do %>
+              <%= fa_icon "shopping-cart", class: "pull-left text-muted shopping-cart-icon" %>
+              <%= cart_count_over_one %>
+            <% end %>
+          <% end %>
+          <%= link_to "Menu", items_path, class: "navbar-item" %>
+          <%= link_to "Sign out", destroy_user_session_path, class: "navbar-item" %>
+        <% else %>
+          <% if cart_has_items %>
+            <%= link_to cart_path(@cart) do %>
+              <%= fa_icon "shopping-cart" %>
+              <%= cart_count_over_one %>
+            <% end %>
+          <% end %>
+          <%= link_to "Menu", items_path, class: "navbar-item" %>
+          <%= link_to "Sign in", new_user_session_path, class: "navbar-item" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "navbar-item" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>
