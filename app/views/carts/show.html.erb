@@ -22,7 +22,13 @@
     <hr />
 
     <div class="carts-container">
+      <% if @cart.line_items.count == 0 %>
+        <br/>
+        <h1 class="title">Your Shopping Cart is empty.</h1>
+        <p><em>Your Shopping Cart lives to serve. Give it purpose</em></p>
+      <% else %>
       <%= render(@cart.line_items)%>
+      <% end %>
     </div>
     <%#= link_to 'Edit', edit_cart_path(@cart) %>
     <%#= link_to 'Back', carts_path %>
