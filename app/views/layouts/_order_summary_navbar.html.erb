@@ -2,9 +2,11 @@
 <nav class="navbar is-transparent is-fixed-top top-nav">
 
   <div class="navbar-brand">
-    <h1 class="title">
-      <%= link_to "Spill the Beans", root_path, class: "navbar-item" %>
-    </h1>
+    <div class="navbar-item">
+      <h1 class="title">
+        <%= link_to "Spill the Bean Coffee", root_path, class: "navbar-item" %>
+      </h1>
+    </div>
   </div>
 
   <div class="navbar-end">
@@ -13,12 +15,12 @@
         <% if signed_in? %>
           <p class="control">
             <span>
-              <%= link_to "Menu", items_path, class: "button is-large is-primary" %>
+              <%= link_to "Menu", items_path, class: "button is-medium is-primary" %>
             </span>
           </p>
           <p class="control">
             <span>
-              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "button is-large is-primary" %>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "button is-medium is-primary" %>
             </span>
           </p>
         <% else %>

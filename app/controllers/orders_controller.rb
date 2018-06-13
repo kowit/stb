@@ -83,6 +83,9 @@ class OrdersController < ApplicationController
     respond_to do |format|
       # If the order is saved successfully
       if @order.save
+        # TODO: Send email after save
+        OrderMailer.send_receipt(current_user).deliver_now
+
         # format.html { redirect_to @order, notice: "Order successfully created." }
         # format.json { render :show, status: :created, location: @order }
         format.html { redirect_to order_summary, notice: "Order successfully created." }
