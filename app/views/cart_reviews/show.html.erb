@@ -5,8 +5,11 @@
     <div class="card order-summary-card">
       <div class="card-content">
         <div class="card-header-title is-centered">
-          <h2 class="title">Order Summary</h2>
+          <label class="label">
+            <h1 class="subtitle">Order Summary</h1>
+          </label>
         </div>
+        <br />
         <table class="order-summary">
           <% @cart.line_items.each do |line_item| %>
             <tr>

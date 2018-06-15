@@ -1,17 +1,17 @@
-<div class="tabs is-centered employees-nav">
-  <ul>
-    <li><div id="notice"><%= notice %></div></li>
-    <% if employee_signed_in? %>
-      <li>
-        <span class="signed-in-as-container">
-          <%= fa_icon "user " %>
+<nav class="navbar is-dark is-fixed-top">
+  <div class="navbar-start">
+    <div class="navbar-item">
+      <div class="user-notification">
+        <% if employee_signed_in? %>
+          <%= fa_icon "user", class: "user-icon" %>
           <%= current_employee.email %>
-        </span>
-      </li>
-    <% end %>
-    <!-- <li><%#= link_to "Dashboard", dashboard_path %></li> -->
-    <!-- <li><%#= link_to "EmployeeDash", dashboard_path %> -->
-    <li><%= link_to "Orders", orders_path %></li>
-  </ul>
-
-</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <%= link_to "Orders", orders_path, class: "button is-medium" %>
+    </div>
+  </div>
+</nav>

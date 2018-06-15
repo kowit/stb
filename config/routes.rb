@@ -57,7 +57,8 @@ Rails.application.routes.draw do
 
   # get '/orders', to: 'orders#employee_order', as: 'employee_order'
 
-  get "/orders/:id" => "orders#order_summary"
+  # get "/orders/:id" => "orders#order_summary"
+  get "/orders/:id" => "order_summary#show", only: [:show]
   get "/order_dashboard" => "orders#order_dashboard"
 
   root to: "items#index"

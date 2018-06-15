@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   include CurrentCart
 
+  before_action :authenticate_employee!
   skip_before_action :verify_authenticity_token
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
 
@@ -88,7 +89,8 @@ class OrdersController < ApplicationController
 
         # format.html { redirect_to @order, notice: "Order successfully created." }
         # format.json { render :show, status: :created, location: @order }
-        format.html { redirect_to order_summary, notice: "Order successfully created." }
+        # format.html { redirect_to order_summary, notice: "Order successfully created." }
+        format.html { redirect_to order_summary_path, notice: "Order successfully created." }
         format.json { render :order_summary, status: :created, location: order_summary }
       else
         format.html { render cart_path }
