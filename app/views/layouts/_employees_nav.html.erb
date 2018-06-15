@@ -13,5 +13,8 @@
     <div class="navbar-item">
       <%= link_to "Orders", orders_path, class: "button is-medium" %>
     </div>
+    <div class="navbar-item">
+      <%= link_to "Sign out", destroy_employee_session_path, method: :delete, class: "button is-medium" %>
+    </div>
   </div>
 </nav>
