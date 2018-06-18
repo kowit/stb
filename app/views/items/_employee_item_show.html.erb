@@ -1,52 +1,54 @@
 <%# ---------- EMPLOYEES ---------- %>
 <%= render "layouts/employees_nav" %>
-<div class="columns is-responsive">
-  <div class="column is-two-fifths">
-    <div class="card">
-      <div class="card-content">
-        <div class="columns">
-          <%#= render(@employee_cart.employee_line_items)%>
-        </div>
-      </div>
-      <div class="card-content content">
-        <div class="columns">
-          <div class="column price-summary-col">
-            <div><strong>Subtotal:</strong></div>
-            <div><strong>Tax:</strong></div>
-            <div><strong>Total:</strong></div>
-          </div>
-          <div class="column food-price-col">
-            <div><strong>$0.00</strong></div>
-            <div><strong>$0.00</strong></div>
-            <div><strong>$0.00</strong></div>
+<div class="global-wrapper">
+  <div class="columns is-responsive">
+    <div class="column is-two-fifths">
+      <div class="card">
+        <div class="card-content">
+          <div class="columns">
+            <%#= render(@employee_cart.employee_line_items)%>
           </div>
         </div>
+        <div class="card-content content">
+          <div class="columns">
+            <div class="column price-summary-col">
+              <div><strong>Subtotal:</strong></div>
+              <div><strong>Tax:</strong></div>
+              <div><strong>Total:</strong></div>
+            </div>
+            <div class="column food-price-col">
+              <div><strong>$0.00</strong></div>
+              <div><strong>$0.00</strong></div>
+              <div><strong>$0.00</strong></div>
+            </div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">Send</a>
+          <a href="#" class="card-footer-item">Pay</a>
+        </footer>
       </div>
-      <footer class="card-footer">
-        <a href="#" class="card-footer-item">Send</a>
-        <a href="#" class="card-footer-item">Pay</a>
-      </footer>
     </div>
-  </div>
-  <div class="column is-responsive auto">
-    <div class="card">
-      <div class="card-content">
+    <div class="column is-responsive auto">
+      <div class="card">
+        <div class="card-content">
 
-        <div class="columns">
-          <div class="column is-one-quarter">
-            <div class="item-image">
-              <%= image_tag(@item.image.url, alt: "Image", class: "is-round") if @item.image? %>
+          <div class="columns">
+            <div class="column is-one-quarter">
+              <div class="item-image">
+                <%= image_tag(@item.image.url, alt: "Image", class: "is-round") if @item.image? %>
+              </div>
             </div>
-          </div>
-          <div class="column is-two-thirds">
-            <div class="item-name">
-              <h1 class="title"><%= @item.name %></h1>
+            <div class="column is-two-thirds">
+              <div class="item-name">
+                <h1 class="title"><%= @item.name %></h1>
+              </div>
+              <div class="item-price">
+                <%= number_to_currency(@item.price) %>
+              </div>
+              <%= sanitize(@item.description) %><br />
+              <%= button_to "Add Item", employee_line_items_path(item_id: @item), class: "button is-primary is-large" %>
             </div>
-            <div class="item-price">
-              <%= number_to_currency(@item.price) %>
-            </div>
-            <%= sanitize(@item.description) %><br />
-            <%= button_to "Add Item", employee_line_items_path(item_id: @item), class: "button is-primary is-large" %>
           </div>
         </div>
       </div>

@@ -1,68 +1,13 @@
 <%# orders#index %>
 
 <%= render "layouts/employees_nav" %>
-
 <div class="orders-index-wrapper">
   <div id="notice">
     <%= notice %>
   </div>
   <br />
   <div class="grid">
-    <% @orders.each do |order| %>
-      <div class="kitchen-cell">
-        <div class="card kitchen-orders">
-          <%= div_for(order, class: "order") do %>
-            <!-- <span class="tag is-warning is-large order-status-notice-header">
-              <%#= order.status %>
-              </span>
-              <header class="card-header">
-              <%#= link_to "Change Status", edit_order_path(order), class: "button is-primary edit-order-status-btn" %>
-              </header> -->
-              <header class="card-header order-status-header">
-                <%= form_for order do |f| %>
-                  <%#= f.text_field :status, class: "input order-status-input-field" %>
-                  <div class="select">
-                    <%= f.select :status, options_for_select(["Pending", "Completed"]), class: "select-order-status" %>
-                  </div>
-                  <%= f.submit "Submit", class: "button is-medium order-status-btn" %>
-                  <%#= select_tag(@order, '<option value="1">Pending</option>') %>
-                  <%#= select_tag(@order, options_for_select([["Pending", 1], ["Completed", 2]])) %>
-                <% end %>
-                <br />
-              </header>
-
-              <div class="card-content">
-                <div class="content">
-                  <%#= link_to "Change Status", edit_order_path(order), class: "button" %>
-                  <span class="tag is-info is-medium order-status-notice">
-                    Order No. <%= order.id %>
-                  </span>
-                  <span class="tag is-primary is-medium order-status-notice">
-                    User No. <%= order.user_id %>
-                  </span>
-                  <span class="tag is-danger is-medium order-status-notice">
-                    <%= time_ago_in_words(order.created_at) %>
-                  </span>
-                </div>
-              </div>
-              <div class="card-content">
-                <div class="content">
-                  <div class="columns is-multiline">
-                    <% order.order_items.each do |order_item| %>
-                      <% order_item.cart.line_items.each do |line_item| %>
-                        <div class="column auto line-item-name-col">
-                          <%= line_item.name %>
-                        </div>
-                      <% end %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+    <%= render @orders %>
   </div>
 </div>
-
 <%#= render "layouts/employees_bottom_nav" %>
