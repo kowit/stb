@@ -14,11 +14,11 @@ simulate a restaurant ordering system in that it will
   [DONE] 5) allow the customer to serve themselves from a kiosk or app
 
 FEATURES:
-  (?) 1) Payment system with Stripe
-  (?) 2) LineItem pending/completed
-  (?) 3) Email receipt to current user's E-mail address
-  (?) 4) Employee Orders
-  (?) 5) LineItem options: [small, medium, large], [hot, cold]
+  (wip) 1) Payment system with Stripe
+  (done) 2) LineItem pending/completed
+  (wip) 3) Email receipt to current user's E-mail address
+  (wip) 4) Employee Orders
+  (wip) 5) LineItem options: [small, medium, large], [hot, cold]
 ============================================================
 
 Nested Routes
