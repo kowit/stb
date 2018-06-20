@@ -12,7 +12,28 @@
   </div>
   <div class="navbar-left">
     <!-- <span class="f5 has-text-grey navbar-item">Total:</span>  -->
-    <%= link_to "Continue", cart_review_path, class: "button is-medium is-primary navbar-item" %>
+    <%= link_to "Continue", cart_review_path(@cart), class: "button is-medium is-primary navbar-item" %>
     <%#= link_to "Continue", new_cart_order_path(@cart), class: "button is-medium is-warning" %>
+  </div>
+  <div class="navbar-item">
+    <div class="column">
+      <%= form_tag charges_path(@cart) do %>
+        <article>
+          <% if flash[:error].present? %>
+            <div id="error_explanation">
+              <p><%= flash[:error] %></p>
+            </div>
+          <% end %>
+
+        </article>
+        <script src="https://checkout.stripe.com/checkout.js" 
+                class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="A month's subscription"
+                data-amount="500"
+                data-locale="auto">
+        </script>
+      <% end %>
+    </div>
   </div>
 </nav>

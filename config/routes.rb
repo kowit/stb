@@ -30,9 +30,9 @@ Rails.application.routes.draw do
   # get "/employees" => "employees#index", as: :employee_root 
   get "/employees" => "welcomes#show", as: :employee_root 
 
-	namespace :employees do
-		root 'employees#show' # creates user_root_path
-	end
+  namespace :employees do
+    root 'employees#show' # creates user_root_path
+  end
 
   # Routes for ActiveAdmin
   # devise_for :admin_users, ActiveAdmin::Devise.config
@@ -56,8 +56,8 @@ Rails.application.routes.draw do
   end
 
   # get '/orders', to: 'orders#employee_order', as: 'employee_order'
-
   # get "/orders/:id" => "orders#order_summary"
+  # get "cart_reviews/:id" => "charges#new"
   get "/orders/:id" => "order_summary#show", only: [:show]
   get "/order_dashboard" => "orders#order_dashboard"
 

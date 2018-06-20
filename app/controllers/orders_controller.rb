@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   include CurrentCart
 
-  before_action :authenticate_employee!
+  # before_action :authenticate_employee!
   skip_before_action :verify_authenticity_token
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
 
@@ -15,9 +15,9 @@ class OrdersController < ApplicationController
 
     # update the attribute with the current user's ID
     @pending_status = "pending"
-    @order.update_attribs(current_user.id, 
-                          @cart.total, 
-                          @cart.total_with_tax, 
+    @order.update_attribs(current_user.id,
+                          @cart.total,
+                          @cart.total_with_tax,
                           @cart.tax, @order_status)
   end
 

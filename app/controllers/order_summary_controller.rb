@@ -1,5 +1,5 @@
 class OrderSummaryController < ApplicationController
-  include CurrentCart
+  include CurrentOrder
 
   skip_before_action :verify_authenticity_token
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
@@ -9,6 +9,7 @@ class OrderSummaryController < ApplicationController
   def show
     # Find the current order by params id
     @order = Order.find(params[:id])
+
     # update the attribute with the current user's ID
     @pending_status = "pending"
     @order.update_attribs(current_user.id, @cart.total, @cart.total_with_tax, @cart.tax)
