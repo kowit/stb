@@ -12,7 +12,11 @@ class ItemDashboard < Administrate::BaseDashboard
     # employee_line_items: Field::HasMany,
     id: Field::Number,
     name: Field::String,
-    item_type: Field::String,
+    # item_type: Field::String,
+    item_type: SelectField.with_options(
+      choices: ["", "Cold Drink", "Hot Drink", "Pastry",
+                "Sandwich", "Salad", "Breakfast"]
+    ),
     price: Field::String.with_options(searchable: false),
     description: TrixField,
     image: Field::Carrierwave.with_options(
