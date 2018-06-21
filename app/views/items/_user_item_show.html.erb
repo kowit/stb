@@ -1,73 +1,44 @@
 <%#= USER %>
 <%= render "layouts/navbar" %>
+
 <div class="global-wrapper">
-  <div class="responsive-container">
-    <div class="card">
-      <div class="card-content">
-        <% if !signed_in? %>
-          <div id="notice">Sign in to add item to order</div>
-          <hr />
-        <% end %>
-        <div class="columns">
-          <div class="column is-one-quarter">
-            <div class="item-image">
-              <%= image_tag(@item.image.url, alt: "Image", class: "is-round") if @item.image? %>
+  <div class="item-container">
+    <div class="responsive-container">
+      <div class="card">
+        <div class="card-content">
+          <% if !signed_in? %>
+            <div id="notice">Sign in to add item to order</div>
+            <hr />
+          <% end %>
+          <div class="columns">
+            <div class="column is-one-quarter">
+              <div class="item-image">
+                <%= image_tag(@item.image.url, alt: "Image", class: "is-round") if @item.image? %>
+              </div>
             </div>
-          </div>
-          <div class="column is-two-thirds">
-            <div class="item-name">
-              <label class="label">
-                <%= @item.name %>
-              </label>
-            </div>
-            <div class="item-price">
-              <%= number_to_currency(@item.price) %>
-            </div>
-            <% if signed_in? %>
-              <%#= link_to "Add Item", "#", class: "button is-primary is-large" %><br /><br />
-              <%#= link_to "Edit", edit_item_path, class: "button is-medium" %>
-              <%#= link_to "Destroy", "#", class: "button is-medium" %>
-            <% end %>
-            <%= sanitize(@item.description) %><br />
-          </div>
-        </div>
-        <!--
-        <div class="columns">
-          <div class="column auto">
-            <div class="select-drink-size">
-              <label class="label">
-                Sizes
-              </label>
-              <%#= select_tag("Sizes", options_for_select(["Small", "Medium", "Large"]), class: "select-size-options")%>
-            </div>
-            <br />
-            <div class="flavor-field-container">
-              <label class="label">
-                Flavors
-              </label>
-              <%#= select_tag("Flavors", options_for_select(["Simple Syrup", "Hazelnut Syrup", "Vanilla Syrup", "Toffee Nut Syrup"]), class: "select-size-options")%>
-            </div>
-            <br />
-            <div class="addins-field-container">
-              <label class="label">
-                Add-ins
-              </label>
-              <%#= select_tag("Add-ins", options_for_select(["Splash of 2% Milk", "Splash of 1% Milk", "Splash of Almondmilk", "Splash of Soymilk"]), class: "select-size-options")%>
-            </div>
-            <br />
-            <div class="espresso-shot-options">
-              <label class="label">
-                Espresso Shots
-              </label>
-              <%#= number_field(:espresso_shots, :quantity, in: 1.0..20.0, step: 1.0, class: "espresso-num-field", placeholder: "0") %>
+            <div class="column is-two-thirds">
+              <div class="item-name">
+                <label class="label">
+                  <%= @item.name %>
+                </label>
+              </div>
+              <div class="item-price">
+                <%= number_to_currency(@item.price) %>
+              </div>
+              <% if signed_in? %>
+                <%#= link_to "Add Item", "#", class: "button is-primary is-large" %><br /><br />
+                <%#= link_to "Edit", edit_item_path, class: "button is-medium" %>
+                <%#= link_to "Destroy", "#", class: "button is-medium" %>
+              <% end %>
+              <%= sanitize(@item.description) %><br />
             </div>
           </div>
         </div>
-        -->
       </div>
     </div>
   </div>
 </div>
+
 <nav class="navbar is-fixed-bottom is-transparent global-bottom-nav" role="navigation">
   <div class="navbar-start">
     <div class="navbar-item">

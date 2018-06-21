@@ -1,32 +1,81 @@
-<div class="columns">
-  <div class="column auto">
-    <strong class="remove-item">
-      <%#= link_to "", line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "delete is-large is-danger" %>
-      <%#= link_to line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "delete is-large is-danger" do %>
-        <%#= fa_icon "times-circle" %>
-        <%# end %>
-    </strong>
-  </div>
-  <div class="column is-one-fifths">
-    <figure class="is-128x128 image">
-      <%= image_tag(line_item.item.image_url(:thumb)) %>
-    </figure>
-    <!-- <strong>Amount: <%#= line_item.quantity %></strong> -->
-  </div>
+<div class="card">
+  <div class="card-content">
+    <div class="columns">
+      <div class="column auto">
+        <strong class="remove-item">
+          <%#= link_to "", line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "delete is-large is-danger" %>
+          <%#= link_to line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "delete is-large is-danger" do %>
+            <%#= fa_icon "times-circle" %>
+            <%# end %>
+        </strong>
+      </div>
+      <div class="column is-one-fifths">
+        <figure class="is-128x128 image">
+          <%= image_tag(line_item.item.image_url(:thumb)) %>
+        </figure>
+        <!-- <strong>Amount: <%#= line_item.quantity %></strong> -->
+      </div>
 
-  <div class="column is-half">
-    <strong><%= line_item.item.name %></strong>
-    <%= sanitize(line_item.item.description) %>
-  </div>
-  <div class="column is-one-quarter">
-    <%= number_to_currency(line_item.item.price) %>
-  </div>
+      <div class="column is-half">
+        <strong>
+          <h1 class="title">
+            <%= line_item.item.name %>
+          </h1>
+        </strong>
+        <%= sanitize(line_item.item.description) %>
+      </div>
+      <div class="column is-one-quarter">
+        <h1 class="subtitle">
+          <strong>
+            <%= number_to_currency(line_item.item.price) %>
+          </strong>
+        </h1>
+      </div>
 
-  <div class="column is-one-quarter">
-    <%= link_to "", line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "button is-medium delete is-large is-danger" %>
-  </div>
+      <div class="column is-one-quarter">
+        <%= link_to "", line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "button is-medium delete is-large is-danger" %>
+      </div>
+      <!-- <strong class="f4">
+        <%#= number_to_currency(line_item.total_price) %>
+        </strong> -->
+    </div>
 
-  <!-- <strong class="f4">
-    <%#= number_to_currency(line_item.total_price) %>
-    </strong> -->
+    <% if line_item.item_type == "Cold Drink" || "Hot Drink" %>
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <div class="select-drink-size">
+            <label class="label">
+              Sizes
+            </label>
+            <%= select_tag("Sizes", options_for_select(["Small", "Medium", "Large"]), class: "select-size-options")%>
+          </div>
+        </div>
+        <div class="column is-one-quarter">
+          <div class="flavor-field-container">
+            <label class="label">
+              Flavors
+            </label>
+            <%= select_tag("Flavors", options_for_select(["Simple Syrup", "Hazelnut Syrup", "Vanilla Syrup", "Toffee Nut Syrup"]), class: "select-size-options")%>
+          </div>
+        </div>
+        <div class="column is-one-quarter">
+          <div class="addins-field-container">
+            <label class="label">
+              Add-ins
+            </label>
+            <%= select_tag("Add-ins", options_for_select(["Splash of 2% Milk", "Splash of 1% Milk", "Splash of Almondmilk", "Splash of Soymilk"]), class: "select-size-options")%>
+          </div>
+        </div>
+        <div class="column is-one-quarter">
+          <div class="espresso-shot-options">
+            <label class="label">
+              Espresso Shots
+            </label>
+            <%= number_field(:espresso_shots, :quantity, in: 1.0..20.0, step: 1.0, class: "espresso-num-field", placeholder: "0") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
+
