@@ -17,24 +17,19 @@
 .landing-section {
   margin: 0 auto;
   border: 1px solid #eee;
-}
 
-.landing-info-1 {
-  padding: 60px 20px 60px 20px;
 }
 
 .landing-page {
+  text-align: center;
+  overflow: hidden;
+  display: block;
   position: absolute;
-  // height: 100%;
-  // width: 100%;
+  min-height: 100%;
+  width: 100%;
   margin: 0 auto;
 
-  .landing-image {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://placehold.it/350x150');
-  }
-
   img {
-    overflow: hidden;
     position: relative;
     background-size: cover;
     -webkit-background-size: cover;
@@ -44,6 +39,7 @@
 }
 
 .landing-navbar {
+  text-align: center;
   background-color: #101010;
   color: #e3e3e3;
   border: none;
