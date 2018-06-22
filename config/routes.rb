@@ -60,7 +60,10 @@ Rails.application.routes.draw do
   # get "cart_reviews/:id" => "charges#new"
   get "/orders/:id" => "order_summary#show", only: [:show]
   get "/order_dashboard" => "orders#order_dashboard"
+
+  # We do not want people to access these routesc
   get "/line_items" => "items#index"
+  get "/carts" => "items#index"
 
   root to: "items#index"
 
