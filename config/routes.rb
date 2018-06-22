@@ -60,6 +60,7 @@ Rails.application.routes.draw do
   # get "cart_reviews/:id" => "charges#new"
   get "/orders/:id" => "order_summary#show", only: [:show]
   get "/order_dashboard" => "orders#order_dashboard"
+  get "/line_items" => "items#index"
 
   root to: "items#index"
 
