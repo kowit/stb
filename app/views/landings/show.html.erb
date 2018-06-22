@@ -1,0 +1,26 @@
+<%= image_tag("landing-image", class: "landing-page") %>
+
+<nav class="navbar is-transparent landing-navbar">
+  <div class="navbar-start">
+  </div>
+
+  <div class="navbar-item">
+    <h1 class="landing-title"><%= link_to "Spill the Bean Coffee", landing_path %></h1>
+  </div>
+
+  <div class="navbar-end">
+  </div>
+</nav>
+
+<div class="shop-container">
+  <%= link_to "Shop Now", items_path, class: "button is-large navbar-item shop-btn" %>
+</div>
+<!--
+  <nav class="navbar is-fixed-bottom is-transparent landing-bottom-nav" role="navigation">
+  <div class="navbar-start">
+  </div>
+  <%#= link_to "Shop Now", items_path, class: "button is-large navbar-item shop-btn" %>
+  <div class="navbar-end">
+  </div>
+  </nav>
+-->

@@ -1,0 +1,106 @@
+.landing-header {
+}
+
+.landing-nav {
+  border-bottom: 1px solid #eee;
+
+  ul {
+    padding: 0;
+
+    li {
+      display: inline;
+      list-style-type: none;
+    }
+  }
+}
+
+.landing-section {
+  margin: 0 auto;
+  border: 1px solid #eee;
+}
+
+.landing-info-1 {
+  padding: 60px 20px 60px 20px;
+}
+
+.landing-page {
+  position: absolute;
+  // height: 100%;
+  // width: 100%;
+  margin: 0 auto;
+
+  .landing-image {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://placehold.it/350x150');
+  }
+
+  img {
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  }
+}
+
+.landing-navbar {
+  background-color: #101010;
+  color: #e3e3e3;
+  border: none;
+
+  .landing-title {
+    font-family: Circular Std, sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #e3e3e3;
+  }
+
+  a {
+    color: #e3e3e3;
+    font-weight: 500;
+  }
+}
+
+.landing-header {
+  .landing-title {
+    color: #fff;
+  }
+}
+
+.shop-container {
+  position: absolute;
+  left: 45%;
+  top: 85%;
+  // margin-left: -150px;
+  // margin-top: -150px;
+}
+
+.shop-btn {
+  border: #886e4b 1px solid;
+  background-color: #886e4b;
+  color: #fff;
+
+  &:after {
+    border: #886e4b 1px solid;
+    background-color: #886e4b;
+    color: #fff;
+  }
+
+  &:hover {
+    border: #886e4b 1px solid;
+    background-color: #886e4b;
+    color: #fff;
+  }
+}
+
+.landing-bottom-nav {
+  border: 1px solid #000;
+  position: relative;
+  opacity: 1.0;
+
+  .shop-btn {
+    border: #886e4b 1px solid;
+    background-color: #886e4b;
+    color: #fff;
+  }
+}

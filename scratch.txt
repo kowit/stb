@@ -2,6 +2,10 @@
 2. Program the Order and OrderItem functionality
 
 ============================================================
+CHALLENGES:
+
+
+============================================================
 CONCERNS:
 
 1. Build a P.O.S. System for a Restaurant with self-service. This system will

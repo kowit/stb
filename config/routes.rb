@@ -70,6 +70,7 @@ Rails.application.routes.draw do
   # get "pages" => "pages#show", via: [:get]
 
   resource :dashboard, only: [:show]
+  resource :landing, only: [:show]
   resources :line_items
   resources :items
   resources :carts

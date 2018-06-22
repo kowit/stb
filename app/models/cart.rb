@@ -52,6 +52,7 @@ class Cart < ApplicationRecord
   #   end
   # end
 
+
   STATE_TAX = 0.06
 
   # Get the total price
@@ -67,14 +68,59 @@ class Cart < ApplicationRecord
 
   def total_price_with_tax
     total_price = line_items.to_a.sum { |item| item.total_price }
-    total_price_with_tax = total_price + tax_on_price
-    return total_price_with_tax
+    total_with_tax = total_price + tax_on_price
+    total_addin_prices = total_price_with_options
+    total_with_tax + total_addin_prices
+  end
+
+  def total_price_with_options
+    # get all the current line item sizes
+    total_addin_prices = 0
+
+    # Adjust total price with the selected sizes of line items
+    item_size_arr = line_items.map { |line_item| line_item.size }
+    item_size_arr.each do |size|
+      if !size.nil?
+        if size == "Small"
+          total_addin_prices += 0.0
+        elsif size == "Medium"
+          total_addin_prices += 0.20
+        elsif size == "Large"
+          total_addin_prices += 0.30
+        end
+      end
+    end
+
+    item_flavors_arr = line_items.map { |line_item| line_item.flavor }
+    item_flavors_arr.each do |flavor|
+      if !flavor.nil?
+        total_addin_prices += 0.10
+      end
+    end
+
+    item_addins_arr = line_items.map { |line_item| line_item.addins }
+    item_addins_arr.each do |addin|
+      if addin != ""
+        total_addin_prices += 0.10
+      end
+    end
+
+    item_shots_arr = line_items.map { |line_item| line_item.addins }
+    item_shots_arr.each do |shots|
+      if shots.to_i >= 1
+        total_addin_prices += 0.20
+      else
+        total_addin_prices += 0.0
+      end
+    end
+
+    total_addin_prices
   end
 
   def update_cart_price_attributes(total_price, total_price_with_tax)
     # self.write_attribute(price: total_price)
     self.update(tax: tax_on_price,
-                total: total_price, 
+                total: total_price,
                 total_with_tax: total_price_with_tax)
   end
 
