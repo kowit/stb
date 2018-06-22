@@ -67,15 +67,16 @@ Rails.application.routes.draw do
   # get "pages" => "pages#show", via: [:get]
 
   resource :dashboard, only: [:show]
-
   resources :line_items
   resources :items
   resources :carts
   resources :cart_reviews, only: [:show]
   resources :order_items
   resources :orders
-
   resources :employee_line_items
   resources :employee_carts
   resources :charges
+
+  # redirect all unknown pathes to root path
+  match '*path', to: redirect('/'), via: :all
 end
