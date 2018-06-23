@@ -31,7 +31,21 @@
               <% order.order_items.each do |order_item| %>
                 <% order_item.cart.line_items.each do |line_item| %>
                   <div class="column auto line-item-name-col">
-                    <%= line_item.name %>
+                    <strong><%= line_item.name %></strong>
+                    <br />
+                    <div class="item-options">
+                      <label>Size:</label>
+                      <%= line_item.size %>
+                      <br />
+                      <label>Flavor</label>
+                      <%= line_item.flavor %>
+                      <br />
+                      <label>Add ins</label>
+                      <%= line_item.addins %>
+                      <br />
+                      <label>Espresso Shots</label>
+                      <%= line_item.espresso_shots %>
+                    </div>
                   </div>
                 <% end %>
               <% end %>
@@ -42,4 +56,3 @@
     </div>
   </div>
 <% end %>
-
