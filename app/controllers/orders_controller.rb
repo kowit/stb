@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   include CurrentCart
 
-  # before_action :authenticate_employee!
+  before_action :authenticate_employee!
   skip_before_action :verify_authenticity_token
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_order
 
