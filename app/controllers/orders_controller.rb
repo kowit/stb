@@ -63,7 +63,6 @@ class OrdersController < ApplicationController
   def create
     # Create the order
     @order = Order.new(order_params)
-
     @current_user = current_user
     @pending_status = "pending"
 

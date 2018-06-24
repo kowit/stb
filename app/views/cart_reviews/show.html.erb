@@ -2,7 +2,6 @@
 
 <div class="new-order-wrapper">
   <div class="global-wrapper">
-    <%# New order will be made based on the cart id params! %>
     <div class="card order-summary-card">
       <div class="card-content">
         <div class="card-header-title is-centered">
@@ -95,33 +94,36 @@
         Total: <%= number_to_currency(@cart.total_price_with_tax) %>
       </label>
     </div>
+
     <div class="navbar-item">
       <div class="column">
-        <%= form_tag charges_path(@cart) do %>
+        <%#= form_tag charges_path(@cart) do %>
+        <%= form_tag order_items_path(cart_id: @cart) do %>
           <article>
             <% if flash[:error].present? %>
               <div id="error_explanation">
                 <p><%= flash[:error] %></p>
               </div>
             <% end %>
-
           </article>
           <script src="https://checkout.stripe.com/checkout.js" 
                   class="stripe-button"
+                  data-email="<%= current_user.email %>"
                   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                  data-description=""
-                  data-amount=""
                   data-locale="auto"></script>
         <% end %>
       </div>
     </div>
+
     <div class="navbar-item">
       <div class="field is-grouped">
         <div class="column">
           <%# passes in the cart id to the order_item %>
-          <%= button_to "Create Order", order_items_path(cart_id: @cart), class: "button is-medium is-primary" %>
+          <%#= button_to "Create Order", order_items_path(cart_id: @cart), class: "button is-medium is-primary" %>
           <%#= link_to "Continue", new_order_path(cart_id: @cart), class: "button is-medium is-primary" %>
           <%#= button_to "Submit Order", order_items_path(cart_id: @cart), class: "button is-medium is-primary" %>
         </div>
       </div>
     </div>
+  </div>
+</nav>

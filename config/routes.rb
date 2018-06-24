@@ -1,18 +1,12 @@
 Rails.application.routes.draw do
+  root to: "landings#show"
+
   # Administrate
   namespace :admin do
-    resources :orders
     resources :items
-    resources :employees
-    resources :users
-
-    resources :carts
-    resources :employee_carts
-    resources :employee_line_items
-    resources :line_items
-
-    resources :order_items
-
+    resources :orders, only: [:show, :index, :destroy]
+    resources :users, only: [:show, :index, :destroy]
+    resources :employees, only: [:show, :index, :destroy]
     root to: "employees#index"
   end
 
@@ -64,10 +58,6 @@ Rails.application.routes.draw do
   # We do not want people to access these routesc
   get "/line_items" => "items#index"
   get "/carts" => "items#index"
-
-  root to: "items#index"
-
-  # get "pages" => "pages#show", via: [:get]
 
   resource :dashboard, only: [:show]
   resource :landing, only: [:show]

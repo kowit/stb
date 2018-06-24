@@ -16,18 +16,22 @@ class OrderItemsController < ApplicationController
   def new
     @order_item = OrderItem.new
   end
-  
+
   def create
     # Find the cart id that is going to be added into the order_item
     @cart = Cart.find(params[:cart_id])
 
     # create a new order item with the order and cart
     @order_item = @order.add_cart(@cart)
+    @current_user_email = current_user.email
 
     respond_to do |format|
       # if we successfully save the cart to the order item, redirect to the orders#new path
       # so the user can enter a name for the order
       if @order_item.save
+        receipt_email = OrderMailer.send_receipt(@current_user_email)
+        receipt_email.deliver_now
+
         # format.html { redirect_to @order, notice: "Order successfully created." }
         format.html { redirect_to @order_item.order, notice: "Order successfully created." }
         # format.html { redirect_to new_order_path, notice: "Order successfully created." }
@@ -41,7 +45,7 @@ class OrderItemsController < ApplicationController
   end
 
   private
-  
+
   def set_order_item
     params.require(:order_item).permit(:cart_id, :order_id)
   end

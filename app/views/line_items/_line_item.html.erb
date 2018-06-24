@@ -1,14 +1,7 @@
+<%# line item partial %>
 <div class="card">
   <div class="card-content">
     <div class="columns">
-      <div class="column auto">
-        <strong class="remove-item">
-          <%#= link_to "", line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "delete is-large is-danger" %>
-          <%#= link_to line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "delete is-large is-danger" do %>
-            <%#= fa_icon "times-circle" %>
-            <%# end %>
-        </strong>
-      </div>
       <div class="column is-one-fifths">
         <figure class="is-128x128 image">
           <%= image_tag(line_item.item.image_url(:thumb)) %>
@@ -17,24 +10,47 @@
       </div>
 
       <div class="column is-half">
-        <strong>
-          <h1 class="title">
+        <h1 class="title">
+          <strong>
             <%= line_item.item.name %>
-          </h1>
-        </strong>
-        <%#= sanitize(line_item.item.description) %>
-        <div>
-          Size: <%= line_item.size %>
+          </strong>
+        </h1>
+        <div class="line-item-description">
+          <%#= line_item.item.description.html_safe %>
+          <p><%= sanitize(line_item.item.description) %></p>
         </div>
-        <div>
-          Flavor: <%= line_item.flavor %>
-        </div>
-        <div>
-          Add-in: <%= line_item.addins %>
-        </div>
-        <div>
-          Espresso Shots: <%= line_item.espresso_shots %>
-        </div>
+
+        <% if line_item.item_type == "Cold Drink" %>
+          <div class="line-item-options">
+            <div>
+              Size: <%= line_item.size %>
+            </div>
+            <div>
+              Flavor: <%= line_item.flavor %>
+            </div>
+            <div>
+              Add-in: <%= line_item.addins %>
+            </div>
+            <div>
+              Espresso Shots: <%= line_item.espresso_shots %>
+            </div>
+          </div>
+        <% elsif line_item.item_type == "Hot Drink" %>
+          <div class="line-item-options">
+            <div>
+              Size: <%= line_item.size %>
+            </div>
+            <div>
+              Flavor: <%= line_item.flavor %>
+            </div>
+            <div>
+              Add-in: <%= line_item.addins %>
+            </div>
+            <div>
+              Espresso Shots: <%= line_item.espresso_shots %>
+            </div>
+          </div>
+        <% end %>
       </div>
       <div class="column is-one-quarter">
         <h1 class="subtitle">
@@ -54,8 +70,7 @@
       -->
     </div>
 
-
-    <% if line_item.item_type == "Cold Drink" %>
+   <% if line_item.item_type == "Cold Drink" %>
       <%= form_for line_item do |form| %>
         <div class="select">
           <%= form.select :size, options_for_select(["None", "Small", "Medium", "Large"]), class: "select-size-options" %>
@@ -69,41 +84,25 @@
         <div class="select">
           <%= form.select :espresso_shots, options_for_select([0, 1, 2, 3, 4]), class: "select-size-options" %>
         </div>
+        <%= form.submit "Confirm Options", class: "button" %>
+      <% end %>
+    <% elsif line_item.item_type == "Hot Drink" %>
+      <%= form_for line_item do |form| %>
+        <div class="select">
+          <%= form.select :size, options_for_select(["None", "Small", "Medium", "Large"]), class: "select-size-options" %>
+        </div>
+        <div class="select">
+          <%= form.select :flavor, options_for_select(["None", "Simple Syrup", "Hazelnut Syrup", "Vanilla Syrup", "Toffee Nut Syrup"]), class: "select-size-options" %>
+        </div>
+        <div class="select">
+          <%= form.select :addins, options_for_select(["Milk", "Almondmilk", "Soymilk"]), class: "select-size-options" %>
+        </div>
+        <div class="select">
+          <%= form.select :espresso_shots, options_for_select([0, 1, 2, 3, 4]), class: "select-size-options" %>
+        </div>
         <%#= form.number_field(:espresso_shots, in: 0.0..5.0, step: 1.0, class: "espresso-num-field", placeholder: "0") %>
         <%= form.submit "Confirm Options", class: "button" %>
       <% end %>
     <% end %>
-
-    <!--
-    <%# if line_item.item_type == "Cold Drink" %>
-      <div class="columns">
-        <div class="column is-one-quarter">
-          <div class="select-drink-size">
-            <label class="label">Sizes</label>
-            <%#= f.select :size, options_for_select(["None", "Small", "Medium", "Large"]), class: "select-size-options" %>
-            <%#= select_tag(line_item.size, options_for_select(["None", "Small", "Medium", "Large"]), class: "select-size-options") %>
-          </div>
-        </div>
-        <div class="column is-one-quarter">
-          <div class="flavor-field-container">
-            <label class="label">Flavors</label>
-            <%#= select_tag(line_item.flavor, options_for_select(["None", "Simple Syrup", "Hazelnut Syrup", "Vanilla Syrup", "Toffee Nut Syrup"]), class: "select-size-options")%>
-          </div>
-        </div>
-        <div class="column is-one-quarter">
-          <div class="addins-field-container">
-            <label class="label">Add-ins</label>
-            <%#= select_tag(line_item.addins, options_for_select(["None", "Splash of 2% Milk", "Splash of 1% Milk", "Splash of Almondmilk", "Splash of Soymilk"]), class: "select-size-options")%>
-          </div>
-        </div>
-        <div class="column is-one-quarter">
-          <label class="label">Espresso Shots</label>
-          <div class="espresso-shot-options">
-            <%#= number_field_tag(line_item.espresso_shots, :quantity, in: 0.0..5.0, step: 1.0, class: "espresso-num-field", placeholder: "0") %>
-          </div>
-        </div>
-      </div>
-    <%# end %>
-    -->
   </div>
 </div>

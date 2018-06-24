@@ -38,6 +38,8 @@ class LineItemsController < ApplicationController
     @line_item = @cart.add_item(@item, @current_user_id, @item_price,
                                 @item_name, @item_type)
 
+    @line_item.set_default_attributes
+
     respond_to do |format|
       if @line_item.save
         # format.html { redirect_to items_path, notice: 'Item added to cart' }

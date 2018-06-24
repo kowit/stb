@@ -52,7 +52,6 @@ class Cart < ApplicationRecord
   #   end
   # end
 
-
   STATE_TAX = 0.06
 
   # Get the total price

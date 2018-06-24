@@ -1,34 +1,17 @@
 <%= render "layouts/employees_nav" %>
 
-<!--
-<div class="container">
-  <%#= form_for @order do |f| %>
-    <label class="label">Order No. <%%= params[:id] %> Status</label>
-    <div class="column auto">
-      <%#= f.text_field :status, class: "input" %>
-    </div>
-    <%#= select_tag(@order, '<option value="1">Pending</option>') %>
-    <%#= select_tag(@order, options_for_select([["Pending", 1], ["Completed", 2]])) %>
-    <%#= f.submit "Submit", class: "button is-warning" %>
-  <%# end %>
-</div>
--->
-
 <div class="orders-index-wrapper">
-	<div class="grid">
-		<% @orders.each do |order| %>
-			<div class="kitchen-cell">
-				<div class="card kitchen-orders">
-					<%= div_for(order, class: "order") do %>
+  <div class="grid">
+    <% @orders.each do |order| %>
+      <div class="kitchen-cell">
+        <div class="card kitchen-orders">
+          <%= div_for(order, class: "order") do %>
             <header class="card-header order-status-header">
               <%= form_for order do |f| %>
-                <%#= f.text_field :status, class: "input order-status-input-field" %>
                 <div class="select">
                   <%= f.select :status, options_for_select(["Pending", "Completed"]), class: "select-order-status" %>
                 </div>
                 <%= f.submit "Submit", class: "button is-medium order-status-btn" %>
-                <%#= select_tag(@order, '<option value="1">Pending</option>') %>
-                <%#= select_tag(@order, options_for_select([["Pending", 1], ["Completed", 2]])) %>
               <% end %>
               <br />
             </header>
@@ -36,33 +19,63 @@
             <div class="card-content">
               <div class="content">
                 <%#= link_to "Change Status", edit_order_path(order), class: "button" %>
-                <span class="tag is-info is-medium order-status-notice">
-                  Order No. <%= order.id %>
+                <span class="tag is-medium order-status-notice">
+                  <strong><%= time_ago_in_words(order.created_at) %></strong>
                 </span>
-                <span class="tag is-primary is-medium order-status-notice">
-                  User No. <%= order.user_id %>
+                <span class="tag is-medium order-status-notice">
+                  <strong>Order No. <%= order.id %></strong>
                 </span>
-                <span class="tag is-danger is-medium order-status-notice">
-                  <%= time_ago_in_words(order.created_at) %>
+                <span class="tag is-medium order-status-notice">
+                  <strong>User No. <%= order.user_id %></strong>
                 </span>
               </div>
             </div>
-						<div class="card-content">
-							<div class="content">
+            <div class="card-content">
+              <div class="content">
                 <div class="columns is-multiline">
-                  <% order.order_items.each do |order_item| %>
-                    <% order_item.cart.line_items.each do |line_item| %>
-                      <div class="column auto line-item-name-col">
+                  <div class="column auto line-item-name-col">
+                    <% order.order_items.each do |order_item| %>
+                      <% order_item.cart.line_items.each do |line_item| %>
                         <%= line_item.name %>
-                      </div>
+                        <% if line_item.item_type == "Cold Drink" %>
+                          <br />
+                          <div class="item-options">
+                            <label>Size:</label>
+                            <%= line_item.size %>
+                            <br />
+                            <label>Flavor:</label>
+                            <%= line_item.flavor %>
+                            <br />
+                            <label>Add ins:</label>
+                            <%= line_item.addins %>
+                            <br />
+                            <label>Espresso Shots:</label>
+                            <%= line_item.espresso_shots %>
+                          </div>
+                        <% elsif line_item.item_type == "Hot Drink" %>
+                          <div class="item-options">
+                            <label>Size:</label>
+                            <%= line_item.size %>
+                            <br />
+                            <label>Flavor:</label>
+                            <%= line_item.flavor %>
+                            <br />
+                            <label>Add ins:</label>
+                            <%= line_item.addins %>
+                            <br />
+                            <label>Espresso Shots:</label>
+                            <%= line_item.espresso_shots %>
+                          </div>
+                        <% end %>
+                      <% end %>
                     <% end %>
-                  <% end %>
+                  </div>
                 </div>
-							</div>
-						</div>
-				</div>
-			</div>
-		<% end %>
-	<% end %>
-	</div>
+              </div>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
 </div>
