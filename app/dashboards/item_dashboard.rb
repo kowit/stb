@@ -17,7 +17,11 @@ class ItemDashboard < Administrate::BaseDashboard
       choices: ["", "Cold Drink", "Hot Drink", "Pastry",
                 "Sandwich", "Salad", "Breakfast"]
     ),
-    price: Field::String.with_options(searchable: false),
+    price: Field::Number.with_options(
+      searchable: false,
+      prefix: "$",
+      decimal: 2
+    ),
     description: TrixField,
     image: Field::Carrierwave.with_options(
       image: :standard,

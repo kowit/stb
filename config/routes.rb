@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   # Administrate
   namespace :admin do
     resources :items
-    resources :orders, only: [:show, :index, :destroy]
+    resources :orders, only: [:index, :destroy]
     resources :users, only: [:show, :index, :destroy]
     resources :employees, only: [:show, :index, :destroy]
+
     root to: "employees#index"
   end
 

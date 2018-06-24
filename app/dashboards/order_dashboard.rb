@@ -11,9 +11,21 @@ class OrderDashboard < Administrate::BaseDashboard
     id: Field::Number,
     # name: Field::String,
     order_status: Field::Boolean,
-    subtotal: Field::String.with_options(searchable: false),
-    tax: Field::String.with_options(searchable: false),
-    total: Field::String.with_options(searchable: false),
+    subtotal: Field::Number.with_options(
+      searchable: false,
+      prefix: "$",
+      decimals: 2
+    ),
+    tax: Field::Number.with_options(
+      searchable: false,
+      prefix: "$",
+      decimals: 2
+    ),
+    total: Field::Number.with_options(
+      searchable: false,
+      prefix: "$",
+      decimal: 2
+    ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     order_items: Field::HasMany,
