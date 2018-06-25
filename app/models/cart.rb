@@ -75,43 +75,72 @@ class Cart < ApplicationRecord
   def total_price_with_options
     # get all the current line item sizes
     total_addin_prices = 0
+    cold_drink = "Cold Drink"
+    hot_drink = "Hot Drink"
+
+    self.line_items.each do |line_item|
+      if line_item.item_type == cold_drink || line_item.item_type == hot_drink
+        if line_item.size == "Small"
+          total_addin_prices += 0.0
+        elsif line_item.size == "Medium"
+          total_addin_prices += 0.10
+        elsif line_item.size == "Large"
+          total_addin_prices += 0.20
+        end
+
+        if line_item.flavor != "None"
+          total_addin_prices += 0.10
+        end
+
+        if line_item.addins != "None"
+          total_addin_prices += 0.10
+        end
+
+        if line_item.espresso_shots >= 1
+          total_addin_prices += 0.10
+        elsif line_item.espresso_shots == 0
+          total_addin_prices += 0.0
+        end
+
+      end
+    end
 
     # Adjust total price with the selected sizes of line items
-    item_size_arr = line_items.map { |line_item| line_item.size }
-    item_size_arr.each do |size|
-      if !size.nil?
-        if size == "Small"
-          total_addin_prices += 0.0
-        elsif size == "Medium"
-          total_addin_prices += 0.20
-        elsif size == "Large"
-          total_addin_prices += 0.30
-        end
-      end
-    end
+    # item_size_arr = line_items.map { |line_item| line_item.size }
+    # item_size_arr.each do |size|
+    #   if !size.nil?
+    #     if size == "Small"
+    #       total_addin_prices += 0.0
+    #     elsif size == "Medium"
+    #       total_addin_prices += 0.20
+    #     elsif size == "Large"
+    #       total_addin_prices += 0.30
+    #     end
+    #   end
+    # end
 
-    item_flavors_arr = line_items.map { |line_item| line_item.flavor }
-    item_flavors_arr.each do |flavor|
-      if !flavor.nil?
-        total_addin_prices += 0.10
-      end
-    end
+    # item_flavors_arr = line_items.map { |line_item| line_item.flavor }
+    # item_flavors_arr.each do |flavor|
+    #   if !flavor.nil?
+    #     total_addin_prices += 0.10
+    #   end
+    # end
 
-    item_addins_arr = line_items.map { |line_item| line_item.addins }
-    item_addins_arr.each do |addin|
-      if addin != ""
-        total_addin_prices += 0.10
-      end
-    end
+    # item_addins_arr = line_items.map { |line_item| line_item.addins }
+    # item_addins_arr.each do |addin|
+    #   if addin != ""
+    #     total_addin_prices += 0.10
+    #   end
+    # end
 
-    item_shots_arr = line_items.map { |line_item| line_item.addins }
-    item_shots_arr.each do |shots|
-      if shots.to_i >= 1
-        total_addin_prices += 0.20
-      else
-        total_addin_prices += 0.0
-      end
-    end
+    # item_shots_arr = line_items.map { |line_item| line_item.addins }
+    # item_shots_arr.each do |shots|
+    #   if shots.to_i >= 1
+    #     total_addin_prices += 0.20
+    #   else
+    #     total_addin_prices += 0.0
+    #   end
+    # end
 
     total_addin_prices
   end
