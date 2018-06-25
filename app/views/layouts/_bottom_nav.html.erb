@@ -6,7 +6,7 @@
   <% if @cart.line_items.empty? %>
     <div class="navbar-left">
       <div class="navbar-item">
-        <%= link_to "Continue", cart_path, class: "button is-medium is-primary navbar-item", id: "continue-btn" %>
+        <%= link_to "Continue", cart_path, disabled: "", class: "button is-medium is-primary navbar-item is-disabled", id: "continue-btn" %>
 
         <script>
           $(document).ready(function() {
