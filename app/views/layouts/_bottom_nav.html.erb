@@ -3,16 +3,31 @@
     <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-danger is-medium empty-btn navbar-item" %>
     <%#= link_to "Return to Menu", items_path, class: "button is-medium is-warning navbar-item" %>
   </div>
-  <div class="navbar-left">
-    <div class="navbar-item">
-      <strong>
-        Total: <%= number_to_currency(@cart.total_price, precision: 2) %>
-      </strong>
+  <% if @cart.line_items.empty? %>
+    <div class="navbar-left">
+      <div class="navbar-item">
+        <%= link_to "Continue", cart_path, class: "button is-medium is-primary navbar-item", id: "continue-btn" %>
+
+        <script>
+          $(document).ready(function() {
+            $('#continue-btn').click(function() {
+              alert("Cart is empty.");
+            });
+          });
+        </script>
+      </div>
     </div>
-  </div>
-  <div class="navbar-left">
-    <!-- <span class="f5 has-text-grey navbar-item">Total:</span>  -->
-    <%= link_to "Continue", cart_review_path(@cart), class: "button is-medium is-primary navbar-item" %>
-    <%#= link_to "Continue", new_cart_order_path(@cart), class: "button is-medium is-warning" %>
-  </div>
+  <% else %>
+    <div class="navbar-left">
+      <div class="navbar-item">
+        <strong>
+          Total: <%= number_to_currency(@cart.total_price, precision: 2) %>
+        </strong>
+      </div>
+    </div>
+    <div class="navbar-left">
+      <%= link_to "Continue", cart_review_path(@cart), class: "button is-medium is-primary navbar-item" %>
+      <%#= link_to "Continue", new_cart_order_path(@cart), class: "button is-medium is-warning" %>
+    </div>
+  <% end %>
 </nav>

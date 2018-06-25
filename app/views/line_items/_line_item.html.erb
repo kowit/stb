@@ -63,15 +63,12 @@
       <div class="column is-one-quarter">
         <%= link_to "", line_item, method: :delete, data: {confirm: "Are you sure?"}, class: "button is-medium delete is-large is-danger" %>
       </div>
-      <!--
-        <strong class="f4">
-        <%#= number_to_currency(line_item.total_price) %>
-        </strong>
-      -->
     </div>
 
-   <% if line_item.item_type == "Cold Drink" %>
+    <% if line_item.item_type == "Cold Drink" %>
       <%= form_for line_item do |form| %>
+        <label>Drink Options:</label>
+        <br />
         <div class="select">
           <%= form.select :size, options_for_select(["None", "Small", "Medium", "Large"]), class: "select-size-options" %>
         </div>
@@ -88,6 +85,8 @@
       <% end %>
     <% elsif line_item.item_type == "Hot Drink" %>
       <%= form_for line_item do |form| %>
+        <label>Drink Options:</label>
+        <br />
         <div class="select">
           <%= form.select :size, options_for_select(["None", "Small", "Medium", "Large"]), class: "select-size-options" %>
         </div>
