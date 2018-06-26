@@ -2,7 +2,11 @@
 2. Program the Order and OrderItem functionality
 
 ============================================================
-CHALLENGES:
+LAST WEEK TODOS:
+
+6/26/2018
+
+Make navbar views responsive
 
 
 ============================================================

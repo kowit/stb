@@ -1,35 +1,39 @@
 <%= render "layouts/employees_nav" %>
 
 <div class="global-wrapper">
-  <section class="section">
-    <div class="container center-container">
-      <div class="user-notice">
-        <!-- <p class="notice"><%#= notice %></p> -->
-        <!-- <p class="alert"><%#= alert %></p> -->
-      </div>
-      <div class="welcome-message">
-        <h1 class="title">Spill the Beans</h1>
-        <h2 class="subtitle">Coffee Roasters</h2>
-      </div>
-      <br />
-      <br />
+  <div class="employee-welcome-wrapper">
+    <section class="section">
+      <div class="container center-container">
+        <div class="user-notice">
+          <!-- <p class="notice"><%#= notice %></p> -->
+          <!-- <p class="alert"><%#= alert %></p> -->
+        </div>
+        <div class="welcome-message">
+          <h1 class="title">Spill the Bean</h1>
+          <h2 class="subtitle">Coffee Roasters</h2>
+        </div>
+        <br />
+        <br />
 
-      <%#= link_to "Admin", admin_path, class: "button is-warning is-large" %>
-      <%= link_to "Employee Sign in", new_employee_session_path, class: "button is-warning is-large" %>
-      <br />
-      <br />
-      <%= link_to "Employee Sign up", new_employee_registration_path, class: "button is-warning is-large" %>
+        <%#= link_to "Admin", admin_path, class: "button is-warning is-large" %>
+        <div class="navbar-item">
+          <%= link_to "Employee Sign in", new_employee_session_path, class: "button is-warning is-large" %>
+        </div>
+        <div class="navbar-item">
+          <%= link_to "Employee Sign up", new_employee_registration_path, class: "button is-warning is-large" %>
+        </div>
 
-      <%# if signed_in? %>
+        <%# if signed_in? %>
         <%#= link_to "Dashboard", dashboard_path %>
         <%#= link_to "Sign out", destroy_user_session_path, method: :delete %>
-      <%# else %>
-      <!-- <h2 class="sub-title">Sign up to order</h2><br /> -->
+        <%# else %>
+        <!-- <h2 class="sub-title">Sign up to order</h2><br /> -->
         <%#= link_to "View Menu", items_path, class: "button is-primary is-large" %><br /><br />
         <%# User %>
         <%#= link_to "Sign in", new_user_session_path, class: "button is-primary is-large" %>
         <%#= link_to "Sign up", new_user_registration_path, class: "button is-primary is-large" %> 
-      <%# end %>
-    </div>
-  </section>
+        <%# end %>
+      </div>
+    </section>
+  </div>
 </div>

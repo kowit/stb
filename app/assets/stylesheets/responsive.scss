@@ -1,5 +1,53 @@
 /* Responsive */
 
+// iPhone 6/7/8 Plus
+@media screen and (min-width: 400px) {
+
+  .employee-welcome-wrapper {
+    padding-top: 40px;
+  }
+
+  .employee-new-registration {
+    padding-top: 100px;
+  }
+
+  .navbar-links {
+    padding-left: calc(20% - 2rem);
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .cell {
+    width: calc(50% - 2rem);
+  }
+
+  .new-session-wrapper {
+    padding-top: 90px;
+  }
+
+  .new-registration-wrapper {
+    padding-top: 90px;
+  }
+
+  .items-container {
+    padding-top: 140px;
+    padding-left: 32px;
+    padding-right: 0px;
+  }
+
+  .item-container {
+    padding-top: 50px;
+  }
+
+  .cart-wrapper {
+    padding-top: 90px;
+  }
+}
+
 // Tablet
 @media screen and (min-width: 600px) {
   .grid {
@@ -12,10 +60,16 @@
     width: calc(50% - 2rem);
   }
 
+  .items-container {
+    padding-top: 90px;
+  }
+
 }
 
 // Desktop
 @media screen and (min-width: 1000px) {
+
+
   .kitchen-cell {
     width: calc(34.6666% - 2rem);
     padding: 5px;
@@ -30,6 +84,11 @@
     // 3 items per row
     width: calc(33.3333% - 2rem);
     padding: 5px;
+  }
+
+  .items-container {
+    padding-top: 90px;
+    padding-left: 12px;
   }
 
   .global-bottom-nav {

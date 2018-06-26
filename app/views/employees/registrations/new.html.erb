@@ -1,39 +1,41 @@
 <%= render "layouts/employees_nav" %>
 
-<section class="section">
-  <div class="responsive-container">
-    <h2>Employee Sign up</h2>
+<div class="employee-new-registration">
+  <section class="section">
+    <div class="responsive-container">
+      <h2>Employee Sign up</h2>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%#= f.error_notification %>
-      <% devise_error_messages! %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%#= f.error_notification %>
+        <% devise_error_messages! %>
 
-      <div>
-        <%= f.email_field :email, 
-          required: true, 
-          autofocus: true, 
-          placeholder: "Email",
-          class: "input" %>
-      </div>
-      <br />
-      <div>
-        <%= f.password_field :password, required: true, 
-          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), 
-          placeholder: "Password", class: "input" %>
-      </div>
-      <br />
-      <div>
-        <%= f.password_field :password_confirmation, required: true, 
-          placeholder: "Password confirmation", class: "input" %>
-      </div>
-      <br />
-      <div class="form-actions">
-        <%#= f.button :submit, "Sign up" %>
+        <div>
+          <%= f.email_field :email, 
+            required: true, 
+            autofocus: true, 
+            placeholder: "Email",
+            class: "input" %>
+        </div>
         <br />
-        <%= f.submit "Sign up", class: "button is-primary is-large" %>
-      </div>
-    <% end %>
+        <div>
+          <%= f.password_field :password, required: true, 
+            hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), 
+            placeholder: "Password", class: "input" %>
+        </div>
+        <br />
+        <div>
+          <%= f.password_field :password_confirmation, required: true, 
+            placeholder: "Password confirmation", class: "input" %>
+        </div>
+        <br />
+        <div class="form-actions">
+          <%#= f.button :submit, "Sign up" %>
+          <br />
+          <%= f.submit "Sign up", class: "button is-primary is-large" %>
+        </div>
+      <% end %>
 
-    <%= render "employees/shared/links" %>
-  </div>
-</section>
+      <%= render "employees/shared/links" %>
+    </div>
+  </section>
+</div>
