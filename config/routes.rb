@@ -22,8 +22,8 @@ Rails.application.routes.draw do
 
   # Routes for /employees
   # create employee_root_path
-  # get "/employees" => "employees#index", as: :employee_root 
-  get "/employees" => "welcomes#show", as: :employee_root 
+  # get "/employees" => "employees#index", as: :employee_root
+  get "/employees" => "welcomes#show", as: :employee_root
 
   namespace :employees do
     root 'employees#show' # creates user_root_path
@@ -60,7 +60,7 @@ Rails.application.routes.draw do
   get "/line_items" => "items#index"
   get "/carts" => "items#index"
 
-  resource :dashboard, only: [:show]
+  # resource :dashboard, only: [:show]
   resource :landing, only: [:show]
   resources :line_items
   resources :items
