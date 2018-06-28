@@ -3,29 +3,55 @@
 // Desktop
 @media screen and (min-width: 1000px) {
   .landing-navbar {
-    font-family: "Cicular Std", sans-serif;
+    font-family: Circular Std, sans-serif;
     margin: 0 auto;
-    max-width: 1260px;
-    // max-width: 100%;
+    max-width: 2060px;
     display: flex;
     border-bottom: 1px solid #eeeeee;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
 
     .landing-title {
       flex: 1;
       text-align: left;
 
-      a {
-        font-family: "Cicular Std", sans-serif;
+      .hero-title {
+        padding-right: 40px;
         font-weight: bold;
-        font-size: 24px;
+      }
+
+      a {
+        padding-right: 20px;
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: 200;
         color: rgb(85, 85, 85);
-        // color: #090908;
+
+        &:hover {
+          color: #01a1dd;
+          cursor: pointer;
+        }
+      }
+
+      .nav-items-left {
+        font-size: 10px;
+        flex: 1;
+        text-align: left;
+
+        ul {
+          padding: 0px;
+
+          li {
+            display: inline;
+            list-style-type: none;
+          }
+        }
       }
     }
 
-    .nav-items {
+    .nav-items-right {
       flex: 1;
       text-align: right;
 
@@ -40,26 +66,29 @@
         }
 
         a {
-          font-family: "Cirular Std", sans-serif;
           text-transform: uppercase;
-          font-weight: 500;
+          font-weight: 400;
+          color: rgb(85, 85, 85);
+
+          &:hover {
+            color: #01a1dd;
+            cursor: pointer;
+          }
         }
       }
     }
   }
 
-  .store-img-wrapper {
-  }
-
   .parallax {
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('store-1');
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('front-1');
     background-attachment: fixed;
-    background-position: top;
+    background-position: center bottom 60px;
     background-repeat: no-repeat;
     background-size: cover;
+    bottom: 200px;
     opacity: 0.8;
     filter: alpha(opacity=80); /* For IE8 and earlier */
-    height: 600px;
+    min-height: 800px;
 
     img {
       width: 100%;
@@ -79,6 +108,14 @@
     p {
       font-size: 18px;
     }
+  }
+
+  .parallax-hero-container {
+    margin: 0 auto;
+    max-width: 100%;
+    padding-left: 300px;
+    padding-right: 300px;
+    text-align: center;
   }
 
   .parallax-hero {
@@ -148,9 +185,12 @@
   }
 
   .footer-rights {
+    padding-top: 15px;
+    padding-bottom: 15px;
     margin: 0 auto;
     max-width: 960px;
     font-size: 14px;
+    border-top: 1px solid #eee;
   }
 
   .cart-quantity {

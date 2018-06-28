@@ -1,12 +1,16 @@
 <nav class="landing-navbar">
   <div class="landing-title">
-    <h1><%= link_to "Spill the Bean Coffee Roasters", root_path %></h1>
+    <div class="nav-items-left">
+      <ul>
+        <li><%= link_to "Spill the Bean Coffee Roasters", root_path, class: "hero-title" %></li>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Shop", items_path %></li>
+        <li><%= link_to "About Us", root_path %></li>
+      </ul>
+    </div>
   </div>
-  <div class="nav-items">
+  <div class="nav-items-right">
     <ul>
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Shop", items_path %></li>
-      <li><%= link_to "About Us", root_path %></li>
       <% if user_signed_in? %>
         <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
         <li class="shopping-cart">
