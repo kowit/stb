@@ -157,13 +157,18 @@
   .section-img-wrapper {
     margin: 0 auto;
     display: flex;
+    padding-bottom: 80px;
 
     .flex-img {
       flex: 1;
-      padding: 10px;
-    }
+      padding: 5px;
 
-    padding-bottom: 80px;
+      &:hover {
+        opacity: 0.8;
+        transition: 0.5s;
+        cursor: pointer;
+      }
+    }
   }
 
   .team-section {
