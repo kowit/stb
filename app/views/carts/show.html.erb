@@ -3,23 +3,15 @@
 
 <div class="cart-wrapper">
   <div class="global-wrapper">
-    <button class="button normal user-notification">
-      <%= fa_icon "user", class: "pull-left" %>
-      <%= current_user.email %>
-    </button>
-
     <p id="notice">
       <%= notice %>
     </p>
-    <br />
-
     <% if @cart.line_items.count == 0 %>
       <br/>
       <h1 class="title">Your Shopping Cart is empty.</h1>
       <p><em>Your Shopping Cart lives to serve. Give it purpose</em></p>
     <% else %>
       <%= render(@cart.line_items) %>
-      <%#= render(@cart.line_items)%>
     <% end %>
     <%#= link_to 'Edit', edit_cart_path(@cart) %>
     <%#= link_to 'Back', carts_path %>

@@ -12,6 +12,10 @@
   <div class="nav-items-right">
     <ul>
       <% if user_signed_in? %>
+        <li>
+          <%= fa_icon "user 1px" %>
+          <%= current_user.email %>
+        </li>
         <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
         <li class="shopping-cart">
           <% if cart_has_items %>
