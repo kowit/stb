@@ -3,6 +3,7 @@
 // Desktop
 @media screen and (min-width: 1000px) {
   .landing-navbar {
+    font-family: "Cicular Std", sans-serif;
     margin: 0 auto;
     width: 100%;
     display: flex;
@@ -39,9 +40,9 @@
         }
 
         a {
-          font-family: "Helvetica Neue", sans-serif;
+          font-family: "Cirular Std", sans-serif;
           text-transform: uppercase;
-          font-weight: 400;
+          font-weight: 500;
         }
       }
     }
@@ -58,7 +59,7 @@
     background-size: cover;
     opacity: 0.8;
     filter: alpha(opacity=80); /* For IE8 and earlier */
-    min-height: 900px;
+    height: 600px;
 
     img {
       width: 100%;
@@ -66,11 +67,17 @@
   }
 
   .landing-section {
+    font-size: 20px;
     margin: 0 auto;
-    padding-top: 100px;
+    padding-top: 80px;
+    padding-bottom: 100px;
     font-size: 22px;
-    max-width: 1260px;
-    height: 100%;
+    max-width: 960px;
+    min-height: 250px;
+
+    p {
+      font-size: 18px;
+    }
   }
 
   .parallax-hero {
@@ -80,12 +87,24 @@
     position: absolute;
     color: #eeeeee;
     font-size: 28px;
+
+    p {
+      font-size: 20px;
+    }
   }
 
   .landing-footer {
     border-top: 1px solid #eeeeee;
+    background-color: #f3f3f3;
     margin: 0 auto;
-    max-width: 1260px;
+    padding-top: 100px;
+    padding-bottom: 40px;
+    min-height: 400px;
+
+    .section-footer {
+      margin: 0 auto;
+      max-width: 960px;
+    }
   }
 
   .section-img {
@@ -102,7 +121,7 @@
       padding: 10px;
     }
 
-    padding-bottom: 200px;
+    padding-bottom: 80px;
   }
 }
 
