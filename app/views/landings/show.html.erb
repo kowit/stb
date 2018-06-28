@@ -1,20 +1,85 @@
-  <%= image_tag("landing-image", class: "landing-page") %>
+<%= render "layouts/landing-navbar" %>
 
+<div class="store-img-wrapper parallax">
+  <%#= image_tag("store", class: "store-img") %>
+  <div class="parallax-hero">
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book. It has survived not only five centuries, but
+      also the leap into electronic typesetting, remaining essentially unchanged.
+      It was popularised in the 1960s with the release of Letraset sheets
+      containing Lorem Ipsum passages, and more recently with desktop publishing
+      software like Aldus PageMaker including versions of Lorem Ipsum.
+    </p>
+
+    <br />
+    <%= link_to "View Menu", items_path, class: "button is-large is-info" %>
+  </div>
+
+</div>
+
+<section class="landing-section">
+  <div class="section-img-wrapper">
+    <%= image_tag("img-1", class: "section-img flex-img") %>
+    <%= image_tag("img-2", class: "section-img flex-img") %>
+    <%= image_tag("img-3", class: "section-img flex-img") %>
+  </div>
+  <p>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text ever since the
+    1500s, when an unknown printer took a galley of type and scrambled it to
+    make a type specimen book. It has survived not only five centuries, but
+    also the leap into electronic typesetting, remaining essentially unchanged.
+    It was popularised in the 1960s with the release of Letraset sheets
+    containing Lorem Ipsum passages, and more recently with desktop publishing
+    software like Aldus PageMaker including versions of Lorem Ipsum.
+  </p>
+  <p>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text ever since the
+    1500s, when an unknown printer took a galley of type and scrambled it to
+    make a type specimen book. It has survived not only five centuries, but
+    also the leap into electronic typesetting, remaining essentially unchanged.
+    It was popularised in the 1960s with the release of Letraset sheets
+    containing Lorem Ipsum passages, and more recently with desktop publishing
+    software like Aldus PageMaker including versions of Lorem Ipsum.
+  </p>
+</section>
+
+<footer class="landing-footer">
+  <p>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text ever since the
+    1500s, when an unknown printer took a galley of type and scrambled it to
+    make a type specimen book. It has survived not only five centuries, but
+    also the leap into electronic typesetting, remaining essentially unchanged.
+    It was popularised in the 1960s with the release of Letraset sheets
+    containing Lorem Ipsum passages, and more recently with desktop publishing
+    software like Aldus PageMaker including versions of Lorem Ipsum.
+  </p>
+</footer>
+
+<%#= image_tag("landing-image", class: "landing-page") %>
+
+<!-- 
   <nav class="navbar is-responsive is-transparent landing-navbar">
-    <div class="navbar-start">
-    </div>
+  <div class="navbar-start">
+  </div>
 
-    <div class="navbar-item">
-      <h1 class="landing-title"><%= link_to "Spill the Bean Coffee", landing_path %></h1>
-    </div>
+  <div class="navbar-item">
+  <h1 class="landing-title"><%= link_to "Spill the Bean Coffee", landing_path %></h1>
+  </div>
 
-    <div class="navbar-end">
-    </div>
+  <div class="navbar-end">
+  </div>
   </nav>
 
   <div class="shop-container">
-    <%= link_to "Shop Now", items_path, class: "button is-large navbar-item shop-btn" %>
+  <%#= link_to "Shop Now", items_path, class: "button is-large navbar-item shop-btn" %>
   </div>
+--> 
 
 <!--
   <nav class="navbar is-fixed-bottom is-transparent landing-bottom-nav" role="navigation">
