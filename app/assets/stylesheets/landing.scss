@@ -5,7 +5,8 @@
   .landing-navbar {
     font-family: "Cicular Std", sans-serif;
     margin: 0 auto;
-    width: 100%;
+    max-width: 1260px;
+    // max-width: 100%;
     display: flex;
     border-bottom: 1px solid #eeeeee;
     padding-top: 10px;
@@ -14,20 +15,19 @@
     .landing-title {
       flex: 1;
       text-align: left;
-      padding-left: 100px;
 
       a {
         font-family: "Cicular Std", sans-serif;
         font-weight: bold;
         font-size: 24px;
-        color: #090908;
+        color: rgb(85, 85, 85);
+        // color: #090908;
       }
     }
 
     .nav-items {
       flex: 1;
       text-align: right;
-      padding-right: 100px;
 
       ul {
         padding: 0px;
@@ -151,5 +151,10 @@
     margin: 0 auto;
     max-width: 960px;
     font-size: 14px;
+  }
+
+  .cart-quantity {
+    font-size: 20px;
+    padding-left: 10px;
   }
 }

@@ -17,7 +17,7 @@ module ApplicationHelper
     if @cart.line_items.count > 0
       return "#{@cart.line_items.count}".html_safe
     else
-      return "0".html_safe
+      return "".html_safe
     end
   end
 

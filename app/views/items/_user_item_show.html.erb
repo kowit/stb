@@ -1,5 +1,6 @@
 <%#= USER %>
-<%= render "layouts/navbar" %>
+<%#= render "layouts/navbar" %>
+<%= render "layouts/landing-navbar" %>
 
 <div class="global-wrapper">
   <div class="item-container">
@@ -25,9 +26,9 @@
               <%= number_to_currency(@item.price) %>
             </div>
             <% if signed_in? %>
-              <%#= link_to "Add Item", "#", class: "button is-primary is-large" %><br /><br />
               <%#= link_to "Edit", edit_item_path, class: "button is-medium" %>
               <%#= link_to "Destroy", "#", class: "button is-medium" %>
+              <%= button_to "Add item", line_items_path(item_id: @item), class: 'button is-primary is-large add-to-cart' %>
             <% end %>
             <%= sanitize(@item.description) %><br />
           </div>

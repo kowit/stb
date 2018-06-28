@@ -1,11 +1,9 @@
 <%# Items#Show %>
-<div class="item-container">
-  <% if user_signed_in? %>
-    <%= render "items/user_item_show" %>
-  <% else %>
-    <%= render "items/user_item_show" %>
-  <% end %>
-</div>
+<% if user_signed_in? %>
+  <%= render "items/user_item_show" %>
+<% else %>
+  <%= render "items/user_item_show" %>
+<% end %>
 
 <%# elsif employee_signed_in? %>
 <%#= render "items/employee_item_show" %>

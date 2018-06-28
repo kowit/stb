@@ -1,415 +1,419 @@
 /* styles.scss */
 
-.session-section {
-  padding-top: 40px;
-}
-
-.line-item-options {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.cart-wrapper {
-  padding-top: 40px;
-  padding-bottom: 100px;
-}
-
-.item-options {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.item-container {
-  margin: 0 auto;
-  // max-width: 1260px;
-}
-
-.user-icon {
-  padding-right: 5px;
-}
-
-.flat-nav {
-  font-family: "Circular Std", sans-serif;
-  .main-title {
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-
-    &:hover {
-      color: #4a4a4a;
-      background-color: #fff;
-    }
+@media screen and (min-width: 1000px) {
+  .session-section {
+    padding-top: 40px;
   }
 
-  .navbar-left {
-    .navbar-item {
-      font-size: 18px;
+  .line-item-options {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .cart-wrapper {
+    margin: 0 auto;
+    max-width: 1260px;
+    // padding-top: 40px;
+    padding-bottom: 100px;
+  }
+
+  .item-options {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .item-container {
+    margin: 0 auto;
+    max-width: 1260px;
+  }
+
+  .user-icon {
+    padding-right: 5px;
+  }
+
+  .flat-nav {
+    font-family: "Circular Std", sans-serif;
+    .main-title {
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
 
       &:hover {
+        color: #4a4a4a;
         background-color: #fff;
       }
     }
+
+    .navbar-left {
+      .navbar-item {
+        font-size: 18px;
+
+        &:hover {
+          background-color: #fff;
+        }
+      }
+    }
   }
-}
 
-.select-size-options {
-  width: 100%;
-  height: 45px;
-  font-size: 20px;
-  border: 1px solid #d2d2d2;
-}
-
-.espresso-shot-options {
-  width: 50%;
-  .espresso-num-field {
+  .select-size-options {
+    width: 100%;
     height: 45px;
     font-size: 20px;
+    border: 1px solid #d2d2d2;
   }
-}
 
-.edit-order-status-btn {
-  width: 100%;
-}
-
-.order-status-input-field {
-  height: 45px;
-  font-size: 20px;
-  width: 180px;
-}
-
-.order-status-header {
-  padding-left: 65px;
-}
-
-.order-status-notice {
-  width: 100%;
-}
-
-.order-status-btn {
-}
-
-.select-order-status {
-  width: 100%;
-}
-
-.order-status-notice-header {
-  @extend .order-status-notice;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.kitchen-line-item-name {
-  border-bottom: 1px solid #eee;
-}
-
-.kitchen-line-item-price {
-  border-bottom: 1px solid #eee;
-}
-
-.line-item-name-col {
-  border: 1px solid #eee;
-}
-
-.line-item-name {
-  text-align: left;
-  font-family: Helvetica, sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.line-item-price {
-  text-align: right;
-  font-family: Helvetica, sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.item-price {
-  font-size: 22px;
-}
-
-.orders-index-wrapper {
-  margin: 0 auto;
-  font-family: Proxima Nova, sans-serif;
-  font-size: 18px;
-  padding-top: 80px;
-  padding-left: 40px;
-  background-color: #fafafa;
-  height: 100%;
-
-  table {
-    border: 1px solid #b3b3b3;
-
-    tr {
-      border: 1px solid #b3b3b3;
-    }
-
-    td {
-      padding: 5px 10px 5px 10px;
-      border: 1px solid #b3b3b3;
+  .espresso-shot-options {
+    width: 50%;
+    .espresso-num-field {
+      height: 45px;
+      font-size: 20px;
     }
   }
 
-  .orders-title-row {
-    font-weight: bold;
-  }
-}
-
-.employee-cart-table {
-  font-size: 18px;
-}
-
-.signed-in-as-container {
-  padding-left: 20px;
-}
-
-.employees-nav {
-  font-size: 22px;
-}
-
-.dashboard-wrapper {
-  margin: 0 auto;
-  height: 100%;
-  padding-left: 80px;
-  padding-bottom: 120px;
-}
-
-.food-name-col {
-  text-align: left;
-}
-
-.food-price-col {
-  text-align: right;
-}
-
-.price-summary-col {
-  @extend .food-name-col;
-}
-
-.food-price-col {
-  @extend .food-price-col;
-}
-
-.cell-card {
-}
-
-.item-name {
-  font-family: "Proxima Nova", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-}
-
-.shopping-cart-icon {
-  padding-right: 5px;
-}
-
-.bottom-nav {
-  display: flex;
-  border-top: 1px solid #eee;
-  padding: 10px 100px 10px 100px;
-}
-
-.bottom-nav-col1 {
-}
-
-.bottom-nav-col2 {
-}
-
-.empty-btn {
-  margin-right: 10px;
-}
-
-.order-summary-wrapper {
-  margin: 0 auto;
-  padding-top: 40px;
-  max-width: 960px;
-}
-
-.order-summary {
-  margin: 0 auto;
-  width: 100%;
-
-  .td-item-name {
-    font-size: 24px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  .edit-order-status-btn {
+    width: 100%;
   }
 
-  .td-item-price {
-    font-size: 24px;
-    text-align: right;
-    border-bottom: 1px solid #eee;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .td-summary-price {
-    padding-top: 50px;
+  .order-status-input-field {
+    height: 45px;
     font-size: 20px;
-    text-align: right;
+    width: 180px;
   }
-}
 
-.order-summary-card {
-  padding: 20px;
-}
+  .order-status-header {
+    padding-left: 65px;
+  }
 
-.carts-container {
-  padding-right: 100px;
-  font-size: 18px;
-}
+  .order-status-notice {
+    width: 100%;
+  }
 
-.new-order-wrapper {
-  margin: 0 auto;
-  max-width: 1260px;
-  padding-top: 40px;
-  padding-bottom: 100px;
-}
+  .order-status-btn {
+  }
 
-.line-items-index {
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
+  .select-order-status {
+    width: 100%;
+  }
 
-.global-bottom-nav {
-  padding-left: 200px;
-  border-top: 1px solid #eee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.is-center {
-  max-width: 50%;
-}
-
-.hero {
-  font-family: "Circular Std", sans-serif;
-  background-image: image-url('coffee1.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.title {
-  a {
-    font-family: "Helvetica", sans-serif;
+  .order-status-notice-header {
+    @extend .order-status-notice;
+    font-size: 24px;
     font-weight: bold;
+  }
+
+  .kitchen-line-item-name {
+    border-bottom: 1px solid #eee;
+  }
+
+  .kitchen-line-item-price {
+    border-bottom: 1px solid #eee;
+  }
+
+  .line-item-name-col {
+    border: 1px solid #eee;
+  }
+
+  .line-item-name {
+    text-align: left;
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .line-item-price {
+    text-align: right;
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .item-price {
+    font-size: 22px;
+  }
+
+  .orders-index-wrapper {
+    margin: 0 auto;
+    font-family: Proxima Nova, sans-serif;
     font-size: 18px;
-    text-transform: uppercase;
-    color: #555;
-    &:after {
-      color: #555;
+    padding-top: 80px;
+    padding-left: 40px;
+    background-color: #fafafa;
+    height: 100%;
+
+    table {
+      border: 1px solid #b3b3b3;
+
+      tr {
+        border: 1px solid #b3b3b3;
+      }
+
+      td {
+        padding: 5px 10px 5px 10px;
+        border: 1px solid #b3b3b3;
+      }
     }
 
-    &:hover {
-      color: #555;
-    }
-    // color: #e5e5e5;
-  }
-}
-
-.add-to-cart {
-  border-radius: 50px;
-
-  &:hover {
-    box-shadow: 3px 3px #eee;
-    -webkit-transition: 0.2s;
-    transition: 0.2s;
-  }
-}
-
-.welcome-message {
-  .title {
-    font-size: 44px;
-  }
-
-  .sub-title {
-    font-size: 42px;
-    color: #fff;
-  }
-}
-
-.navbar {
-  font-size: 18px;
-  .navbar-brand {
-    font-family: "Circular Std", sans-serif;
-    font-weight: bold;
-    // font-size: 24px;
-  }
-}
-
-.payment-col {
-  margin: 0 auto;
-  max-height: 100%;
-  font-size: 24px;
-  ul {
-    li {
-      list-style-type: none;
+    .orders-title-row {
+      font-weight: bold;
     }
   }
-}
 
-.user-notice {
-  color: #000;
-}
+  .employee-cart-table {
+    font-size: 18px;
+  }
 
-.navbar {
-  .right-nav {
+  .signed-in-as-container {
+    padding-left: 20px;
+  }
+
+  .employees-nav {
+    font-size: 22px;
+  }
+
+  .dashboard-wrapper {
+    margin: 0 auto;
+    height: 100%;
+    padding-left: 80px;
+    padding-bottom: 120px;
+  }
+
+  .food-name-col {
+    text-align: left;
+  }
+
+  .food-price-col {
     text-align: right;
   }
-}
 
-.is-round {
-  border-radius: 5px;
-}
+  .price-summary-col {
+    @extend .food-name-col;
+  }
 
-.is-white {
-  color: #fff;
-}
+  .food-price-col {
+    @extend .food-price-col;
+  }
 
-.item-image {
-  border-radius: 25px;
-}
+  .cell-card {
+  }
 
-#cart-link {
-}
+  .item-name {
+    font-family: "Proxima Nova", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+  }
 
-.user-notification {
-  font-family: "Circular Std", sans-serif;
-  font-size: 20px;
-}
+  .shopping-cart-icon {
+    padding-right: 5px;
+  }
 
-/***********/
+  .bottom-nav {
+    display: flex;
+    border-top: 1px solid #eee;
+    padding: 10px 100px 10px 100px;
+  }
 
-.responsive-container {
-  margin: 0 auto;
-  padding: 50px;
-}
+  .bottom-nav-col1 {
+  }
 
-.responsive-image {
-  max-width: 100%;
-}
+  .bottom-nav-col2 {
+  }
 
-.cell img {
-  display: block;
-}
+  .empty-btn {
+    margin-right: 10px;
+  }
 
-.cell {
-  margin: 0.5rem;
-}
+  .order-summary-wrapper {
+    margin: 0 auto;
+    padding-top: 40px;
+    max-width: 960px;
+  }
 
-.tmp-border {
-  border: 1px solid #eee;
-}
+  .order-summary {
+    margin: 0 auto;
+    width: 100%;
 
-.remove-item {
-  a {
-    color: #fff;
+    .td-item-name {
+      font-size: 24px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .td-item-price {
+      font-size: 24px;
+      text-align: right;
+      border-bottom: 1px solid #eee;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .td-summary-price {
+      padding-top: 50px;
+      font-size: 20px;
+      text-align: right;
+    }
+  }
+
+  .order-summary-card {
+    padding: 20px;
+  }
+
+  .carts-container {
+    padding-right: 100px;
+    font-size: 18px;
+  }
+
+  .new-order-wrapper {
+    margin: 0 auto;
+    max-width: 1260px;
+    padding-top: 40px;
+    padding-bottom: 100px;
+  }
+
+  .line-items-index {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .global-bottom-nav {
+    padding-left: 200px;
+    border-top: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .is-center {
+    max-width: 50%;
+  }
+
+  .hero {
+    font-family: "Circular Std", sans-serif;
+    background-image: image-url('coffee1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .title {
+    a {
+      font-family: "Helvetica", sans-serif;
+      font-weight: bold;
+      font-size: 18px;
+      text-transform: uppercase;
+      color: #555;
+      &:after {
+        color: #555;
+      }
+
+      &:hover {
+        color: #555;
+      }
+      // color: #e5e5e5;
+    }
+  }
+
+  .add-to-cart {
+    border-radius: 50px;
 
     &:hover {
-      color: #cc0000;
+      box-shadow: 3px 3px #eee;
+      -webkit-transition: 0.2s;
+      transition: 0.2s;
+    }
+  }
+
+  .welcome-message {
+    .title {
+      font-size: 44px;
+    }
+
+    .sub-title {
+      font-size: 42px;
+      color: #fff;
+    }
+  }
+
+  .navbar {
+    font-size: 18px;
+    .navbar-brand {
+      font-family: "Circular Std", sans-serif;
+      font-weight: bold;
+      // font-size: 24px;
+    }
+  }
+
+  .payment-col {
+    margin: 0 auto;
+    max-height: 100%;
+    font-size: 24px;
+    ul {
+      li {
+        list-style-type: none;
+      }
+    }
+  }
+
+  .user-notice {
+    color: #000;
+  }
+
+  .navbar {
+    .right-nav {
+      text-align: right;
+    }
+  }
+
+  .is-round {
+    border-radius: 5px;
+  }
+
+  .is-white {
+    color: #fff;
+  }
+
+  .item-image {
+    border-radius: 25px;
+  }
+
+  #cart-link {
+  }
+
+  .user-notification {
+    font-family: "Circular Std", sans-serif;
+    font-size: 20px;
+  }
+
+  /***********/
+
+  .responsive-container {
+    margin: 0 auto;
+    padding: 50px;
+  }
+
+  .responsive-image {
+    max-width: 100%;
+  }
+
+  .cell img {
+    display: block;
+  }
+
+  .cell {
+    margin: 0.5rem;
+  }
+
+  .tmp-border {
+    border: 1px solid #eee;
+  }
+
+  .remove-item {
+    a {
+      color: #fff;
+
+      &:hover {
+        color: #cc0000;
+      }
     }
   }
 }
