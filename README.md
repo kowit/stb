@@ -5,20 +5,33 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+# Prerequisites
 
-* System dependencies
+* Install rbenv
+* Install ruby 2.5.0
 
-* Configuration
+# Installation
 
-* Database creation
+* Clone repositiory
 
-* Database initialization
+* Install dependencies:
+        `bundle install`
 
-* How to run the test suite
+* Create the Database:
+        `rails db:create`
 
-* Services (job queues, cache servers, search engines, etc.)
+* Migrate the database:
+        `rails db:migrate`
 
-* Deployment instructions
+* Start the server:
+        `rails server`
 
-* ...
+# Features
+
+* Admin backend.
+* User authentication & authorization.
+* CRUD operation on Menu Items.
+* Session based shopping cart.
+* Add/Delete Shopping cart Item.
+* Add, Edit, Upload images through carrierwave.
+* Simulate checkout with Stripe.
