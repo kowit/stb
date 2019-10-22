@@ -1,9 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Description
 
-Things you may want to cover:
+University of South Florida senior project. A Point-of-Sale web-based application. 
 
 # Prerequisites
 
