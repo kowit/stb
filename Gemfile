@@ -12,7 +12,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'administrate', '~> 0.10.0'
-gem 'devise', '~> 4.4', '>= 4.4.3'
+gem 'devise', '~> 4.7'
 gem 'cancancan', '~> 2.2'
 gem 'better_errors', '~> 2.4'
 gem 'faker', '~> 1.8', '>= 1.8.7'
